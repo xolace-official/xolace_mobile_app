@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "xolace_mobile_app",
-    "slug": "xolace_mobile_app",
+    "name": "Xolace",
+    "slug": "xolace",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "xolacemobileapp",
+    "scheme": "xolace",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
