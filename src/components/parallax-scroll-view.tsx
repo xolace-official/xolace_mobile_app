@@ -7,7 +7,7 @@ import Animated, {
     useScrollOffset,
 } from 'react-native-reanimated';
 
-import { ThemedView } from '@/components/themed-view';
+import { ThemedView } from '@/src/components/themed-view';
 import { useColorScheme } from '@/src/hooks/use-color-scheme';
 import { useThemeColor } from '@/src/hooks/use-theme-color';
 
@@ -47,7 +47,8 @@ export default function ParallaxScrollView({
   return (
     <Animated.ScrollView
       ref={scrollRef}
-      style={{ backgroundColor, flex: 1 }}
+      style={{ flex: 1 }}
+      className='bg-background'
       scrollEventThrottle={16}>
       <Animated.View
         style={[

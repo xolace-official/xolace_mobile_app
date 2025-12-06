@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+@theme {
+  /* Customize base font size */
+  --text-base: 15px;
+
+  /* Customize spacing scale */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+
+  /* Customize border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Add custom colors */
+}
+
+@layer theme {
+  :root {
+    /* Dark theme variables */
+    @variant dark {
+      --color-background: oklch(0.1649 0.0352 281.8285);
+      --color-foreground: oklch(0.9513 0.0074 260.7315);
+      --color-primary: oklch(0.6726 0.2904 341.4084);
+      --color-primary-border: oklch(51.527% 0.16092 337.309);
+      --color-primary-foreground: oklch(1 0 0);
+      --color-secondary: oklch(0.2542 0.0611 281.1423);
+      --color-secondary-foreground: oklch(0.9513 0.0074 260.7315);
+      --color-muted: oklch(0.2123 0.0522 280.9917);
+      --color-muted-foreground: oklch(0.6245 0.05 278.1046);
+      --color-accent: oklch(0.8903 0.1739 171.269);
+      --color-accent-foreground: oklch(0.1649 0.0352 281.8285);
+      --color-destructive: oklch(0.6535 0.2348 34.037);
+      --color-border: oklch(0.3279 0.0832 280.789);
+      --color-card: oklch(0.2542 0.0611 281.1423);
+      --color-card-foreground: oklch(0.9513 0.0074 260.7315);
+
+    }
+
+    /* Light theme variables */
+    @variant light {
+      --color-background: oklch(0.9816 0.0017 247.839);
+      --color-foreground: oklch(0.1649 0.0352 281.8285);
+      --color-primary: oklch(0.6726 0.2904 341.4084);
+      --color-primary-border: oklch(56.481% 0.20217 337.995);
+      --color-primary-foreground: oklch(1 0 0);
+      --color-secondary: oklch(0.9595 0.02 286.0164);
+      --color-secondary-foreground: oklch(0.1649 0.0352 281.8285);
+      --color-muted: oklch(0.9595 0.02 286.0164);
+      --color-muted-foreground: oklch(0.1649 0.0352 281.8285);
+      --color-accent: oklch(0.8903 0.1739 171.269);
+      --color-accent-foreground: oklch(0.1649 0.0352 281.8285);
+      --color-destructive: oklch(0.6535 0.2348 34.037);
+      --color-border: oklch(0.9205 0.0086 225.0878);
+      --color-card: oklch(1 0 0);
+      --color-card-foreground: oklch(0.1649 0.0352 281.8285);
+    }
+
+    /* Premium theme variables */
+    @variant premium {
+      --color-background: #1e1b4b;
+      --color-foreground: #fef3c7;
+      --color-primary: #fbbf24;
+      --color-primary-border: #fbbf24;
+      --color-primary-foreground: #fef3c7;
+      --color-secondary: #fef3c7;
+      --color-secondary-foreground: #fef3c7;
+      --color-muted: #fef3c7;
+      --color-muted-foreground: #fef3c7;
+      --color-accent: #fef3c7;
+      --color-accent-foreground: #fef3c7;
+      --color-destructive: #fef3c7;
+      --color-card: #312e81;
+      --color-border: #4c1d95;
+      --color-card-foreground: #fef3c7;
+    }
+  }
+}
+
+@layer utilities {
+    .flex-row-center {
+    @apply flex flex-row items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-start {
+    @apply flex items-start justify-center;
+  }
+}
