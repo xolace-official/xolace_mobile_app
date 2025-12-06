@@ -1,13 +1,24 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, Text } from 'react-native';
+import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
 
 import { HelloWave } from '@/src/components/hello-wave';
 import ParallaxScrollView from '@/src/components/parallax-scroll-view';
 import { ThemedText } from '@/src/components/themed-text';
 import { ThemedView } from '@/src/components/themed-view';
 import { Link } from 'expo-router';
+import { useUniwind, Uniwind } from 'uniwind';
+
 
 export default function HomeScreen() {
+
+  const { theme, hasAdaptiveThemes } = useUniwind()
+
+  const themes = [
+    { name: 'light', label: 'Light', icon: '☀️' },
+    { name: 'dark', label: 'Dark', icon: '🌙' },
+    { name: 'premium', label: 'Premium', icon: '💎' },
+  ]
+  const activeTheme = hasAdaptiveThemes ? 'system' : theme
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -21,6 +32,28 @@ export default function HomeScreen() {
         <Text className='text-3xl font-bold text-blue-500'>Welcome!</Text>
         <HelloWave />
       </ThemedView>
+      <Text className="text-sm text-foreground">
+        Current: {activeTheme}
+      </Text>
+      <View className="flex-row gap-2 bg-primary rounded-sm">
+          {themes.map((t) => (
+            <Pressable
+              key={t.name}
+              onPress={() => Uniwind.setTheme(t.name)}
+              className={`
+                px-4 py-3 rounded-lg items-center
+                ${activeTheme === t.name ? 'bg-primary' : 'bg-card border border-border'}
+              `}
+            >
+              <Text className={`text-2xl ${activeTheme === t.name ? 'text-white' : 'text-foreground'}`}>
+                {t.icon}
+              </Text>
+              <Text className={`text-xs mt-1 ${activeTheme === t.name ? 'text-white' : 'text-foreground'}`}>
+                {t.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
