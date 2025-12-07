@@ -6,7 +6,7 @@ const Onboarding = () => {
   return (
     <View className="flex-1 flex-row-center">
       <Text>Onboarding</Text>
-      <Link href="/(tabs)" className="text-blue-500">Go to home screen!</Link>
+      <Link href="/(app)/(tabs)" className="text-blue-500">Go to home screen!</Link>
     </View>
   )
 }
