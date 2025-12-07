@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["AnimatedInputModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.animatedinput.AnimatedInputModule"]
+  }
+}
