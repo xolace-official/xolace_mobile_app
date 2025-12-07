@@ -34,10 +34,10 @@ export const HbotText: FC<SlideItemProps> = ({ index }) => {
   return (
     <SlideTextContainer
       style={rContainerStyle}
-      className="absolute top-[75%] left-[20%] max-w-[250px]"
-      textClassName="text-lg text-center"
+      className="absolute top-[85%] left-[20%] max-w-[250px]"
+      textClassName="text-base text-center"
     >
-      I'm doing HBOT therapy with Longevity Deck. Check it out!
+      I&apos;m doing HBOT therapy with Longevity Deck. Check it out!
     </SlideTextContainer>
   );
 };

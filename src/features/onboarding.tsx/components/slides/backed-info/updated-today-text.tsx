@@ -32,7 +32,7 @@ export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute -top-[5%] left-[10%]">
+    <SlideTextContainer style={rContainerStyle} className="absolute -top-[10%] left-[5%]" textClassName="text-base">
       ⏰ Updated today
     </SlideTextContainer>
   );
