@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { HbotText } from "./hbot-text";
+import { OneDayAtATimeText} from "./one-day-at-a-time-text";
 import { BlueCard } from "./blue-card";
 import { StoneCard } from "./stone-card";
 import { SlideContainer } from "../../slide-container";
@@ -8,12 +8,12 @@ import { SlideContainer } from "../../slide-container";
 
 const SLIDE_INDEX = 3;
 
-export const Share: FC = () => {
+export const GrowAndHeal: FC = () => {
   return (
     <SlideContainer index={SLIDE_INDEX}>
       <StoneCard index={SLIDE_INDEX} />
       <BlueCard index={SLIDE_INDEX} />
-      <HbotText index={SLIDE_INDEX} />
+      <OneDayAtATimeText index={SLIDE_INDEX} />
     </SlideContainer>
   );
 };

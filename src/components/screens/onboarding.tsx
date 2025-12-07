@@ -15,7 +15,7 @@ import React from "react";
 import { Welcome } from "@/src/features/onboarding.tsx/components/slides/welcome";
 import { SafeSpace } from "@/src/features/onboarding.tsx/components/slides/safe-space";
 import { FindYourPeople } from "@/src/features/onboarding.tsx/components/slides/find-your-people";
-import { Share } from "@/src/features/onboarding.tsx/components/slides/share";
+import { GrowAndHeal } from "@/src/features/onboarding.tsx/components/slides/grow-and-heal";
 import { NotMedicalAdvice } from "@/src/features/onboarding.tsx/components/slides/not-medical-advice";
 import { AnimatedIndexContext } from "@/src/features/onboarding.tsx/lib/animated-index-context";
 
@@ -32,7 +32,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
  * Color palette for bottom glow gradient, one color per slide.
  * Interpolated via HSV color space for smooth transitions between slides.
  */
-const PALETTE = ["#321A48", "#192444", "#1C3F2D", "#44382A", "#391C1D"];
+const PALETTE = ["#321A48", "#192444", "#44382A", "#1C3F2D", "#391C1D"];
 
 const TOTAL_SLIDES = 5;
 
@@ -117,7 +117,7 @@ export const Onboarding = () => {
             title={"Grow & Heal\nTogether."}
             description="Take small steps with daily prompts, supportive replies, and gentle check-ins. Give support, receive it back, and build healthier habits over time, one moment, one post, one conversation at a time. "
           >
-            <Share />
+            <GrowAndHeal />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
             title={"Xolace is support,\nnot medical advice."}

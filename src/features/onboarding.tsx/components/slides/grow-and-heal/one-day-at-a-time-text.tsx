@@ -8,7 +8,7 @@ import { SlideItemProps } from "../../../lib/types";
 
 // longevity-deck-onboarding-animation 🔽
 
-export const HbotText: FC<SlideItemProps> = ({ index }) => {
+export const OneDayAtATimeText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -37,7 +37,7 @@ export const HbotText: FC<SlideItemProps> = ({ index }) => {
       className="absolute top-[85%] left-[20%] max-w-[250px]"
       textClassName="text-base text-center"
     >
-      I&apos;m doing HBOT therapy with Longevity Deck. Check it out!
+      ❤️‍🩹 One Day at a Time
     </SlideTextContainer>
   );
 };
