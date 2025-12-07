@@ -7,7 +7,7 @@ import Animated, {
   Extrapolation,
 } from "react-native-reanimated";
 import { PaginationDots } from "@/src/features/onboarding.tsx/components/pagination-dots";
-// import { BottomGlow } from "@/src/features/onboarding.tsx/components/bottom-glow";
+import { BottomGlow } from "@/src/features/onboarding.tsx/components/bottom-glow";
 import { OnboardingSlideContainer } from "@/src/features/onboarding.tsx/components/onboarding-slide-container";
 import { Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
