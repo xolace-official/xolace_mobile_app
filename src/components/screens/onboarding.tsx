@@ -7,7 +7,7 @@ import Animated, {
   Extrapolation,
 } from "react-native-reanimated";
 import { PaginationDots } from "@/src/features/onboarding.tsx/components/pagination-dots";
-import { BottomGlow } from "@/src/features/onboarding.tsx/components/bottom-glow";
+// import { BottomGlow } from "@/src/features/onboarding.tsx/components/bottom-glow";
 import { OnboardingSlideContainer } from "@/src/features/onboarding.tsx/components/onboarding-slide-container";
 import { Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -83,7 +83,7 @@ export const Onboarding = () => {
   return (
     <AnimatedIndexContext value={{ activeIndex }}>
       <View className="flex-1 bg-[#161522]" style={{ paddingBottom: insets.bottom + 8 }}>
-        <BottomGlow palette={PALETTE} width={width} height={height} activeIndex={activeIndex} />
+        {/* <BottomGlow palette={PALETTE} width={width} height={height} activeIndex={activeIndex} /> */}
 
         {/* scrollEventThrottle={16} ensures scroll events fire at ~60fps (1000ms/16ms).
             Critical for smooth animation - lower values = more events = smoother motion. */}
