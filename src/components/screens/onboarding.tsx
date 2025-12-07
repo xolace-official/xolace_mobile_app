@@ -6,6 +6,11 @@ import Animated, {
   interpolate,
   Extrapolation,
 } from "react-native-reanimated";
+// import {
+//   onboardingEntranceHaptic,
+//   onboardingSwipeHaptic,
+// } from "@/lib/haptics-patterns.ios";
+// import * as NativeCoreHaptics from "@/modules/native-core-haptics";
 import { PaginationDots } from "@/src/features/onboarding.tsx/components/pagination-dots";
 import { BottomGlow } from "@/src/features/onboarding.tsx/components/bottom-glow";
 import { OnboardingSlideContainer } from "@/src/features/onboarding.tsx/components/onboarding-slide-container";
@@ -18,8 +23,6 @@ import { FindYourPeople } from "@/src/features/onboarding.tsx/components/slides/
 import { GrowAndHeal } from "@/src/features/onboarding.tsx/components/slides/grow-and-heal";
 import { NotMedicalAdvice } from "@/src/features/onboarding.tsx/components/slides/not-medical-advice";
 import { AnimatedIndexContext } from "@/src/features/onboarding.tsx/lib/animated-index-context";
-
-// longevity-deck-onboarding-animation 🔽
 
 /**
  * Creates an animated Pressable component to enable spring animations on button.
@@ -146,5 +149,3 @@ const styles = StyleSheet.create({
     borderCurve: "continuous",
   },
 });
-
-// longevity-deck-onboarding-animation 🔼
