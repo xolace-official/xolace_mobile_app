@@ -6,22 +6,21 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
+export const JoinCampfireText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
 
   const rContainerStyle = useAnimatedStyle(() => {
     /**
-     * translateX: Slides text left (off-screen) when scrolling to next slide.
-     * Interpolation: [index, index+1] → [0, -screenWidth]
+     * translateX: Text enters from right, centers, then exits left.
+     * Interpolation: [index-1, index, index+1] → [screenWidth*0.25, 0, -screenWidth]
+     * Starts 25% screen width to the right for subtle entry effect.
      */
     const translateX = interpolate(
       activeIndex.get(),
-      [index, index + 1],
-      [0, -screenWidth],
+      [index - 1, index, index + 1],
+      [screenWidth * 0.25, 0, -screenWidth],
       Extrapolation.CLAMP
     );
 
@@ -31,10 +30,8 @@ export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute -top-[5%] left-[10%]">
-      ⏰ Updated today
+    <SlideTextContainer style={rContainerStyle} className="absolute -top-[10%] left-[5%]" textClassName="text-base">
+      🔥 Join Campfires
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼

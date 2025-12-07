@@ -1,14 +1,12 @@
 import React, { FC, use } from "react";
 import { useWindowDimensions } from "react-native";
 import { SlideTextContainer } from "../../slide-text-container";
+import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-native-reanimated";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
-import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const PodcastsText: FC<SlideItemProps> = ({ index }) => {
+export const SupportiveVoicesText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -16,13 +14,13 @@ export const PodcastsText: FC<SlideItemProps> = ({ index }) => {
   const rContainerStyle = useAnimatedStyle(() => {
     /**
      * translateX: Text enters from right, centers, then exits left.
-     * Interpolation: [index-1, index, index+1] → [screenWidth*0.75, 0, -screenWidth]
-     * Starts 75% screen width to the right, creating staggered entry effect.
+     * Interpolation: [index-1, index, index+1] → [screenWidth*0.5, 0, -screenWidth]
+     * Starts 50% screen width to the right for smooth entry animation.
      */
     const translateX = interpolate(
       activeIndex.get(),
       [index - 1, index, index + 1],
-      [screenWidth * 0.75, 0, -screenWidth],
+      [screenWidth * 0.5, 0, -screenWidth],
       Extrapolation.CLAMP
     );
 
@@ -34,12 +32,10 @@ export const PodcastsText: FC<SlideItemProps> = ({ index }) => {
   return (
     <SlideTextContainer
       style={rContainerStyle}
-      className="absolute top-[80%] left-[10%] max-w-[250px]"
-      textClassName="text-base text-center"
+      className="absolute top-[35%] left-[50%] max-w-[200px] rounded-3xl"
+      textClassName="text-sm text-center"
     >
-      Scanned 17 podcasts, 12 blogs and 5 scientific publications.
+      💙 Supportive Voices
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼

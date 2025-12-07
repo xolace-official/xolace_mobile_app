@@ -14,7 +14,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import React from "react";
 import { Welcome } from "@/src/features/onboarding.tsx/components/slides/welcome";
 import { SafeSpace } from "@/src/features/onboarding.tsx/components/slides/safe-space";
-import { BackedInfo } from "@/src/features/onboarding.tsx/components/slides/backed-info";
+import { FindYourPeople } from "@/src/features/onboarding.tsx/components/slides/find-your-people";
 import { Share } from "@/src/features/onboarding.tsx/components/slides/share";
 import { NotMedicalAdvice } from "@/src/features/onboarding.tsx/components/slides/not-medical-advice";
 import { AnimatedIndexContext } from "@/src/features/onboarding.tsx/lib/animated-index-context";
@@ -111,7 +111,7 @@ export const Onboarding = () => {
             title={"Find Your\nPeople."}
             description="Join Campfires - focused spaces for real, honest conversations. Connect with others who get what you’re going through, swap stories, and feel less alone in what you’re facing."
           >
-            <BackedInfo />
+            <FindYourPeople />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
             title={"Grow & Heal\nTogether."}

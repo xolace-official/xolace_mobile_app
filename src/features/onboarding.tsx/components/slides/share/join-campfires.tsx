@@ -6,23 +6,20 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const TemperaturesText: FC<SlideItemProps> = ({ index }) => {
+export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
 
   const rContainerStyle = useAnimatedStyle(() => {
     /**
-     * translateX: Text enters from right, centers, then exits left.
-     * Interpolation: [index-1, index, index+1] → [screenWidth*0.5, 0, -screenWidth]
-     * Starts 50% screen width to the right for smooth entry animation.
+     * translateX: Slides text left (off-screen) when scrolling to next slide.
+     * Interpolation: [index, index+1] → [0, -screenWidth]
      */
     const translateX = interpolate(
       activeIndex.get(),
-      [index - 1, index, index + 1],
-      [screenWidth * 0.5, 0, -screenWidth],
+      [index, index + 1],
+      [0, -screenWidth],
       Extrapolation.CLAMP
     );
 
@@ -32,14 +29,8 @@ export const TemperaturesText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer
-      style={rContainerStyle}
-      className="absolute top-[35%] left-[47%] max-w-[200px] rounded-3xl"
-      textClassName="text-base text-center"
-    >
-      Temperatures between 88°C and 98°C are most beneficial. 20+ minutes 5-6 x week
+    <SlideTextContainer style={rContainerStyle} className="absolute -top-[5%] left-[10%]">
+      🔥 Join Campfires
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼

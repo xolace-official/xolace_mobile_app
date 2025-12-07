@@ -1,14 +1,14 @@
 import React, { FC, use } from "react";
 import { useWindowDimensions } from "react-native";
 import { SlideTextContainer } from "../../slide-text-container";
-import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-native-reanimated";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
+import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { SlideItemProps } from "../../../lib/types";
 
 // longevity-deck-onboarding-animation 🔽
 
-export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
+export const PeopleWhoGetItText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -16,13 +16,13 @@ export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
   const rContainerStyle = useAnimatedStyle(() => {
     /**
      * translateX: Text enters from right, centers, then exits left.
-     * Interpolation: [index-1, index, index+1] → [screenWidth*0.25, 0, -screenWidth]
-     * Starts 25% screen width to the right for subtle entry effect.
+     * Interpolation: [index-1, index, index+1] → [screenWidth*0.75, 0, -screenWidth]
+     * Starts 75% screen width to the right, creating staggered entry effect.
      */
     const translateX = interpolate(
       activeIndex.get(),
       [index - 1, index, index + 1],
-      [screenWidth * 0.25, 0, -screenWidth],
+      [screenWidth * 0.75, 0, -screenWidth],
       Extrapolation.CLAMP
     );
 
@@ -32,8 +32,12 @@ export const UpdatedTodayText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute -top-[10%] left-[5%]" textClassName="text-base">
-      ⏰ Updated today
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[80%] left-[10%] max-w-[250px]"
+      textClassName="text-base text-center"
+    >
+      🧩 People Who Get It Through Shared Experiences
     </SlideTextContainer>
   );
 };
