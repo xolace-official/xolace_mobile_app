@@ -1,5 +1,5 @@
 import React, { FC, use } from "react";
-import { useWindowDimensions, View, StyleSheet } from "react-native";
+import { useWindowDimensions, StyleSheet } from "react-native";
 import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import Animated, {
   useAnimatedStyle,
@@ -10,11 +10,7 @@ import Animated, {
 import { Image } from 'expo-image';
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
-
-// longevity-deck-onboarding-animation 🔽
-
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+import { blurhash } from "@/src/constants/image";
 
 export const RedCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
@@ -90,5 +86,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
 });
-
-// longevity-deck-onboarding-animation 🔼

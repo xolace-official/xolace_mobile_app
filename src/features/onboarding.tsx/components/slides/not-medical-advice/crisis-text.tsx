@@ -6,9 +6,7 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const AttentionText: FC<SlideItemProps> = ({ index }) => {
+export const CrisisText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -34,12 +32,10 @@ export const AttentionText: FC<SlideItemProps> = ({ index }) => {
   return (
     <SlideTextContainer
       style={rContainerStyle}
-      className="absolute top-[0%] left-[25%] max-w-[180px]"
+      className="absolute top-[80%] left-[55%] max-w-[180px]"
       textClassName="text-base text-center"
     >
-      ⚠️ Not Medical Advice
+      🚨 Crisis? Get Help
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼

@@ -1,5 +1,5 @@
 import React, { FC, use } from "react";
-import { useWindowDimensions, View, StyleSheet } from "react-native";
+import { useWindowDimensions, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import Animated, {
@@ -11,8 +11,6 @@ import Animated, {
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 import { blurhash } from "@/src/constants/image";
-
-// longevity-deck-onboarding-animation 🔽
 
 export const BlueCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
@@ -86,5 +84,3 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
-
-// longevity-deck-onboarding-animation 🔼

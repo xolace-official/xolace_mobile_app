@@ -65,6 +65,7 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
       -1, // infinite repeats
       true // reverse on each iteration (ping-pong)
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
