@@ -1,26 +1,49 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { useEffect } from 'react';
 
+import { Slot } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { Platform } from 'react-native';
+
+import { useAppStore } from '../store';
+// import from packages
+// import {
+//   useAuthSession,
+//   useAuthSyncStore,
+//   useRegisterAutoRefresh,
+// } from '@xolacekit/supabase';
+
+// root provider
+import { RootProvider } from '../providers/root-provider';
 import '../../global.css';
 
-import { useColorScheme } from '@/src/hooks/use-color-scheme';
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+// void SplashScreen.preventAutoHideAsync();
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+const isWeb = Platform.OS === 'web';
+if (!isWeb) {
+  // no-void to avoid unhandled promise in RN debugger
+  SplashScreen.preventAutoHideAsync();
+}
+
+function SplashController() {
+  // const { isLoading } = useAuthSession();
+  const _hasHydrated = useAppStore((s) => s._hasHydrated);
+  useEffect(() => {
+    if (!isWeb && _hasHydrated) {
+      SplashScreen.hideAsync().catch(() => {});
+    }
+  }, [_hasHydrated]);
+  return null;
+}
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  // useRegisterAutoRefresh();
+  // useAuthSyncStore();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <RootProvider>
+      <SplashController />
+      <Slot />
+    </RootProvider>
   );
 }
