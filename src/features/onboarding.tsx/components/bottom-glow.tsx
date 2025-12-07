@@ -1,6 +1,13 @@
+import {
+  Blur,
+  Canvas,
+  interpolateColors,
+  RoundedRect,
+  Skia,
+} from "@shopify/react-native-skia";
+import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import { interpolateColor, useDerivedValue, type SharedValue } from "react-native-reanimated";
-import { Blur, Canvas, RoundedRect } from "@shopify/react-native-skia";
+import { useDerivedValue, type SharedValue } from "react-native-reanimated";
 
 // longevity-deck-onboarding-animation 🔽
 
@@ -32,16 +39,19 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
   const ovalX = (width - ovalWidth) / 2;
   const ovalY = height * 0.84;
 
+  // Pre-compute Skia colors from the palette strings (memoized to avoid re-creating on each render)
+  const skiaColors = useMemo(() => palette.map((c) => Skia.Color(c)), [palette]);
+  const inputRange = useMemo(() => palette.map((_, index) => index), [palette]);
+
   /**
-   * Interpolates color through HSV color space for smooth transitions.
-   * HSV prevents muddy colors when transitioning between distant palette colors.
+   * Interpolates color using Skia's interpolateColors for proper Skia format.
+   * Uses Reanimated's useDerivedValue - Skia 2.x can read from Reanimated SharedValues.
    * Input range: [0, 1, 2, 3, 4] (slide indices) → Output: palette colors.
    */
   const fillColor = useDerivedValue(() => {
-    const inputs = palette.map((_, index) => index);
-    const color = interpolateColor(activeIndex.get(), inputs, palette, "HSV");
-    return color;
-  });
+    "worklet";
+    return interpolateColors(activeIndex.value, inputRange, skiaColors);
+  }, []);
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">

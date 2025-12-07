@@ -83,7 +83,7 @@ export const Onboarding = () => {
   return (
     <AnimatedIndexContext value={{ activeIndex }}>
       <View className="flex-1 bg-[#161522]" style={{ paddingBottom: insets.bottom + 8 }}>
-        {/* <BottomGlow palette={PALETTE} width={width} height={height} activeIndex={activeIndex} /> */}
+        <BottomGlow palette={PALETTE} width={width} height={height} activeIndex={activeIndex} />
 
         {/* scrollEventThrottle={16} ensures scroll events fire at ~60fps (1000ms/16ms).
             Critical for smooth animation - lower values = more events = smoother motion. */}
