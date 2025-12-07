@@ -34,8 +34,8 @@ export const AttentionText: FC<SlideItemProps> = ({ index }) => {
   return (
     <SlideTextContainer
       style={rContainerStyle}
-      className="absolute top-[75%] left-[25%] max-w-[180px]"
-      textClassName="text-lg text-center"
+      className="absolute top-[10%] left-[25%] max-w-[180px]"
+      textClassName="text-base text-center"
     >
       This is a bad idea with your condition!
     </SlideTextContainer>

@@ -11,8 +11,8 @@ const SLIDE_INDEX = 4;
 export const NotMedicalAdvice: FC = () => {
   return (
     <SlideContainer index={SLIDE_INDEX}>
-      <StoneCard index={SLIDE_INDEX} />
       <BlueCard index={SLIDE_INDEX} />
+      <StoneCard index={SLIDE_INDEX} />
       <AttentionText index={SLIDE_INDEX} />
     </SlideContainer>
   );
