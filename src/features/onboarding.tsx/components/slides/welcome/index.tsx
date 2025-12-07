@@ -3,7 +3,8 @@ import { View } from "react-native";
 import { RedCard } from "./red-card";
 import { BlueCard } from "./blue-card";
 import { StoneCard } from "./stone-card";
-import { ProtocolsText } from "./protocols-text";
+import { MatterHereText } from "./matter-here-text";
+import { DigitalCampfireText } from "./digital-campfire-text";
 
 // longevity-deck-onboarding-animation 🔽
 
@@ -15,7 +16,8 @@ export const Welcome: FC = () => {
       <BlueCard index={SLIDE_INDEX} />
       <StoneCard index={SLIDE_INDEX} />
       <RedCard index={SLIDE_INDEX} />
-      <ProtocolsText index={SLIDE_INDEX} />
+      <MatterHereText index={SLIDE_INDEX} />
+      <DigitalCampfireText index={SLIDE_INDEX}/>
     </View>
   );
 };

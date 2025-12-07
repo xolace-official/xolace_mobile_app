@@ -6,9 +6,7 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const EightyThreeIsBetterText: FC<SlideItemProps> = ({ index }) => {
+export const StayAnonymousText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -31,10 +29,8 @@ export const EightyThreeIsBetterText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[78%] left-[46%]">
-      83° is better
+    <SlideTextContainer style={rContainerStyle} className="absolute top-[50%] left-[2%]" textClassName="text-base">
+      👤 Stay Anonymous
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼

@@ -8,7 +8,7 @@ import { SlideItemProps } from "../../../lib/types";
 
 // longevity-deck-onboarding-animation 🔽
 
-export const ProtocolsText: FC<SlideItemProps> = ({ index }) => {
+export const MatterHereText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -32,8 +32,8 @@ export const ProtocolsText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[75%] left-[33%]">
-      88 Protocols inside
+    <SlideTextContainer style={rContainerStyle} className="absolute top-[75%] left-[33%]" textClassName="text-base">
+      💛 You Matter Here
     </SlideTextContainer>
   );
 };

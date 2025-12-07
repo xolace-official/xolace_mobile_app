@@ -8,7 +8,7 @@ import { SlideItemProps } from "../../../lib/types";
 
 // longevity-deck-onboarding-animation 🔽
 
-export const HundredTenIsBetterText: FC<SlideItemProps> = ({ index }) => {
+export const SafeExpressionText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -31,8 +31,8 @@ export const HundredTenIsBetterText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[40%] left-[7%]">
-      110° is better
+    <SlideTextContainer style={rContainerStyle} className="absolute top-[78%] left-[46%]">
+      🪽 Safe Expression
     </SlideTextContainer>
   );
 };

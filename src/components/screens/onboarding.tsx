@@ -13,7 +13,7 @@ import { Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import React from "react";
 import { Welcome } from "@/src/features/onboarding.tsx/components/slides/welcome";
-import { Essentials } from "@/src/features/onboarding.tsx/components/slides/essentials";
+import { SafeSpace } from "@/src/features/onboarding.tsx/components/slides/safe-space";
 import { BackedInfo } from "@/src/features/onboarding.tsx/components/slides/backed-info";
 import { Share } from "@/src/features/onboarding.tsx/components/slides/share";
 import { NotMedicalAdvice } from "@/src/features/onboarding.tsx/components/slides/not-medical-advice";
@@ -96,32 +96,32 @@ export const Onboarding = () => {
           scrollEventThrottle={16}
         >
           <OnboardingSlideContainer
-            title={"Welcome to your\nLongevity Deck"}
-            description="Your personal guide to evidence-based health and longevity protocols. Swipe cards into your own deck and track what you do, learn from it, and share with others. Privately."
+            title={"Welcome to \n Xolace."}
+            description="Every story matters here. Xolace is your digital campfire, a gentle space to breathe out, check in with yourself, and share what’s on your heart at your own pace."
           >
             <Welcome />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
-            title={"Cut through the noise.\nEssentials only!"}
-            description="Each protocol is a beautiful card. See benefits, risks, and best practices baked in. Keep only what fits your goals. Filter, search, learn and discover new things!"
+            title={"Your Safe,\nPrivate Space."}
+            description="Post with a nickname, choose what you share, and speak freely without fear of judgment or being “found out.” "
           >
-            <Essentials />
+            <SafeSpace />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
-            title={"Up to date expert\nbacked info"}
-            description="We pull fresh insights from top podcasts and scientific publications. Then update every card with sources, and alert you when anything changes. Never miss a beat!"
+            title={"Find Your\nPeople."}
+            description="Join Campfires - focused spaces for real, honest conversations. Connect with others who get what you’re going through, swap stories, and feel less alone in what you’re facing."
           >
             <BackedInfo />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
-            title={"Share with friends\n& compare"}
-            description="Publish your stack as one link, let friends copy it in a tap, and see public adoption and weekly-use stats. You can also share a specific protocol you do on social media!"
+            title={"Grow & Heal\nTogether."}
+            description="Take small steps with daily prompts, supportive replies, and gentle check-ins. Give support, receive it back, and build healthier habits over time, one moment, one post, one conversation at a time. "
           >
             <Share />
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
-            title={"This app is not\nmedical advice"}
-            description="Educational use only. Not a diagnosis/treatment tool. Protocols may not suit you and could interact with meds or conditions. Do you research and consult a licensed clinician before starting or changing anything. Seek immediate care for symptoms or emergencies. Tap 'I understand' to acknowledge."
+            title={"Xolace is support,\nnot medical advice."}
+            description={"Xolace is a peer-support and self-reflection space, not a diagnosis tool, and not an emergency service. If you’re in crisis or feel unsafe, contact local emergency services or a trusted crisis line in your country.\n\n Tap “I understand” to continue."}
           >
             <NotMedicalAdvice />
           </OnboardingSlideContainer>

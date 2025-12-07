@@ -6,9 +6,7 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-// longevity-deck-onboarding-animation 🔽
-
-export const OnceAWeekText: FC<SlideItemProps> = ({ index }) => {
+export const ZeroJudgmentZoneText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
   const { activeIndex } = use(AnimatedIndexContext);
@@ -31,10 +29,8 @@ export const OnceAWeekText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[10%] left-[60%]">
-      once a week!
+    <SlideTextContainer style={rContainerStyle} className="absolute -top-[5%] left-[2%]" textClassName="text-sm">
+      🤫 Zero Judgment Zone
     </SlideTextContainer>
   );
 };
-
-// longevity-deck-onboarding-animation 🔼
