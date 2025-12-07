@@ -1,4 +1,4 @@
-import { cn } from "@/src/shared/lib/utils/cn";
+import { cn } from "@/src/utils/cn";
 import { BlurView } from "expo-blur";
 import React, { FC, PropsWithChildren } from "react";
 import { Text, ViewProps, StyleSheet, Platform } from "react-native";

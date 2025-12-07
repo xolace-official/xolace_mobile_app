@@ -36,7 +36,7 @@ const PALETTE = ["#321A48", "#192444", "#1C3F2D", "#44382A", "#391C1D"];
 
 const TOTAL_SLIDES = 5;
 
-const Onboarding = () => {
+export const Onboarding = () => {
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
 
@@ -146,7 +146,5 @@ const styles = StyleSheet.create({
     borderCurve: "continuous",
   },
 });
-
-export default Onboarding;
 
 // longevity-deck-onboarding-animation 🔼

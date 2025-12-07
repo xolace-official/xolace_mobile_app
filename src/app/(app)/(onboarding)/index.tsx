@@ -1,4 +1,9 @@
-/* eslint-disable import/no-named-as-default-member */
-import Onboarding from "@/src/components/screens/onboarding";
+import {Onboarding} from "@/src/components/screens/onboarding";
 
-export default Onboarding;
+const OnboardingScreen = () => {
+  return (
+    <Onboarding />
+  )
+}
+
+export default OnboardingScreen
