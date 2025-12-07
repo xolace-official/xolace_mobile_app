@@ -7,13 +7,18 @@ import Animated, {
   Extrapolation,
   withSpring,
 } from "react-native-reanimated";
+import { Image } from 'expo-image';
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
 // longevity-deck-onboarding-animation 🔽
 
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
 export const RedCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
+  const lottieSize = screenWidth * 0.7;
 
   const { activeIndex } = use(AnimatedIndexContext);
 
@@ -64,10 +69,15 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
   return (
     <Animated.View
       style={[rContainerStyle, styles.borderCurve]}
-      className="absolute w-[45%] aspect-[1/1.4] top-0 left-[28%] rounded-3xl items-center justify-center gap-10 bg-red-500"
+      className="absolute w-[45%] aspect-[1/1.4] top-0 left-[28%] rounded-3xl items-center justify-center gap-10 bg-red-500 overflow-hidden"
     >
-      <View className="size-20 rounded-3xl bg-amber-500" />
-      <View className="h-5 w-20 rounded-full bg-neutral-200/25" />
+      <Image
+          source={require("@/assets/images/onboarding/onboarding1.png")}
+          placeholder={{ blurhash }}
+          contentFit="contain"
+          transition={1000}
+          style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+        />
     </Animated.View>
   );
 };
@@ -75,6 +85,9 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
 const styles = StyleSheet.create({
   borderCurve: {
     borderCurve: "continuous",
+  },
+  lottie: {
+    alignSelf: 'center'
   },
 });
 

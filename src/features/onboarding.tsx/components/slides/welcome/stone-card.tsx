@@ -1,12 +1,14 @@
+import { blurhash } from "@/src/constants/image";
+import { Image } from "expo-image";
 import React, { FC, use } from "react";
-import { useWindowDimensions, View, StyleSheet } from "react-native";
-import { AnimatedIndexContext } from "../../../lib/animated-index-context";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import Animated, {
-  useAnimatedStyle,
-  interpolate,
   Extrapolation,
+  interpolate,
+  useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
@@ -14,6 +16,7 @@ import { SlideItemProps } from "../../../lib/types";
 
 export const StoneCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
+  const lottieSize = screenWidth * 0.6;
 
   const { activeIndex } = use(AnimatedIndexContext);
 
@@ -64,10 +67,15 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
   return (
     <Animated.View
       style={[rContainerStyle, styles.borderCurve]}
-      className="absolute top-[22%] left-[63%] w-[38%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-stone-300"
+      className="absolute top-[22%] left-[63%] w-[38%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-stone-300 overflow-hidden"
     >
-      <View className="size-20 rounded-full bg-stone-400" />
-      <View className="h-5 w-20 rounded-full bg-neutral-200" />
+       <Image
+                      source={require("@/assets/images/onboarding/onboarding6.png")}
+                      placeholder={{ blurhash }}
+                      contentFit="contain"
+                      transition={1000}
+                      style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+                    />
     </Animated.View>
   );
 };
@@ -75,6 +83,9 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
 const styles = StyleSheet.create({
   borderCurve: {
     borderCurve: "continuous",
+  },
+  lottie: {
+    alignSelf: "center",
   },
 });
 
