@@ -1,0 +1,39 @@
+import React, { FC, use } from "react";
+import { useWindowDimensions } from "react-native";
+import { SlideTextContainer } from "../../slide-text-container";
+import { AnimatedIndexContext } from "../../../lib/animated-index-context";
+import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-native-reanimated";
+import { BASE_SPRING_CONFIG } from "../../../lib/constants";
+import { SlideItemProps } from "../../../lib/types";
+
+
+export const DigitalCampfireText: FC<SlideItemProps> = ({ index }) => {
+  const { width: screenWidth } = useWindowDimensions();
+
+  const { activeIndex } = use(AnimatedIndexContext);
+
+  const rContainerStyle = useAnimatedStyle(() => {
+    /**
+     * translateX: Slides text left (off-screen) when scrolling to next slide.
+     * Interpolation: [index, index+1] → [0, -screenWidth]
+     * Simple horizontal exit animation synchronized with card movements.
+     */
+    const translateX = interpolate(
+      activeIndex.get(),
+      [index, index + 1],
+      [0, -screenWidth],
+      Extrapolation.CLAMP
+    );
+
+    return {
+      transform: [{ translateX: withSpring(translateX, BASE_SPRING_CONFIG) }],
+    };
+  });
+
+  return (
+    <SlideTextContainer style={rContainerStyle} className="absolute top-[10%] left-[1%]" textClassName="text-base">
+      🔥 Digital Campfire
+    </SlideTextContainer>
+  );
+};
+

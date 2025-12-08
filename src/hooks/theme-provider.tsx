@@ -26,7 +26,6 @@ export function GlobalThemeProvider({
         if (Platform.OS === 'web') {
           if (typeof document !== 'undefined') {
             // Adds the background color to the html element to prevent white background on overscroll.
-            /* eslint-disable-next-line no-undef */
             document.documentElement.classList.add('bg-background');
           }
         }

@@ -1,0 +1,86 @@
+import React, { FC, use } from "react";
+import { useWindowDimensions, StyleSheet } from "react-native";
+import { Image } from "expo-image";
+import { AnimatedIndexContext } from "../../../lib/animated-index-context";
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
+  Extrapolation,
+  withSpring,
+} from "react-native-reanimated";
+import { BASE_SPRING_CONFIG } from "../../../lib/constants";
+import { SlideItemProps } from "../../../lib/types";
+import { blurhash } from "@/src/constants/image";
+
+export const BlueCard: FC<SlideItemProps> = ({ index }) => {
+  const { width: screenWidth } = useWindowDimensions();
+  const lottieSize = screenWidth * 0.65;
+
+  const { activeIndex } = use(AnimatedIndexContext);
+
+  const rContainerStyle = useAnimatedStyle(() => {
+    /**
+     * translateX: Slides card left (off-screen) when scrolling to next slide.
+     * Interpolation: [index, index+1] → [0, -screenWidth]
+     */
+    const translateX = interpolate(
+      activeIndex.get(),
+      [index, index + 1],
+      [0, -screenWidth],
+      Extrapolation.CLAMP
+    );
+    /**
+     * rotate: Straightens card from -6° tilt to 0° as slide becomes active.
+     * Interpolation: [index, index+0.5] → [-6deg, 0deg]
+     * Negative rotation creates counter-clockwise tilt effect.
+     */
+    const rotate = interpolate(
+      activeIndex.get(),
+      [index, index + 0.5],
+      [-6, 0],
+      Extrapolation.CLAMP
+    );
+    /**
+     * scale: Slightly shrinks card (1 → 0.98) as slide becomes active.
+     * Interpolation: [index, index+0.5] → [1, 0.98]
+     */
+    const scale = interpolate(
+      activeIndex.get(),
+      [index, index + 0.5],
+      [1, 0.98],
+      Extrapolation.CLAMP
+    );
+
+    return {
+      transform: [
+        { translateX: withSpring(translateX, BASE_SPRING_CONFIG) },
+        { rotate: withSpring(`${rotate}deg`, BASE_SPRING_CONFIG) },
+        { scale: withSpring(scale, BASE_SPRING_CONFIG) },
+      ],
+    };
+  });
+
+  return (
+    <Animated.View
+      style={[rContainerStyle, styles.borderCurve]}
+      className="absolute top-[25%] left-0 w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
+    >
+      <Image
+                source={require("@/assets/images/onboarding/onboarding3.png")}
+                placeholder={{ blurhash }}
+                contentFit="contain"
+                transition={1000}
+                style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+              />
+    </Animated.View>
+  );
+};
+
+const styles = StyleSheet.create({
+  borderCurve: {
+    borderCurve: "continuous",
+  },
+  lottie: {
+    alignSelf: "center",
+  },
+});

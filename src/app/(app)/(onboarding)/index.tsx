@@ -1,14 +1,9 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Link } from 'expo-router'
+import {Onboarding} from "@/src/components/screens/onboarding";
 
-const Onboarding = () => {
+const OnboardingScreen = () => {
   return (
-    <View className="flex-1 flex-row-center">
-      <Text>Onboarding</Text>
-      <Link href="/(app)/(tabs)" className="text-blue-500">Go to home screen!</Link>
-    </View>
+    <Onboarding />
   )
 }
 
-export default Onboarding
+export default OnboardingScreen
