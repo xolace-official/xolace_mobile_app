@@ -78,7 +78,7 @@ export const Feed = () => {
         ItemSeparatorComponent={_renderItemSeparator}
         scrollEventThrottle={1000 / 60}
         ListFooterComponent={<View style={{ height: 80 }} />}
-        contentContainerStyle={{ paddingBottom: tabBarHeight + 16 }}
+        contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight }}
         showsVerticalScrollIndicator={false}
       />
     </View>
