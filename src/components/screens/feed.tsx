@@ -11,13 +11,9 @@ import { AnimatedLegendList } from "@legendapp/list/reanimated";
 import { HomePost } from '../extras/home-post';
 import { InfoCarousel } from "@/src/features/feed/info-carousel";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { useFeedFilter, useSetFeedFilter } from "@/src/store";
-import { FeedDropdown } from "@/src/features/feed/feed-dropdown";
 
 export const Feed = () => {
     const [headerHeight, setHeaderHeight] = useState(0);
-    const selectedFilter = useFeedFilter();
-    const setFeedFilter = useSetFeedFilter();
 
   const insets = useSafeAreaInsets();
 
@@ -74,10 +70,7 @@ export const Feed = () => {
             <View className="absolute top-0 left-0 right-0 bottom-0 flex-row items-center justify-center pointer-events-none">
               <FontAwesome6 name="x-twitter" size={24} color="#e5e5e5" />
             </View>
-             <FeedDropdown
-              selected={selectedFilter}
-              onSelect={setFeedFilter}
-            />
+            <View className="w-[60px] h-8 bg-white rounded-full" />
           </View>
         </View>
       </Animated.View>
