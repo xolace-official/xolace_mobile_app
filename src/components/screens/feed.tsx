@@ -1,9 +1,7 @@
-import { ThemeSwitcher } from '@/src/components/extras/theme-switcher';
-
 import { BlurView } from "expo-blur";
-import { useCallback, useContext, useRef, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
-import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
+import { useCallback, useContext, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabsContext } from '@/src/providers/tab-provider';
 import { useHeaderAnimation } from "@/src/hooks/use-header-animation";
@@ -55,7 +53,7 @@ export const Feed = () => {
           <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFillObject} />
         </Animated.View>
         <View
-          className="bg-background/50 border-b border-x-front"
+          className="bg-background/50 border-b border-primary"
           style={{ paddingTop: insets.top + 8 }}
         >
           <View className="flex-row items-end justify-between mb-2 px-5">
