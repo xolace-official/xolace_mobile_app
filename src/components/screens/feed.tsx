@@ -1,6 +1,6 @@
 import { BlurView } from "expo-blur";
 import { useCallback, useContext, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabsContext } from '@/src/providers/tab-provider';
@@ -9,9 +9,15 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { dummyPosts, EnhancedPost } from "@/src/constants/dummy-data";
 import { AnimatedLegendList } from "@legendapp/list/reanimated";
 import { HomePost } from '../extras/home-post';
+import { InfoCarousel } from "@/src/features/feed/info-carousel";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { useFeedFilter, useSetFeedFilter } from "@/src/store";
+import { FeedDropdown } from "@/src/features/feed/feed-dropdown";
 
 export const Feed = () => {
     const [headerHeight, setHeaderHeight] = useState(0);
+    const selectedFilter = useFeedFilter();
+    const setFeedFilter = useSetFeedFilter();
 
   const insets = useSafeAreaInsets();
 
@@ -57,11 +63,21 @@ export const Feed = () => {
           style={{ paddingTop: insets.top + 8 }}
         >
           <View className="flex-row items-end justify-between mb-2 px-5">
-            <View className="w-8 h-8 bg-background rounded-full" />
+            <Avatar alt="Nathan" className="w-8 h-8">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>
+                <Text className="text-foreground">
+                  NA
+                </Text>
+              </AvatarFallback>
+            </Avatar>
             <View className="absolute top-0 left-0 right-0 bottom-0 flex-row items-center justify-center pointer-events-none">
               <FontAwesome6 name="x-twitter" size={24} color="#e5e5e5" />
             </View>
-            <View className="w-[60px] h-8 bg-background rounded-full" />
+             <FeedDropdown
+              selected={selectedFilter}
+              onSelect={setFeedFilter}
+            />
           </View>
         </View>
       </Animated.View>
@@ -74,9 +90,11 @@ export const Feed = () => {
         getItemType={getItemType}
         onScroll={scrollHandler}
         ItemSeparatorComponent={_renderItemSeparator}
+        ListHeaderComponent={()=> <InfoCarousel/>}
+        ListHeaderComponentStyle={{paddingBottom: 20}}
         scrollEventThrottle={1000 / 60}
         ListFooterComponent={<View style={{ height: 80 }} />}
-        contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight }}
+        contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight + 10 }}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -136,6 +136,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(feed)"
         options={{
+          tabBarLabel: 'Fireside',
+          title: 'Fireside',
           tabBarIcon: ({ color, focused }) => {
             return (
               <AnimatedIconWrapper scale={homeIconScale}>
@@ -157,6 +159,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(discovery)"
         options={{
+          tabBarLabel: 'Explore',
+          title: 'Explore',
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={discoveryIconScale}>
@@ -170,6 +174,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(notification)"
         options={{
+          tabBarLabel: 'Notifications',
+          title: 'Notifications',
           tabBarIcon: ({ color , focused}) => {
             return (
               <AnimatedIconWrapper scale={notificationIconScale}>
@@ -189,6 +195,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(checkin)"
         options={{
+          tabBarLabel: 'Check-in',
+          title: 'Check-in',
           tabBarIcon: ({ color, focused }) => {
             return (
               <AnimatedIconWrapper scale={checkinIconScale}>
