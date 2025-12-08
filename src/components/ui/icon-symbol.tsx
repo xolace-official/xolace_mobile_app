@@ -19,6 +19,12 @@ const MAPPING = {
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
   'arrow.2.circlepath': 'sync', // Loading spinner
+  'fireplace': 'fireplace',
+  'dot.radiowaves.left.and.right': 'radio',
+  'heart.text.square': 'self-improvement',
+  'heart.text.square.fill': 'self-improvement',
+  'bell': 'notifications-none',
+  'bell.fill': 'notifications',
 } as IconMapping;
 
 /**
