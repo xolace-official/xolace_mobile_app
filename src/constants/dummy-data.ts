@@ -16,9 +16,9 @@ export interface EnhancedPost {
   mood: string;
   type: 'single' | 'carousel';
   content: string;
-  post_slides?: Array<{ content: string; slide_index: number }>;
+  post_slides?: { content: string; slide_index: number }[];
   prompt_text?: string | null;
-  posttags: Array<{ name: string }>;
+  posttags: { name: string }[];
   comments_count: number;
   upvotes: number;
   downvotes: number;
