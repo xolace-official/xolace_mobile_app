@@ -23,6 +23,7 @@ import { FindYourPeople } from "@/src/features/onboarding.tsx/components/slides/
 import { GrowAndHeal } from "@/src/features/onboarding.tsx/components/slides/grow-and-heal";
 import { NotMedicalAdvice } from "@/src/features/onboarding.tsx/components/slides/not-medical-advice";
 import { AnimatedIndexContext } from "@/src/features/onboarding.tsx/lib/animated-index-context";
+import { router } from "expo-router";
 
 /**
  * Creates an animated Pressable component to enable spring animations on button.
@@ -135,6 +136,7 @@ export const Onboarding = () => {
           <AnimatedPressable
             className="h-[50px] rounded-full bg-white justify-center items-center"
             style={[rButtonStyle, styles.borderCurve]}
+            onPress={() => router.push("/(app)/auth/sign-in")}
           >
             <Text className="text-black text-xl font-medium">I understand</Text>
           </AnimatedPressable>

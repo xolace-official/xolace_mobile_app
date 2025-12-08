@@ -1,5 +1,5 @@
 import React, { FC, use } from "react";
-import { useWindowDimensions, View, StyleSheet } from "react-native";
+import { useWindowDimensions, StyleSheet } from "react-native";
 import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import Animated, {
   useAnimatedStyle,
@@ -9,11 +9,12 @@ import Animated, {
 } from "react-native-reanimated";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
-
-// longevity-deck-onboarding-animation 🔽
+import { Image } from "expo-image";
+import { blurhash } from "@/src/constants/image";
 
 export const StoneCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
+  const lottieSize = screenWidth * 0.7;
 
   const { activeIndex } = use(AnimatedIndexContext);
 
@@ -52,10 +53,15 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
   return (
     <Animated.View
       style={[rContainerStyle, styles.borderCurve]}
-      className="absolute top-[10%] left-[50%] w-[42%] aspect-[1/1.4] rounded-3xl items-center justify-center gap-10 bg-stone-300"
+      className="absolute top-[10%] left-[50%] w-[42%] aspect-[1/1.4] rounded-3xl items-center justify-center gap-10 bg-stone-300 overflow-hidden"
     >
-      <View className="size-20 rounded-full bg-stone-400" />
-      <View className="h-5 w-20 rounded-full bg-neutral-200" />
+    <Image
+                   source={require("@/assets/images/onboarding/xolace-caution1.png")}
+                   placeholder={{ blurhash }}
+                   contentFit="contain"
+                   transition={1000}
+                   style={[{ width: lottieSize, height: lottieSize }]}
+                 />
     </Animated.View>
   );
 };

@@ -18,7 +18,7 @@ const StyledPressableScale = withUniwind(PressableScale);
 const buttonVariants = cva(
   // Base styles applied to all buttons
   cn(
-    'flex-row items-center justify-center gap-2 rounded-lg',
+    'shrink-0 flex-row items-center justify-center gap-2 rounded-lg',
     Platform.select({
       web: 'outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary/50',
     })
