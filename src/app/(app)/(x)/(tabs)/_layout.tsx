@@ -58,6 +58,7 @@ export default function TabLayout() {
    const homeIconScale = useSharedValue(1);
   const discoveryIconScale = useSharedValue(1);
   const checkinIconScale = useSharedValue(1);
+  const notificationIconScale = useSharedValue(1);
   const exploreIconScale = useSharedValue(1);
 
 
@@ -90,7 +91,7 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "#D9D9D9",
+          tabBarActiveTintColor: "pink",
           tabBarInactiveTintColor: "#D9D9D9",
           tabBarStyle: {
             position: "absolute",
@@ -134,10 +135,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(feed)"
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ color, focused }) => {
             return (
               <AnimatedIconWrapper scale={homeIconScale}>
-                <IconSymbol size={28} name="house.fill" color={color} />
+                {
+                  focused && Platform.OS === "ios" ? (
+                    <IconSymbol size={28} name="fireplace.fill" color={color} />
+                  ) : focused ? (
+                    <IconSymbol size={28} name="fireplace" color={color} />
+                  ): (
+                    <IconSymbol size={28} name="fireplace" color={color} />
+                  )
+                }
               </AnimatedIconWrapper>
             )
           },
@@ -150,7 +159,26 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={discoveryIconScale}>
-                <IconSymbol size={22} name="paperplane.fill" color={color} />
+                <IconSymbol size={28} name="dot.radiowaves.left.and.right" color={color} />
+              </AnimatedIconWrapper>
+            )
+          },
+        }}
+      />
+
+      <Tabs.Screen
+        name="(notification)"
+        options={{
+          tabBarIcon: ({ color , focused}) => {
+            return (
+              <AnimatedIconWrapper scale={notificationIconScale}>
+                {
+                  focused ? (
+                    <IconSymbol size={28} name="bell.fill" color={color} />
+                  ) : (
+                    <IconSymbol size={28} name="bell" color={color} />
+                  )
+                }
               </AnimatedIconWrapper>
             )
           },
@@ -160,10 +188,16 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(checkin)"
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ color, focused }) => {
             return (
               <AnimatedIconWrapper scale={checkinIconScale}>
-                <IconSymbol size={28} name="paperplane.fill" color={color} />
+                {
+                  focused ? (
+                    <IconSymbol size={28} name="heart.text.square.fill" color={color} />
+                  ) : (
+                    <IconSymbol size={28} name="heart.text.square" color={color} />
+                  )
+                }
               </AnimatedIconWrapper>
             )
           },
