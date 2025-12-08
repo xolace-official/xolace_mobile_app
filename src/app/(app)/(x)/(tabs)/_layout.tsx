@@ -70,6 +70,7 @@ export default function TabLayout() {
       duration: _duration,
       useNativeDriver: true,
     }).start();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBottomBlurVisible]);
 
 
