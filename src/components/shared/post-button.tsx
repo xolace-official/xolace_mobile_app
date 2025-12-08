@@ -39,6 +39,7 @@ export const PostButton: FC = () => {
       bounceTheButton();
       isMessagesScreen.current = false;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const rAddButtonStyle = useAnimatedStyle(() => {
