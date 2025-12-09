@@ -1,12 +1,3 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Discovery } from "@/src/components/screens/discovery"
 
-const DiscoveryScreen = () => {
-  return (
-    <View className='flex-1 items-center justify-center bg-background'>
-      <Text>DiscoveryScreen</Text>
-    </View>
-  )
-}
-
-export default DiscoveryScreen
+export default Discovery
