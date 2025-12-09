@@ -47,7 +47,7 @@ export const LargeTitle: FC<Props> = ({
     if (headerBaselineY.value <= 0) return { opacity: 0 };
 
     // Trigger position: when large title baseline goes above the header's bottom by the search bar collapse distance
-    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance - headerHeight;
+    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance ;
 
     return {
       // Timing: default withTiming (~300ms) gives a smooth but snappy reveal
@@ -58,7 +58,7 @@ export const LargeTitle: FC<Props> = ({
   // Purpose: Drives the on-screen large title (opacity + subtle pull-to-refresh scale)
   const rLargeTitleStyle = useAnimatedStyle(() => {
     // Shared trigger math with rTitleOpacityStyle ensures perfect cross-fade handoff
-    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance - headerHeight;
+    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance ;
 
     return {
       // Cross-fade: large title is visible until the scroll passes the trigger

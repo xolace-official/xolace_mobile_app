@@ -66,9 +66,9 @@ export function Discovery() {
 
   const ListHeader = useCallback(() => {
     return (
-      <View className="px-5 bg-red-500">
+      <View className="px-5 ">
         <LargeTitle
-          title="Discovery"
+          title="Discover Campfires"
           offsetY={offsetY}
           searchBarAnimationDistance={_searchBarAnimationDistance}
           className="mb-4"
@@ -96,7 +96,7 @@ export function Discovery() {
   }, []);
 
   return (
-    <Animated.View style={rContainerStyle} className="flex-1 bg-neutral-950">
+    <Animated.View style={rContainerStyle} className="flex-1 bg-background">
       <AnimatedLegendList
         ref={listRef}
         data={discoveryData}
@@ -105,7 +105,7 @@ export function Discovery() {
         onScroll={scrollHandler}
         scrollEventThrottle={1000 / 60}
         ListHeaderComponent={ListHeader}
-        ListHeaderComponentStyle={{ paddingTop: headerHeight + 16 }}
+        ListHeaderComponentStyle={{ paddingTop: headerHeight }}
         contentContainerStyle={{ paddingBottom: 80 }}
         showsVerticalScrollIndicator={false}
         estimatedItemSize={72}
