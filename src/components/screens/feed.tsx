@@ -11,25 +11,22 @@ import { AnimatedLegendList } from "@legendapp/list/reanimated";
 import { HomePost } from '../extras/home-post';
 import { InfoCarousel } from "@/src/features/feed/info-carousel";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { WithPullToRefresh } from "../shared/with-pull-to-refresh";
-import { LoadingIndicator } from "../shared/feedback/refresh-loading-indicator";
+//import { WithPullToRefresh } from "../shared/with-pull-to-refresh";
 
 export const Feed = () => {
     const [headerHeight, setHeaderHeight] = useState(0);
-    const [refreshing, setRefreshing] = useState(false);
+    // const [refreshing, setRefreshing] = useState(false);
 
   const insets = useSafeAreaInsets();
 
-   const refresh = async () => {
-    setRefreshing(true);
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-    setRefreshing(false);
-  };
+  //  const refresh = async () => {
+  //   setRefreshing(true);
+  //   await new Promise((resolve) => setTimeout(resolve, 5000));
+  //   setRefreshing(false);
+  // };
 
-  // x-bottom-tabs-background-animation 🔽
   const { tabBarHeight, scrollDirection, handleXTabsOnScroll } = useContext(TabsContext);
 
-  // x-home-header-animation 🔽
   const { rHeaderStyle, rBlurViewStyle, scrollHandler } = useHeaderAnimation({
     headerHeight,
     scrollDirection,
@@ -84,19 +81,6 @@ export const Feed = () => {
         </View>
       </Animated.View>
 
-<WithPullToRefresh
-      // Custom spinner; driven by shared refreshProgress from provider for tight coupling
-      refreshComponent={<LoadingIndicator />}
-      refreshing={refreshing}
-      onRefresh={refresh}
-      refreshViewBaseHeight={400}
-      // Triggers haptic when reaching threshold in given direction to match OS affordance
-      hapticFeedbackDirection="to-bottom"
-      // Time to animate content back after release; slightly longer for Pinterest-like elasticity
-      backAnimationDuration={700}
-      dampingFactor={3}
-    >
-
 
        <AnimatedLegendList
         data={dummyPosts}
@@ -112,7 +96,6 @@ export const Feed = () => {
         contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight + 10 }}
         showsVerticalScrollIndicator={false}
       />
-    </WithPullToRefresh>
     </View>
   )
 }

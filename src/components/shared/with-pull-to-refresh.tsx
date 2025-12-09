@@ -34,26 +34,26 @@
  * https://github.com/MatthewSRC/native-springs/blob/main/PullRefresh/PullRefresh.tsx
  * This implementation adapts his idea to our needs.
  */
+import { useHapticOnScroll } from "@/src/hooks/use-haptic-on-scroll";
+import { useScrollDirection } from "@/src/hooks/use-scroll-direction";
+import { cn } from "@/src/utils/cn";
 import React, { cloneElement, createContext, ReactElement, useContext, useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-  DerivedValue,
-  Extrapolation,
-  interpolate,
-  SharedValue,
-  useAnimatedScrollHandler,
-  useAnimatedStyle,
-  useComposedEventHandler,
-  useDerivedValue,
-  useSharedValue,
-  withSpring,
-  withTiming,
+    DerivedValue,
+    Extrapolation,
+    interpolate,
+    SharedValue,
+    useAnimatedScrollHandler,
+    useAnimatedStyle,
+    useComposedEventHandler,
+    useDerivedValue,
+    useSharedValue,
+    withSpring,
+    withTiming,
 } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
-import { cn } from "@/src/utils/cn";
-import { useScrollDirection } from "@/src/hooks/use-scroll-direction";
-import { useHapticOnScroll } from "@/src/hooks/use-haptic-on-scroll";
 
 /**
  * Props for WithPullToRefresh component
