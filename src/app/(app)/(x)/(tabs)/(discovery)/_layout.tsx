@@ -1,4 +1,4 @@
-import { Stack , router} from 'expo-router';
+import { Stack } from 'expo-router';
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Pressable, Text } from 'react-native';
 import { Avatar, AvatarFallback , AvatarImage } from '@/src/components/ui/avatar';

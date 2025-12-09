@@ -11,7 +11,6 @@ import Animated, {
 import {
   HeaderTitle as HeaderTitleComponent,
   HeaderTitleProps,
-  useHeaderHeight,
 } from "@react-navigation/elements";
 import { cn } from "@/src/utils/cn";
 
@@ -35,7 +34,7 @@ export const LargeTitle: FC<Props> = ({
 
   // Why: We need the runtime header height to compute when the large title crosses under it
   // This aligns trigger math with React Navigation's measured header (safe area included)
-  const headerHeight = useHeaderHeight();
+  // const headerHeight = useHeaderHeight();
 
   // Why: Tracks the bottom (baseline) of the large title to derive the exact fade/collapse trigger
   // Set via onLayout → y + height; shared so both opacity and scale styles reference the same source
