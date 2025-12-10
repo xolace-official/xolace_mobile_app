@@ -159,8 +159,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(discovery)"
         options={{
-          tabBarLabel: 'Explore',
-          title: 'Explore',
+          tabBarLabel: 'Discovery',
+          title: 'Discovery',
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={discoveryIconScale}>
@@ -214,12 +214,12 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="explore"
+        name="search"
         options={{
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={exploreIconScale}>
-                <IconSymbol size={28} name="paperplane.fill" color={color} />
+                <IconSymbol size={28} name="magnifyingglass" color={color} />
               </AnimatedIconWrapper>
             )
           },
