@@ -36,7 +36,7 @@ export const SearchModal = () => {
 
   return (
     <Animated.View
-      className="flex-1 bg-black/90" // Fallback to dark bg if global css differs
+      className="flex-1 bg-background" // Fallback to dark bg if global css differs
       style={[{ paddingTop: insets.top }, rListContainerStyle]}
     >
       <WithPullToRefresh
