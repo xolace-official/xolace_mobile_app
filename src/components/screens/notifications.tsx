@@ -172,7 +172,7 @@ export const Notifications = () => {
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <View className="gap-2 pb-4">
-            <View className="flex-between flex-row">
+            <View className="flex-between flex-row px-2">
               <Text className="text-lg font-semibold text-foreground">
               Filters
             </Text>
@@ -212,7 +212,7 @@ export const Notifications = () => {
 
 const NotificationCard = ({ item }: { item: NotificationItem }) => {
   return (
-    <Pressable className="flex-row gap-3 rounded-2xl border border-border/60 bg-card/70 p-4">
+    <Pressable className={`flex-row gap-3 rounded-2xl border border-border/60  px-4 py-2 ${item.read ? "bg-card/30" : "bg-card/70"}`}>
       <View
         className={`h-12 w-12 items-center justify-center rounded-xl ${
           item.important ? "bg-primary/20" : "bg-muted/40"
@@ -233,16 +233,16 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
 
       <View className="flex-1">
         <View className="flex-row items-start justify-between">
-          <Text className="flex-1 text-base font-semibold text-foreground">
+          <Text className="flex-1 text-base font-semibold text-foreground" numberOfLines={1}>
             {item.title}
           </Text>
           <Text className="ml-2 text-xs text-muted-foreground">
             {getTimeAgo(item.timestamp)}
           </Text>
         </View>
-        <Text className="mt-1 text-sm text-muted-foreground">{item.body}</Text>
+        <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>{item.body}</Text>
 
-        <View className="mt-3 flex-row items-center gap-2">
+        <View className="mt-1 flex-row items-center gap-2">
           <View
             className={`rounded-full px-2 py-1 ${
               item.important ? "bg-primary/20" : "bg-muted/50"
