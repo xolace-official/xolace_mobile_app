@@ -5,8 +5,9 @@ import {
   timeFilterOptions,
   useNotificationFilter,
 } from "@/src/context/NotificationFilterContext";
-import { Stack } from "expo-router";
 import { useLargeHeaderOptions } from "@/src/hooks/useLargeHeaderOptions";
+import { Stack } from "expo-router";
+import { SFSymbol } from "expo-symbols";
 
 function NotificationContent() {
   const largeHeaderOptions = useLargeHeaderOptions()
@@ -46,7 +47,7 @@ function NotificationContent() {
                   type: "action" as const,
                   label: option.label,
                   icon: {
-                    name: option.icon,
+                    name: option.icon as SFSymbol,
                     type: "sfSymbol" as const,
                   },
                   onPress: () => {
@@ -72,7 +73,7 @@ function NotificationContent() {
                   type: "action" as const,
                   label: option.label,
                   icon: {
-                    name: option.icon,
+                    name: option.icon as SFSymbol,
                     type: "sfSymbol" as const,
                   },
                   onPress: () => {
