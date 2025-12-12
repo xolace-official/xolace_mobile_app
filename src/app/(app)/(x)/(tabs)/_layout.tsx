@@ -10,9 +10,11 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { HapticTab } from '@/src/components/haptic-tab';
-import { IconSymbol } from '@/src/components/ui/icon-symbol';
-import { TabsContext } from '@/src/providers/tab-provider';
+import { AnimatedTabsContainer } from "@/src/components/search/animated-tabs-container";
 import { PostButton } from "@/src/components/shared/post-button";
+import { IconSymbol } from '@/src/components/ui/icon-symbol';
+import { SearchTransitionContext } from "@/src/context/search-transition-context";
+import { TabsContext } from '@/src/providers/tab-provider';
 
 
 const _duration = 200;
@@ -61,6 +63,8 @@ export default function TabLayout() {
   const notificationIconScale = useSharedValue(1);
   const exploreIconScale = useSharedValue(1);
 
+  const { onOpenSearchModal } = useContext(SearchTransitionContext);
+
 
     const tabBarOpacity = useRef(new RNAnimated.Value(0)).current;
 
@@ -87,7 +91,7 @@ export default function TabLayout() {
   });
 
   return (
-    <>   
+    <AnimatedTabsContainer>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -159,8 +163,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(discovery)"
         options={{
-          tabBarLabel: 'Explore',
-          title: 'Explore',
+          tabBarLabel: 'Discovery',
+          title: 'Discovery',
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={discoveryIconScale}>
@@ -214,12 +218,23 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="explore"
+        name="search"
         options={{
+          tabBarButton: (props) => (
+            <HapticTab {...props} onPress={(e) => {
+               // Prevent default navigation if handled here?
+               // Usually for modals we just fire the action.
+               // e.preventDefault() might be needed if we don't want to navigate to the "search" route.
+               // But usually we just return false or prevent default.
+               // HapticTab passes onPress.
+               e.preventDefault();
+               onOpenSearchModal();
+            }} />
+          ),
           tabBarIcon: ({ color }) => {
             return (
               <AnimatedIconWrapper scale={exploreIconScale}>
-                <IconSymbol size={28} name="paperplane.fill" color={color} />
+                <IconSymbol size={28} name="magnifyingglass" color={color} />
               </AnimatedIconWrapper>
             )
           },
@@ -233,6 +248,6 @@ export default function TabLayout() {
       >
         <PostButton />
       </Animated.View>
-    </>
+    </AnimatedTabsContainer>
   );
 }

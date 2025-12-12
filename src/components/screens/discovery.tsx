@@ -1,15 +1,15 @@
 import { LegendListRef } from "@legendapp/list";
 import { AnimatedLegendList } from "@legendapp/list/reanimated";
-import { useHeaderHeight } from "@react-navigation/elements";
 import React, { useCallback, useRef } from "react";
 import { Text, View } from "react-native";
 import Animated, {
-    Extrapolation,
-    interpolate,
-    useAnimatedScrollHandler,
-    useAnimatedStyle,
-    useSharedValue,
+  Extrapolation,
+  interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
 } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scheduleOnRN } from "react-native-worklets";
 import { LargeTitle } from "../shared/large-title";
 import { SearchBar } from "../shared/search-bar";
@@ -25,12 +25,14 @@ const _searchBarAnimationDistance = _searchBarHeight + _searchBarMarginBottomDis
 const discoveryData = Array.from({ length: 20 }, (_, i) => ({
   id: `item-${i}`,
   title: `Discovery Item ${i + 1}`,
+  description: "Description for discovery item", // Added mock description
 }));
 
 type DiscoveryItem = (typeof discoveryData)[number];
 
 export function Discovery() {
-  const headerHeight = useHeaderHeight();
+  const insets = useSafeAreaInsets();
+  const headerHeight = insets.top + 44;
   const listRef = useRef<LegendListRef>(null);
   const offsetY = useSharedValue(0);
 
