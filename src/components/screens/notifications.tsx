@@ -1,19 +1,19 @@
+import { IconSymbol } from "@/src/components/ui/icon-symbol";
 import {
-  NotificationFilterOption,
   NotificationFilterMode,
+  NotificationFilterOption,
   NotificationStatusFilter,
   NotificationTimeFilter,
   statusFilterOptions,
   timeFilterOptions,
   useNotificationFilter,
 } from "@/src/context/NotificationFilterContext";
-import { IconSymbol } from "@/src/components/ui/icon-symbol";
 import { NotificationFilterTabs } from "@/src/features/notifications/filter-tabs";
 import { LegendList } from "@legendapp/list";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React, { useMemo } from "react";
 import { Pressable, Text, View } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type NotificationItem = {
   id: string;
@@ -130,7 +130,8 @@ const getFilterOptions = (
   mode === "status" ? statusFilterOptions : timeFilterOptions;
 
 export const Notifications = () => {
-  const headerHeight = useHeaderHeight();
+  const insets = useSafeAreaInsets();
+  const headerHeight = insets.top + 44;
   const bottomTabHeight = useBottomTabBarHeight();
   const {
     filterMode,
