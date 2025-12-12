@@ -10,6 +10,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { Button } from "../ui/button";
+import { router } from "expo-router";
 
 // x-floating-action-button-animation 🔽
 
@@ -69,7 +70,7 @@ export const PostButton: FC = () => {
             size={'icon'}
             radius={'full'}
             fullWidth={false}
-            onPress={()=>{}}
+            onPress={()=> router.push('/(app)/(post-creation)')}
         >
             <AntDesign name="plus" size={20} color="#fff" />
         </Button>
