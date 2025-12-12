@@ -21,6 +21,15 @@ const AppLayout = () => {
             animationDuration: 250,
           }} 
         />
+
+        <Stack.Screen
+          name="(post-creation)"
+          options={{
+            presentation: "card",
+            animation: "slide_from_right",
+            gestureEnabled: false,
+          }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </SearchTransitionContext.Provider>
