@@ -1,19 +1,27 @@
-import { View, Text, Pressable, Keyboard, TextInput, Platform } from "react-native";
+import { Animated, Keyboard, Platform, Pressable, Text, TextInput, View } from "react-native";
 // import { AudioLines, LayoutGrid, Mic, Plus, Search } from "lucide-react-native";
-import { IconSymbol } from "../ui/icon-symbol";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useEffect, useRef, useState } from "react";
+import { playgroundEntranceHaptic } from "@/lib/haptics-patterns.ios";
+import CoreHaptics from "@/modules/native-core-haptics";
 import { OptionsModal } from "@/src/features/post-creation/options-modal";
-import WithShimmer from "../shared/with-shimmer";
 import { useMaxKeyboardHeight } from "@/src/hooks/use-max-keyboard-height";
+import * as Haptics from "expo-haptics";
+import { router } from "expo-router";
+import { PressableScale } from "pressto";
+import { useEffect, useRef, useState } from "react";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
   KeyboardController,
   KeyboardStickyView,
   useKeyboardState,
 } from "react-native-keyboard-controller";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { withUniwind } from "uniwind";
+import WithShimmer from "../shared/with-shimmer";
+import { IconSymbol } from "../ui/icon-symbol";
+import { CommunitySelectorPill } from "@/src/features/post-creation/community-pill";
 
-// perplexity-text-input-freeze-on-modal-open-animation 🔽
+
+const UniwindPressableScale = withUniwind(PressableScale);
 
 // Swipe threshold in pixels: upward swipe must exceed -50px to trigger focus
 // Negative Y translation indicates upward gesture direction
@@ -37,6 +45,14 @@ export const PostCreationScreen = () => {
   const maxKeyboardHeight = useMaxKeyboardHeight();
 
   const isKeyboardVisible = useKeyboardState((state) => state.isVisible);
+
+    // Play playful entrance haptic on first load
+  useEffect(() => {
+    // Play the playful AI playground entrance haptic
+    CoreHaptics.playPattern(playgroundEntranceHaptic).catch((error) => {
+      console.error("Failed to play playground entrance haptic:", error);
+    });
+  }, []); // Empty dependency array means this runs once on mount
 
   // Restores text input focus after modal closes
   // When modal was opened while text input was focused, this effect restores keyboard focus
@@ -75,10 +91,60 @@ export const PostCreationScreen = () => {
     })
     .runOnJS(true);
 
+      function dismissToHome() {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace("/(app)/(x)/(tabs)/(feed)");
+    }
+  }
+
   return (
+    <>
+   {/* <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerTitle: "",
+          headerShadowVisible: false,
+          gestureEnabled: false,
+          unstable_headerLeftItems: (props) => [
+            {
+              type: "button",
+              onPress: () => {
+                if (value.length > 0) {
+                  Alert.alert(
+                    "Clear Everything?",
+                    "You're about to clear this session. This will remove all generated tattoos. Save anything you want to keep before continuing.",
+                    [
+                      { text: "Cancel", style: "cancel" },
+                      {
+                        text: "Clear Everything",
+                        style: "destructive",
+                        isPreferred: true,
+                        onPress: () => {
+                          // dismissToHome();
+                        },
+                      },
+                    ]
+                  );
+                } else {
+                  // dismissToHome();
+                }
+              },
+              label: "Go Back",
+              icon: {
+                name: "xmark",
+                type: "sfSymbol",
+              },
+              selected: false,
+            },
+          ],
+        }}
+      />  */}
     <GestureDetector gesture={panGesture}>
       <View
-        className="flex-1 bg-neutral-900"
+        className="flex-1 bg-background/95"
         style={{ paddingTop: insets.top + 20, paddingBottom: insets.bottom + 12 }}
       >
         <Pressable className="flex-1" onPress={Keyboard.dismiss}>
@@ -86,22 +152,40 @@ export const PostCreationScreen = () => {
           {/* Header row: BreathingIcon provides subtle pulsing animation to draw attention
           The breathing effect creates a gentle, non-intrusive visual cue */}
           <View className="flex-row px-5 items-center justify-between">
-            <Pressable onPress={()=>{}}>
-            </Pressable>
+            <UniwindPressableScale
+          className=" rounded-full"
+          // Close uses spring for a natural deceleration and to stay consistent with the open motion
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
+            dismissToHome();
+          }}
+        >
+          <Animated.View className="p-3 rounded-full bg-neutral-700">
+            {Platform.OS === "ios" && (
+              <View className="absolute h-8 w-8 self-center top-1.5 bg-neutral-800 rounded-full shadow-[0_0_6px_#0E0E0E]" />
+            )}
+            <IconSymbol name="xmark" size={18} color="#E5E7EB" />
+          </Animated.View>
+            </UniwindPressableScale>
             <IconSymbol name="square.grid.2x2" size={24} color="white" />
+          </View>
+
+          {/* community picker */}
+          <View className="px-5 mt-5">
+            <CommunitySelectorPill onPress={()=>{}}/>
           </View>
 
           {/* Logo section: Shimmer animation adds premium feel with gradient sweep
           delay=2s: waits before starting shimmer, duration=4s: sweep speed
           angle=75deg: diagonal gradient direction, colors: neutral gray palette */}
-          <View className="pt-40 items-center justify-center px-5">
+          <View className="pt-30 items-center justify-center px-5">
             <WithShimmer
               delay={2}
               duration={4}
               angle={75}
               colors={{ start: "#D9D9DB", middle: "#71717a", end: "#D9D9DB" }}
             >
-              <Text className="text-4xl">perplexity</Text>
+              <Text className="text-2xl">No need to hold back</Text>
             </WithShimmer>
           </View>
           {/* perplexity-home-header-animation 🔼 */}
@@ -194,7 +278,6 @@ export const PostCreationScreen = () => {
         {/* perplexity-bottom-sheet-backdrop-animation 🔼 */}
       </View>
     </GestureDetector>
+    </>
   );
 }
-
-// perplexity-text-input-freeze-on-modal-open-animation 🔼

@@ -28,6 +28,7 @@ const AppLayout = () => {
             presentation: "card",
             animation: "slide_from_right",
             gestureEnabled: false,
+            headerShown: false,
           }}
         />
       </Stack>
