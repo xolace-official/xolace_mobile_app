@@ -16,9 +16,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 type Props = {
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
+  pickImageFromGallery: () => Promise<boolean>;
 };
 
-export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible }) => {
+export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible, pickImageFromGallery }) => {
   const ref = useRef<BottomSheet>(null);
 
   const [webEnabled, setWebEnabled] = useState(true);
@@ -78,7 +79,7 @@ export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible }) => {
             </Pressable>
           </View>
 
-          <HorizontalTabs />
+          <HorizontalTabs onPressImageGallery={pickImageFromGallery} />
 
           <View className="gap-8 mt-8">
             <SourceToggleRow

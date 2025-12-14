@@ -5,22 +5,25 @@ import { IconSymbol } from "@/src/components/ui/icon-symbol";
 
 export type SourceTabKey = "image" | "camera" | "file";
 
-const TABS: { key: SourceTabKey; label: string; Icon: any }[] = [
-  { key: "image", label: "Image", Icon: 'photo.badge.plus' },
-  { key: "camera", label: "Camera", Icon: 'camera' },
-  { key: "file", label: "File", Icon: 'document.badge.plus' },
+
+
+export const HorizontalTabs: React.FC<{ onPressImageGallery?: () => void }> = ({
+  onPressImageGallery,
+}) => {
+
+  const TABS: { key: SourceTabKey; label: string; Icon: any, onPress?: () => void }[] = [
+  { key: "image", label: "Image", Icon: 'photo.badge.plus', onPress: onPressImageGallery },
+  { key: "camera", label: "Camera", Icon: 'camera', onPress: () => {} },
+  { key: "file", label: "File", Icon: 'document.badge.plus', onPress: () => {} },
 ];
 
-export const HorizontalTabs: React.FC = () => {
   return (
     <View className="flex-row gap-3 mt-4">
-      {TABS.map(({ key, label, Icon }) => {
+      {TABS.map(({ key, label, Icon, onPress }) => {
         return (
           <Pressable
             key={key}
-            onPress={() => {
-              // TODO: implement
-            }}
+            onPress={onPress}
             style={{ borderCurve: "continuous" }}
             className="flex-1 rounded-2xl px-4 py-6 items-center justify-center bg-neutral-700"
           >

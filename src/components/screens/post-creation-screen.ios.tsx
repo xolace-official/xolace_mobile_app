@@ -7,7 +7,7 @@ import { useMaxKeyboardHeight } from "@/src/hooks/use-max-keyboard-height";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import { PressableScale } from "pressto";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, use } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
   KeyboardController,
@@ -19,6 +19,8 @@ import { withUniwind } from "uniwind";
 import WithShimmer from "../shared/with-shimmer";
 import { IconSymbol } from "../ui/icon-symbol";
 import { CommunitySelectorPill } from "@/src/features/post-creation/community-pill";
+import { TextToImageResult } from "../shared/text-to-image";
+import { PostCreationContext } from "@/src/providers/postCreationContext";
 
 
 const UniwindPressableScale = withUniwind(PressableScale);
@@ -28,6 +30,7 @@ const UniwindPressableScale = withUniwind(PressableScale);
 const SWIPE_UP_THRESHOLD = -50;
 
 export const PostCreationScreen = () => {
+  const { attachment, pickImageFromGallery } = use(PostCreationContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   // Tracks if text input was focused before modal opened - used to restore focus state
   const [isTextInputFocused, setIsTextInputFocused] = useState(false);
@@ -179,14 +182,9 @@ export const PostCreationScreen = () => {
           delay=2s: waits before starting shimmer, duration=4s: sweep speed
           angle=75deg: diagonal gradient direction, colors: neutral gray palette */}
           <View className="pt-30 items-center justify-center px-5">
-            <WithShimmer
-              delay={2}
-              duration={4}
-              angle={75}
-              colors={{ start: "#D9D9DB", middle: "#71717a", end: "#D9D9DB" }}
-            >
-              <Text className="text-2xl">No need to hold back</Text>
-            </WithShimmer>
+           <TextToImageResult
+           attachment={attachment}
+           />
           </View>
           {/* perplexity-home-header-animation 🔼 */}
         </Pressable>
@@ -274,7 +272,7 @@ export const PostCreationScreen = () => {
           </View>
         </KeyboardStickyView>
         {/* perplexity-bottom-sheet-backdrop-animation 🔽 */}
-        <OptionsModal isVisible={isModalVisible} setIsVisible={setIsModalVisible} />
+        <OptionsModal pickImageFromGallery={pickImageFromGallery} isVisible={isModalVisible} setIsVisible={setIsModalVisible} />
         {/* perplexity-bottom-sheet-backdrop-animation 🔼 */}
       </View>
     </GestureDetector>
