@@ -32,7 +32,7 @@ const UniwindPressableScale = withUniwind(PressableScale);
 const SWIPE_UP_THRESHOLD = -50;
 
 export const PostCreationScreen = () => {
-  const { attachment, setAttachment, pickImageFromGallery } = use(PostCreationContext);
+  const { attachment, setAttachment, pickImageFromGallery , mood , setMood } = use(PostCreationContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMoodPickerVisible, setIsMoodPickerVisible] = useState(false);
   // Tracks if text input was focused before modal opened - used to restore focus state
@@ -129,13 +129,13 @@ export const PostCreationScreen = () => {
                         style: "destructive",
                         isPreferred: true,
                         onPress: () => {
-                          // dismissToHome();
+                          dismissToHome();
                         },
                       },
                     ]
                   );
                 } else {
-                  // dismissToHome();
+                  dismissToHome();
                 }
               },
               label: "Go Back",
@@ -159,7 +159,7 @@ export const PostCreationScreen = () => {
                 items: [
                   {
                     type: "action",
-                    label: "Clear",
+                    label: "Clear Image",
                     icon: {
                       name: "xmark.circle.fill",
                       type: "sfSymbol",
@@ -172,6 +172,22 @@ export const PostCreationScreen = () => {
                     },
                     selected: false,
                     disabled: attachment === null,
+                  },
+                  {
+                    type: "action",
+                    label: "Clear Mood",
+                    icon: {
+                      name: "xmark.circle.fill",
+                      type: "sfSymbol",
+                    },
+                    onPress: async () => {
+                      // Share the first image in the active group
+                      if (mood) {
+                        setMood('');
+                      }
+                    },
+                    selected: false,
+                    disabled: mood === '',
                   },
                   {
                     type: "action",
