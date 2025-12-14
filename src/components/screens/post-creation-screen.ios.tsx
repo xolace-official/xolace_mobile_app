@@ -253,13 +253,13 @@ export const PostCreationScreen = () => {
         <KeyboardStickyView
           offset={{ closed: keyboardOffsetClosed, opened: Platform.OS === "android" ? 36 : 24 }}
         >
-          <Pressable
+          {/* <Pressable
             onPress={()=>{}}
             style={{ borderCurve: "continuous" }}
             className="mx-6 mt-auto -mb-12 bg-cyan-950 rounded-3xl border border-cyan-800/50 items-center"
           >
             <Text className="text-cyan-500 mt-3 mb-14">Sign In</Text>
-          </Pressable>
+          </Pressable> */}
 
           <View
             style={{ borderCurve: "continuous" }}
