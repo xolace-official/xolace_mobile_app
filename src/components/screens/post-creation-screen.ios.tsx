@@ -22,6 +22,7 @@ import { CommunitySelectorPill } from "@/src/features/post-creation/community-pi
 import { TextToImageResult } from "../shared/text-to-image";
 import { PostCreationContext } from "@/src/providers/postCreationContext";
 import {Stack} from "expo-router";
+import { MoodPicker } from "@/src/features/post-creation/mood-picker";
 
 
 const UniwindPressableScale = withUniwind(PressableScale);
@@ -33,6 +34,7 @@ const SWIPE_UP_THRESHOLD = -50;
 export const PostCreationScreen = () => {
   const { attachment, setAttachment, pickImageFromGallery } = use(PostCreationContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isMoodPickerVisible, setIsMoodPickerVisible] = useState(false);
   // Tracks if text input was focused before modal opened - used to restore focus state
   const [isTextInputFocused, setIsTextInputFocused] = useState(false);
   // Dynamic offset for KeyboardStickyView: when modal opens, this freezes the text input
@@ -63,24 +65,24 @@ export const PostCreationScreen = () => {
   // to maintain user's interaction context. setFocusTo("current") ensures the previously
   // focused input regains focus, and isTextInputFocused flag is reset to prevent re-triggering
   useEffect(() => {
-    if (!isModalVisible && isTextInputFocused) {
+    if (!isModalVisible && !isMoodPickerVisible && isTextInputFocused) {
       KeyboardController.setFocusTo("current");
       setIsTextInputFocused(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalVisible]);
+  }, [isModalVisible, isMoodPickerVisible]);
 
   // Resets keyboard offset when all conditions are cleared
   // After modal closes and keyboard dismisses, this clears the frozen position offset
   // that was applied to prevent visual jump. 200ms delay ensures keyboard animation
   // completes before resetting offset, preventing visual glitches during transition
   useEffect(() => {
-    if (!isKeyboardVisible && !isModalVisible && !isTextInputFocused) {
+    if (!isKeyboardVisible && !isModalVisible && !isTextInputFocused && !isMoodPickerVisible) {
       setTimeout(() => {
         setKeyboardOffsetClosed(0);
       }, 200);
     }
-  }, [isKeyboardVisible, isModalVisible, isTextInputFocused]);
+  }, [isKeyboardVisible, isModalVisible, isTextInputFocused, isMoodPickerVisible]);
 
   // Pan gesture enables swipe-to-focus interaction: upward swipe focuses text input
   // runOnJS(true) ensures focus call executes on JS thread for reliability
@@ -287,10 +289,19 @@ export const PostCreationScreen = () => {
                 </Pressable>
                 {/* perplexity-bottom-sheet-backdrop-animation 🔼 */}
                 <Pressable
-                  onPress={()=>{}}
+                  onPress={()=>{
+                    if (textInputRef.current?.isFocused()) {
+                      setIsTextInputFocused(true);
+                      setKeyboardOffsetClosed(
+                        -maxKeyboardHeight + insets.bottom - (Platform.OS === "android" ? 60 : 10)
+                      );
+                      setTimeout(() => KeyboardController.dismiss(), 200);
+                    }
+                    setIsMoodPickerVisible(true);
+                  }}
                   className="p-2 rounded-full bg-neutral-700 items-center justify-center"
                 >
-                  <IconSymbol name="magnifyingglass" size={18} color="white" />
+                  <IconSymbol name="smiley" size={18} color="white" />
                 </Pressable>
               </View>
 
@@ -312,6 +323,7 @@ export const PostCreationScreen = () => {
           </View>
         </KeyboardStickyView>
         <OptionsModal pickImageFromGallery={pickImageFromGallery} isVisible={isModalVisible} setIsVisible={setIsModalVisible} />
+        <MoodPicker isVisible={isMoodPickerVisible} setIsVisible={setIsMoodPickerVisible} />
       </View>
     </GestureDetector>
     </>
