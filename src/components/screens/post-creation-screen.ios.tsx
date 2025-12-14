@@ -31,7 +31,7 @@ const UniwindPressableScale = withUniwind(PressableScale);
 const SWIPE_UP_THRESHOLD = -50;
 
 export const PostCreationScreen = () => {
-  const { attachment, pickImageFromGallery } = use(PostCreationContext);
+  const { attachment, setAttachment, pickImageFromGallery } = use(PostCreationContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   // Tracks if text input was focused before modal opened - used to restore focus state
   const [isTextInputFocused, setIsTextInputFocused] = useState(false);
@@ -142,6 +142,47 @@ export const PostCreationScreen = () => {
                 type: "sfSymbol",
               },
               selected: false,
+            },
+          ],
+          unstable_headerRightItems: (props) => [
+            {
+              type: "menu",
+              icon: {
+                name: "ellipsis",
+                type: "sfSymbol",
+              },
+              label: "Actions",
+              menu: {
+                title: "Actions",
+                items: [
+                  {
+                    type: "action",
+                    label: "Clear",
+                    icon: {
+                      name: "xmark.circle.fill",
+                      type: "sfSymbol",
+                    },
+                    onPress: async () => {
+                      // Share the first image in the active group
+                      if (attachment) {
+                        setAttachment(null);
+                      }
+                    },
+                    selected: false,
+                    disabled: attachment === null,
+                  },
+                  {
+                    type: "action",
+                    label: "Pick Image",
+                    icon: {
+                      name: "photo.on.rectangle",
+                      type: "sfSymbol",
+                    },
+                    onPress: pickImageFromGallery,
+                    selected: false,
+                  },
+                ],
+              },
             },
           ],
         }}

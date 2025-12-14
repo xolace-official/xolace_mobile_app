@@ -48,6 +48,7 @@ export function TextToImageResult({
       entering={FadeIn.duration(1000)}
       exiting={FadeOut.duration(1000)}
     >
+        
       <View
         style={{
           flexDirection: "row",
