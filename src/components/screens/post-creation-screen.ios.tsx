@@ -1,4 +1,4 @@
-import { Animated, Keyboard, Platform, Pressable, Text, TextInput, View } from "react-native";
+import { Animated, Keyboard, Platform, Pressable, Text, TextInput, View, Alert } from "react-native";
 // import { AudioLines, LayoutGrid, Mic, Plus, Search } from "lucide-react-native";
 import { playgroundEntranceHaptic } from "@/lib/haptics-patterns.ios";
 import CoreHaptics from "@/modules/native-core-haptics";
@@ -21,6 +21,7 @@ import { IconSymbol } from "../ui/icon-symbol";
 import { CommunitySelectorPill } from "@/src/features/post-creation/community-pill";
 import { TextToImageResult } from "../shared/text-to-image";
 import { PostCreationContext } from "@/src/providers/postCreationContext";
+import {Stack} from "expo-router";
 
 
 const UniwindPressableScale = withUniwind(PressableScale);
@@ -104,7 +105,7 @@ export const PostCreationScreen = () => {
 
   return (
     <>
-   {/* <Stack.Screen
+   <Stack.Screen
         options={{
           headerShown: true,
           headerTransparent: true,
@@ -144,7 +145,7 @@ export const PostCreationScreen = () => {
             },
           ],
         }}
-      />  */}
+      /> 
     <GestureDetector gesture={panGesture}>
       <View
         className="flex-1 bg-background/95"
@@ -154,7 +155,7 @@ export const PostCreationScreen = () => {
           {/* perplexity-home-header-animation 🔽 */}
           {/* Header row: BreathingIcon provides subtle pulsing animation to draw attention
           The breathing effect creates a gentle, non-intrusive visual cue */}
-          <View className="flex-row px-5 items-center justify-between">
+          {/* <View className="flex-row px-5 items-center justify-between">
             <UniwindPressableScale
           className=" rounded-full"
           // Close uses spring for a natural deceleration and to stay consistent with the open motion
@@ -171,17 +172,17 @@ export const PostCreationScreen = () => {
           </Animated.View>
             </UniwindPressableScale>
             <IconSymbol name="square.grid.2x2" size={24} color="white" />
-          </View>
+          </View> */}
 
           {/* community picker */}
-          <View className="px-5 mt-5">
+          <View className="px-5 mt-10">
             <CommunitySelectorPill onPress={()=>{}}/>
           </View>
 
           {/* Logo section: Shimmer animation adds premium feel with gradient sweep
           delay=2s: waits before starting shimmer, duration=4s: sweep speed
           angle=75deg: diagonal gradient direction, colors: neutral gray palette */}
-          <View className="pt-30 items-center justify-center px-5">
+          <View className="pt-20 items-center justify-center px-5">
            <TextToImageResult
            attachment={attachment}
            />

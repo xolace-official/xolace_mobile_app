@@ -69,7 +69,7 @@ export function TextToImageResult({
               cachePolicy="memory-disk"
               style={{
                 width: "100%",
-                height: 540,
+                height: 350,
                 borderRadius: 18,
                 borderWidth: 1,
                 borderColor: "#71717a",
