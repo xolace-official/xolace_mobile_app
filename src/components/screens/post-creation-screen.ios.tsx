@@ -193,7 +193,6 @@ export const PostCreationScreen = () => {
         style={{ paddingTop: insets.top + 20, paddingBottom: insets.bottom + 12 }}
       >
         <Pressable className="flex-1" onPress={Keyboard.dismiss}>
-          {/* perplexity-home-header-animation 🔽 */}
           {/* Header row: BreathingIcon provides subtle pulsing animation to draw attention
           The breathing effect creates a gentle, non-intrusive visual cue */}
           {/* <View className="flex-row px-5 items-center justify-between">
@@ -228,7 +227,6 @@ export const PostCreationScreen = () => {
            attachment={attachment}
            />
           </View>
-          {/* perplexity-home-header-animation 🔼 */}
         </Pressable>
         {/* KeyboardStickyView maintains text input position relative to keyboard
         closed: Dynamic offset freezes input at keyboard-elevated position when modal opens
@@ -313,9 +311,7 @@ export const PostCreationScreen = () => {
             </View>
           </View>
         </KeyboardStickyView>
-        {/* perplexity-bottom-sheet-backdrop-animation 🔽 */}
         <OptionsModal pickImageFromGallery={pickImageFromGallery} isVisible={isModalVisible} setIsVisible={setIsModalVisible} />
-        {/* perplexity-bottom-sheet-backdrop-animation 🔼 */}
       </View>
     </GestureDetector>
     </>
