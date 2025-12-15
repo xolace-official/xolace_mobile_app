@@ -41,6 +41,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setTheme = useCallback(
     (newTheme: ThemeName) => {
+        console.log('newTheme ', newTheme);
       setStoredTheme(newTheme);      // persists
       Uniwind.setTheme(newTheme);    // immediate apply
     },

@@ -10,8 +10,11 @@ export function ThemeSync() {
   useEffect(() => {
     if (!hydrated) return;
     console.log('theme ', theme);
-    Uniwind.setTheme(theme);
-  }, [theme, hydrated]);
+    if(theme){
+        Uniwind.setTheme(theme);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
 
   return null;
 }
