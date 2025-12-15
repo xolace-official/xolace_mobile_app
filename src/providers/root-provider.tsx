@@ -7,13 +7,18 @@ import { Toaster } from 'sonner-native';
 
 import { GlobalThemeProvider } from '../hooks/theme-provider';
 import { QueryProvider } from './query-provider';
+import { PostCreationProvider } from './postCreationContext';
 
 export function RootProvider({ children }: { children: ReactNode }) {
   return (
     <GestureHandlerRootView>
       <QueryProvider>
         <GlobalThemeProvider>
-          <KeyboardProvider>{children}</KeyboardProvider>
+          <KeyboardProvider>
+            <PostCreationProvider>
+              {children}
+            </PostCreationProvider>
+          </KeyboardProvider>
           <Toaster />
         </GlobalThemeProvider>
       </QueryProvider>
