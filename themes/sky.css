@@ -46,6 +46,22 @@
       --border: oklch(0 0 0 / 0%);
       --divider: oklch(0.93 0.014 230);
       --link: oklch(0.6 0.13 235);
+
+      /* Global-synced Variables */
+      --primary: oklch(0.68 0.14 235);
+      --primary-foreground: oklch(0.98 0.005 235);
+      --primary-border: oklch(0.58 0.13 235);
+
+      --secondary: oklch(0.96 0.012 230);
+      --secondary-foreground: oklch(0.24 0.045 230);
+
+      --muted-foreground: oklch(0.54 0.038 230);
+
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.24 0.045 230);
+
+      --destructive: var(--danger);
+      --destructive-foreground: var(--danger-foreground);
     }
 
     @variant sky-dark {
@@ -94,6 +110,22 @@
       --border: oklch(0 0 0 / 0%);
       --divider: oklch(0.27 0.044 240);
       --link: oklch(0.73 0.14 235);
+
+      /* Global-synced Variables */
+      --primary: oklch(0.7 0.16 235);
+      --primary-foreground: oklch(0.14 0.04 235);
+      --primary-border: oklch(0.6 0.14 235);
+
+      --secondary: oklch(0.25 0.052 240);
+      --secondary-foreground: oklch(0.95 0.008 240);
+
+      --muted-foreground: oklch(0.5 0.042 240);
+
+      --card: oklch(0.2 0.05 240);
+      --card-foreground: oklch(0.91 0.012 240);
+
+      --destructive: var(--danger);
+      --destructive-foreground: var(--danger-foreground);
     }
   }
 }
