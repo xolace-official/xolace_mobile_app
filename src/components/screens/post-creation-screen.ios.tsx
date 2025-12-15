@@ -234,7 +234,7 @@ export const PostCreationScreen = () => {
 
           {/* community picker */}
           <View className="px-5 mt-10">
-            <CommunitySelectorPill onPress={()=>{}}/>
+            <CommunitySelectorPill onPress={()=>router.push('/post-to')}/>
           </View>
 
           {/* Logo section: Shimmer animation adds premium feel with gradient sweep

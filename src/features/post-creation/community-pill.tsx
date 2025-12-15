@@ -1,6 +1,7 @@
-import { Pressable, View, Text } from 'react-native';
 import { IconSymbol } from '@/src/components/ui/icon-symbol';
-
+import { PostCreationContext } from '@/src/providers/postCreationContext';
+import { use } from 'react';
+import { Pressable, Text, View } from 'react-native';
 
 type CommunitySelectorPillProps = {
   onPress: () => void;
@@ -9,9 +10,10 @@ type CommunitySelectorPillProps = {
 export const CommunitySelectorPill = ({
   onPress,
 }: CommunitySelectorPillProps) => {
-  const label =  'Select a community';
+  const { community } = use(PostCreationContext);
+  const label = community ? community.name : 'Select a community';
 
-  const badgeLabel = 'x/';
+  const badgeLabel = community ? community.slug : 'x/';
 
   return (
     <Pressable
@@ -27,7 +29,7 @@ export const CommunitySelectorPill = ({
         </View>
         <Text
           className={`text-base ${
-             'text-muted-foreground'
+            community ? 'text-foreground' : 'text-muted-foreground'
           }`}
         >
           {label}
