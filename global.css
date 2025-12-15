@@ -1,6 +1,15 @@
 @import 'tailwindcss';
 @import 'uniwind';
 
+@import 'heroui-native/styles';
+
+@import './themes/lavander.css';
+@import './themes/mint.css';
+@import './themes/sky.css';
+
+/* Path to the heroui-native lib inside node_modules from the root of your project */
+@source './node_modules/heroui-native/lib';
+
 @theme {
   /* Customize base font size */
   --text-base: 15px;
