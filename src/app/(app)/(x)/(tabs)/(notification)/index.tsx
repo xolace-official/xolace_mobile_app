@@ -5,12 +5,12 @@ import {
   timeFilterOptions,
   useNotificationFilter,
 } from "@/src/context/NotificationFilterContext";
-import { useLargeHeaderOptions } from "@/src/hooks/useLargeHeaderOptions";
+import { useNormalHeaderOptions } from "@/src/hooks/useNormalHeaderOptions";
 import { Stack } from "expo-router";
 import { SFSymbol } from "expo-symbols";
 
 function NotificationContent() {
-  const largeHeaderOptions = useLargeHeaderOptions()
+  const normalHeaderOptions = useNormalHeaderOptions()
   const {
     filterMode,
     selectedStatus,
@@ -31,8 +31,7 @@ function NotificationContent() {
       <Stack.Screen
         options={{
           title: "Notifications",
-          ...largeHeaderOptions,
-        headerLargeTitle: false,
+          ...normalHeaderOptions,
           unstable_headerRightItems: () => [
             {
               type: "menu",

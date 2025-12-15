@@ -192,7 +192,7 @@ export const Notifications = () => {
         contentContainerStyle={{
           paddingBottom: bottomTabHeight,
           paddingVertical: 16,
-          paddingTop: headerHeight
+          paddingTop: headerHeight + 20
         }}
         ListEmptyComponent={
           <View className="items-center justify-center py-16">
