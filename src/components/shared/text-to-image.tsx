@@ -1,7 +1,5 @@
 import { BLURHASH } from "@/lib/image-cache";
-import * as Haptics from "expo-haptics";
 import { Image } from "expo-image";
-import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Keyboard, View, Text } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
@@ -17,12 +15,11 @@ export function TextToImageResult({
   onRetry,
   attachment,
 }: TextToImageResultProps) {
-  const router = useRouter();
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
-  function simulateTattoMachineVibrations() {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
-  }
+  // function simulateTattoMachineVibrations() {
+  //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
+  // }
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {

@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import { use, useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol } from '@/src/components/ui/icon-symbol';
 import { MOCK_COMMUNITIES } from '@/src/constants/mock-communities';

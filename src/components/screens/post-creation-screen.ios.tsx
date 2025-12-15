@@ -1,12 +1,10 @@
-import { Animated, Keyboard, Platform, Pressable, Text, TextInput, View, Alert } from "react-native";
+import { Animated, Keyboard, Platform, Pressable, TextInput, View, Alert } from "react-native";
 // import { AudioLines, LayoutGrid, Mic, Plus, Search } from "lucide-react-native";
 import { playgroundEntranceHaptic } from "@/lib/haptics-patterns.ios";
 import CoreHaptics from "@/modules/native-core-haptics";
 import { OptionsModal } from "@/src/features/post-creation/options-modal";
 import { useMaxKeyboardHeight } from "@/src/hooks/use-max-keyboard-height";
-import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
-import { PressableScale } from "pressto";
 import { useEffect, useRef, useState, use } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
@@ -15,8 +13,6 @@ import {
   useKeyboardState,
 } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { withUniwind } from "uniwind";
-import WithShimmer from "../shared/with-shimmer";
 import { IconSymbol } from "../ui/icon-symbol";
 import { CommunitySelectorPill } from "@/src/features/post-creation/community-pill";
 import { TextToImageResult } from "../shared/text-to-image";
@@ -25,7 +21,6 @@ import {Stack} from "expo-router";
 import { MoodPicker } from "@/src/features/post-creation/mood-picker";
 
 
-const UniwindPressableScale = withUniwind(PressableScale);
 
 // Swipe threshold in pixels: upward swipe must exceed -50px to trigger focus
 // Negative Y translation indicates upward gesture direction
