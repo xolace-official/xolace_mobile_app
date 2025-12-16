@@ -1,26 +1,52 @@
-import { ReactNode } from 'react';
+import { ReactNode, useCallback } from 'react';
 
+import { HeroUINativeProvider } from 'heroui-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { KeyboardAvoidingView, KeyboardProvider } from 'react-native-keyboard-controller';
 
 import { Toaster } from 'sonner-native';
 
-import { GlobalThemeProvider } from '../hooks/theme-provider';
-import { QueryProvider } from './query-provider';
+import { AppThemeProvider } from './app-theme-context';
+import { ThemeSync } from '../utils/theme-sync';
 import { PostCreationProvider } from './postCreationContext';
+import { QueryProvider } from './query-provider';
 
 export function RootProvider({ children }: { children: ReactNode }) {
+
+    const contentWrapper = useCallback(
+    (children: React.ReactNode) => (
+      <KeyboardAvoidingView
+        pointerEvents="box-none"
+        behavior="padding"
+        keyboardVerticalOffset={12}
+        className="flex-1"
+      >
+        {children}
+      </KeyboardAvoidingView>
+    ),
+    []
+  );
+
   return (
     <GestureHandlerRootView>
       <QueryProvider>
-        <GlobalThemeProvider>
+        <AppThemeProvider>
+          <ThemeSync />
           <KeyboardProvider>
             <PostCreationProvider>
-              {children}
+              <HeroUINativeProvider
+              config={{
+            toast: {
+              contentWrapper,
+            },
+          }}
+              >
+                {children}
+              </HeroUINativeProvider>
             </PostCreationProvider>
           </KeyboardProvider>
           <Toaster />
-        </GlobalThemeProvider>
+        </AppThemeProvider>
       </QueryProvider>
     </GestureHandlerRootView>
   );

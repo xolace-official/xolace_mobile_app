@@ -3,7 +3,7 @@ import { Image } from "expo-image";
 import { useEffect, useState } from "react";
 import { Keyboard, View, Text } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import WithShimmer from "./with-shimmer";
+import { WithShimmer } from "./with-shimmer";
 interface TextToImageResultProps {
   onRemoveImage?: (uri: string) => void;
   onRetry?: () => void;

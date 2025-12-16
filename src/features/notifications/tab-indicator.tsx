@@ -46,7 +46,7 @@ export function TabIndicator({
   return (
     <Animated.View
       pointerEvents="none"
-      className="absolute h-full bg-primary/15 border border-primary/30"
+      className="absolute h-full bg-segment border border-primary/30"
       style={[rIndicatorStyle, styles.container]}
     />
   );

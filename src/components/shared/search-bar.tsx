@@ -1,14 +1,14 @@
 import { IconSymbol } from "../ui/icon-symbol";
 import React, { FC } from "react";
-import { StyleSheet, TextInput, ViewStyle } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 import Animated, {
   Extrapolation,
   interpolate,
   SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
+import { TextField } from 'heroui-native';
 
-// whatsapp-updates-screen-header-animation 🔽
 
 type Props = {
   offsetY: SharedValue<number>;
@@ -52,13 +52,21 @@ export const SearchBar: FC<Props> = ({
 
   return (
     <Animated.View
-      className="bg-neutral-900 rounded-xl justify-center"
+      className="bg-field rounded-xl justify-center"
       // Style exclusions ensure height/margins are driven only by animated styles
       style={[rHeightStyle, styles.container, style]}
     >
       <Animated.View className="justify-center h-full" style={rOpacityStyle}>
-        <TextInput className="px-4 py-2 pl-9" placeholder="Search" placeholderTextColor="gray" />
-        <IconSymbol name="magnifyingglass" size={16} color="gray" style={styles.searchIcon} />
+        <TextField>
+          <TextField.Input
+            placeholder="Search"
+            className=" text-lg font-semibold"
+          >
+            <TextField.InputStartContent className="pointer-events-none">
+              <IconSymbol name="magnifyingglass" size={16} color="gray" />
+            </TextField.InputStartContent>
+          </TextField.Input>
+        </TextField>
       </Animated.View>
     </Animated.View>
   );
@@ -75,4 +83,3 @@ const styles = StyleSheet.create({
   },
 });
 
-// whatsapp-updates-screen-header-animation 🔼

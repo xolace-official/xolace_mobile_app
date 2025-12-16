@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import { mmkvStorage } from './storage/mmkv';
+import { ThemeName } from '../types/theme.types';
 
 export const ONBOARDING_VERSION = '2025.10.1';
 
@@ -20,8 +21,8 @@ type AuthSlice = {
 };
 
 type UiSlice = {
-  theme: 'system' | 'light' | 'dark';
-  setTheme: (t: 'system' | 'light' | 'dark') => void;
+  theme: ThemeName;
+  setTheme: (t: ThemeName) => void;
 };
 
 type ProfileLocalSlice = {

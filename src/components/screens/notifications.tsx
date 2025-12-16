@@ -192,7 +192,7 @@ export const Notifications = () => {
         contentContainerStyle={{
           paddingBottom: bottomTabHeight,
           paddingVertical: 16,
-          paddingTop: headerHeight
+          paddingTop: headerHeight + 20
         }}
         ListEmptyComponent={
           <View className="items-center justify-center py-16">
@@ -213,7 +213,7 @@ export const Notifications = () => {
 
 const NotificationCard = ({ item }: { item: NotificationItem }) => {
   return (
-    <Pressable className={`flex-row gap-3 rounded-2xl border border-border/60  px-4 py-2 ${item.read ? "bg-card/30" : "bg-card/70"}`}>
+    <Pressable className={`flex-row gap-3 rounded-2xl border border-divider px-4 py-2 ${item.read ? "bg-surface/30" : "bg-surface/70"}`}>
       <View
         className={`h-12 w-12 items-center justify-center rounded-xl ${
           item.important ? "bg-primary/20" : "bg-muted/40"
