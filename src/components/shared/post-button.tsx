@@ -70,6 +70,7 @@ export const PostButton: FC = () => {
             size={'icon'}
             radius={'full'}
             fullWidth={false}
+            className="bg-segment"
             onPress={()=> router.push('/(app)/(post-creation)')}
         >
             <AntDesign name="plus" size={20} color="#fff" />

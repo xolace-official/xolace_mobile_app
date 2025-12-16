@@ -71,7 +71,7 @@
       --danger: var(--destructive);
       --danger-foreground: var(--destructive-foreground);
 
-      --segment: oklch(0.22 0.046 281.8285);
+      --segment: oklch(0.6726 0.2904 341.4084); /*oklch(0.22 0.046 281.8285);*/
       --segment-foreground: oklch(0.9513 0.0074 260.7315);
       --divider: oklch(0.28 0.045 281.8285);
       --link: oklch(0.75 0.18 341.4084);
