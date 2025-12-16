@@ -37,8 +37,7 @@ export const SearchInput = () => {
 <View className="flex-1">
          <TextField>
           <TextField.Input
-            placeholder="Enter your password"
-            className="flex-1 text-white text-lg font-semibold"
+            className=" text-white text-lg font-semibold"
             onSubmitEditing={onCloseSearchModal}
           >
             <TextField.InputStartContent className="pointer-events-none">
