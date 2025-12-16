@@ -1,4 +1,6 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { withUniwind } from 'uniwind';
+import { ChevronDown } from 'lucide-react-native';
 
 import {
   Accordion,
@@ -31,6 +33,8 @@ export interface DrawerAccordionSectionProps {
   defaultOpen?: boolean;
 }
 
+const ChevronDownComponent = withUniwind(ChevronDown);
+
 export function DrawerAccordionSection({
   value,
   title,
@@ -41,20 +45,22 @@ export function DrawerAccordionSection({
   badgeClassName,
   defaultOpen = true,
 }: DrawerAccordionSectionProps) {
-  const IconComponent = icon;
+  const IconComponent = withUniwind(icon);
 
   return (
     <Accordion
       selectionMode="multiple"
       variant="surface"
       defaultValue={defaultOpen ? value : undefined}
-      className="mb-2"
+      className=" bg-transparent border-transparent"
+      isDividerVisible={false}
     >
       <Accordion.Item key={value} value={value}>
-            <Accordion.Trigger>
+            <Accordion.Trigger className='flex-1'>
+                <View className='flex flex-row items-center justify-start gap-2 '>
                 <IconComponent
-                color={isDarkMode ? '#F9FAFB' : '#111827'}
-                size={18}
+                className={cn('text-foreground')}
+                size={22}
               />
                 <AppText
                   className={cn(
@@ -65,18 +71,22 @@ export function DrawerAccordionSection({
                   {title}
                 </AppText>
 
-                <Chip
-                className={cn(
-                  'rounded-full bg-[#F472B6]/90 px-2 py-0.5',
-                  badgeClassName,
-                )}
-                variant="secondary"
-              >
-               <Chip.Label className="text-background text-base">Custom</Chip.Label>
-              </Chip>
+                {
+                    badgeLabel && (
+                        <Chip
+                        variant="secondary"
+                        size='sm'
+                      >
+                       <Chip.Label>{badgeLabel}</Chip.Label>
+                      </Chip>
+                    )
+                }
+                </View>
+
+                <Accordion.Indicator />
             </Accordion.Trigger>
-        <Accordion.Content className="ml-4 border-l-2 border-gray-200 px-1 py-1 dark:border-gray-800">
-          <View className="gap-2 rounded-2xl">
+        <Accordion.Content className="ml-3 px-1 py-1">
+          <View className="gap-1 rounded-2xl">
             {items.map((item) => (
               <DrawerNavItem
                 key={item.id}

@@ -1,7 +1,9 @@
 import { ComponentType, ReactNode } from 'react';
 
 import { Pressable, View, Text } from 'react-native';
+import { AppText } from '../builders/app-text';
 import { Chip } from 'heroui-native';
+import { withUniwind } from 'uniwind';
 
 import { cn } from '@/src/utils/cn';
 
@@ -36,34 +38,20 @@ export function DrawerNavItem({
   trailing,
   depth = 0,
 }: DrawerNavItemProps) {
-  const IconComponent = Icon;
-
-  const iconColor = isActive
-    ? isDarkMode
-      ? '#E5E7EB'
-      : '#111827'
-    : isDarkMode
-      ? '#E5E7EB'
-      : '#374151';
+  const IconComponent = withUniwind(Icon);
 
   const textColor = isActive
-    ? isDarkMode
-      ? 'text-gray-300'
-      : 'text-gray-900'
-    : isDarkMode
-      ? 'text-gray-200'
-      : 'text-gray-700';
+    ? 'text-accent-foreground'
+    : 'text-foreground';
 
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ selected: isActive }}
       className={cn(
-        'flex-row items-center justify-between rounded-2xl px-4 py-3',
+        'flex-row items-center justify-between rounded-2xl  py-2',
         isActive
-          ? isDarkMode
-            ? `bg-[#453fc3]/40`
-            : `bg-[#6a71ea]`
+          ?  `bg-accent`
           : 'bg-transparent',
       )}
       onPress={onPress}
@@ -74,20 +62,17 @@ export function DrawerNavItem({
     >
       <View className="flex-row items-center gap-3 px-4">
         <View className="rounded-xl bg-transparent">
-          <IconComponent color={iconColor} size={22} />
+          <IconComponent className={cn('text-foreground', isActive && 'text-accent-foreground')} size={22} />
         </View>
-        <Text className={cn('text-base font-semibold', textColor)}>
+        <AppText className={cn('text-base font-semibold', textColor)}>
           {label}
-        </Text>
+        </AppText>
         {badgeLabel ? (
           <Chip
             variant={badgeVariant}
-            className={cn(
-              'rounded-full px-2 py-0.5',
-              badgeClassName,
-            )}
+            size='sm'
           >
-           <Chip.Label className="text-background text-base">{badgeLabel}</Chip.Label>
+           <Chip.Label>{badgeLabel}</Chip.Label>
           </Chip>
         ) : null}
       </View>

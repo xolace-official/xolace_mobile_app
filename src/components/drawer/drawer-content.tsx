@@ -7,6 +7,7 @@ import {
 import { router, usePathname } from 'expo-router';
 import { Flame, HouseHeart } from 'lucide-react-native';
 import { View } from 'react-native';
+import { useThemeColor } from 'heroui-native';
 
 import { AppText } from '../builders/app-text';
 import { cn } from '@/src/utils/cn';
@@ -48,6 +49,8 @@ function isRouteActive(pathname: string, href: string) {
 export function DrawerContent(props: DrawerContentComponentProps) {
   const pathname = usePathname();
   console.log('pathname ', pathname);
+  const themeColorForeground = useThemeColor('foreground');
+  const themeColorBackground = useThemeColor('background');
   const isDarkMode = true;
 
   const primaryItems = useMemo(
@@ -81,7 +84,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           paddingTop: 55,
           paddingBottom: 48,
           flexGrow: 1,
-          backgroundColor: isDarkMode ? '#050505' : '#F9FAFB',
+          backgroundColor: themeColorBackground,
         }}
       >
         <View className="flex-1 px-1">
@@ -90,7 +93,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
             onPressProfile={() => navigateTo('/(app)/(protected)/profile')}
           /> */}
 
-          <View className="gap-2">
+          <View className="gap-1">
             {primaryItems.map((item) => (
               <DrawerNavItem
                 key={item.id}

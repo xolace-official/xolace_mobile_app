@@ -35,7 +35,7 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
     href: '/(app)/(protected)/(drawer)/(x)/(tabs)/confide',
     icon: ShieldCheck,
     badgeLabel: 'New',
-    badgeVariant: 'primary',
+    badgeVariant: 'soft',
     badgeClassName: 'bg-[#4338ca]',
   },
   {
@@ -68,7 +68,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
     href: '/(app)/(protected)/(drawer)/(x)/(tabs)/health-tips',
     icon: HeartPulse,
     badgeLabel: 'New',
-    badgeVariant: 'primary',
+    badgeVariant: 'soft',
     badgeClassName: 'bg-[#4338ca]',
   },
   {
@@ -77,7 +77,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
     href: '/(app)/(protected)/(drawer)/(x)/(tabs)/glimpse',
     icon: TvMinimalPlay,
     badgeLabel: 'New',
-    badgeVariant: 'primary',
+    badgeVariant: 'soft',
     badgeClassName: 'bg-[#4338ca]',
   },
 ];
