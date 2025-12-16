@@ -26,13 +26,13 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   {
     id: 'collections',
     label: 'Collections',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/collections',
     icon: LibraryBig,
   },
   {
     id: 'confide',
     label: 'Confide',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/confide',
     icon: ShieldCheck,
     badgeLabel: 'New',
     badgeVariant: 'primary',
@@ -41,7 +41,7 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   {
     id: 'settings',
     label: 'Settings',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/settings',
     icon: Settings2,
   },
 ];
@@ -50,13 +50,13 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'campfire-create',
     label: 'Create Campfire',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/campfire/create',
     icon: PlusCircle,
   },
   {
     id: 'campfire-manage',
     label: 'Manage Campfires',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/campfire/manage',
     icon: Settings2,
   },
 ];
@@ -65,7 +65,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'health-tips',
     label: 'Health Tips',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/health-tips',
     icon: HeartPulse,
     badgeLabel: 'New',
     badgeVariant: 'primary',
@@ -74,7 +74,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'glimpse',
     label: 'Glimpse',
-    href: '/',
+    href: '/(app)/(protected)/(drawer)/(x)/(tabs)/glimpse',
     icon: TvMinimalPlay,
     badgeLabel: 'New',
     badgeVariant: 'primary',
