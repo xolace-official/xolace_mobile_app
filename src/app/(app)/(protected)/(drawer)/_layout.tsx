@@ -9,7 +9,7 @@ export default function DrawerLayout() {
       screenOptions={{
         headerShown: false,
         swipeEdgeWidth: 0,
-        drawerType: 'front',
+        drawerType: 'slide',
         drawerStyle: { width: 320 },
       }}
     />

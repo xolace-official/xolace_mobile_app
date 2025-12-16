@@ -10,7 +10,6 @@ const AppLayout = () => {
       <Stack>
         <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
         <Stack.Screen name="auth" options={{ headerShown: false }} />
-        <Stack.Screen name="(x)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         <Stack.Screen 
           name="(modals)/search-modal" 
@@ -22,15 +21,7 @@ const AppLayout = () => {
           }} 
         />
 
-        <Stack.Screen
-          name="(post-creation)"
-          options={{
-            presentation: "card",
-            animation: "slide_from_right",
-            gestureEnabled: false,
-            headerShown: false,
-          }}
-        />
+        <Stack.Screen name="(protected)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </SearchTransitionContext.Provider>

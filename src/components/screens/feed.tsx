@@ -15,13 +15,12 @@ import { Pressable } from "react-native";
 import {
   useNavigation,
 } from '@react-navigation/native';
-import { DrawerToggleButton } from "@react-navigation/drawer";
 //import { WithPullToRefresh } from "../shared/with-pull-to-refresh";
 
 export const Feed = () => {
     const [headerHeight, setHeaderHeight] = useState(0);
     // const [refreshing, setRefreshing] = useState(false);
-    const navigation = useNavigation();
+    const navigation = useNavigation() as any;
 
   const insets = useSafeAreaInsets();
 
@@ -83,7 +82,7 @@ export const Feed = () => {
               <FontAwesome6 name="x-twitter" size={24} color="#e5e5e5" />
             </View>
             <View className="w-[60px] h-8 bg-white rounded-full" />
-          </>
+          </Pressable>
         </View>
       </Animated.View>
 
