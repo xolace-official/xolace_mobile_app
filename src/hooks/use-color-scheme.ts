@@ -10,7 +10,7 @@ export function useColorScheme() {
     async (nextTheme: string) => {
       console.log('theme', theme);
       try {
-        Uniwind.setTheme(nextTheme as 'light' | 'dark' | 'premium' | 'system');
+        Uniwind.setTheme(nextTheme as any);
         await AsyncStorage.setItem('theme', nextTheme);
       } catch (error) {
         console.error('Failed to save theme:', error);
