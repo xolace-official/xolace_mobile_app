@@ -2,7 +2,7 @@ import { SearchTransitionContext } from "@/src/context/search-transition-context
 import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { use } from "react";
-import { Pressable, StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import { Button, TextField } from 'heroui-native';
 
@@ -70,8 +70,8 @@ export const SearchInput = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  borderCurve: {
-    borderCurve: "continuous",
-  },
-});
+// const styles = StyleSheet.create({
+//   borderCurve: {
+//     borderCurve: "continuous",
+//   },
+// });
