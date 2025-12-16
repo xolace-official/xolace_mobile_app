@@ -159,8 +159,6 @@ export function WithShimmer({
   );
 }
 
-export default WithShimmer;
-
 const styles = StyleSheet.create({
   shadowContainer: {
     position: "absolute",

@@ -1,4 +1,4 @@
-import { Animated, Keyboard, Platform, Pressable, TextInput, View, Alert } from "react-native";
+import { Keyboard, Platform, Pressable, TextInput, View, Alert } from "react-native";
 // import { AudioLines, LayoutGrid, Mic, Plus, Search } from "lucide-react-native";
 import { playgroundEntranceHaptic } from "@/lib/haptics-patterns.ios";
 import CoreHaptics from "@/modules/native-core-haptics";
