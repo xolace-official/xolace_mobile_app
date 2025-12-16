@@ -6,7 +6,6 @@ import { KeyboardAvoidingView, KeyboardProvider } from 'react-native-keyboard-co
 
 import { Toaster } from 'sonner-native';
 
-import { GlobalThemeProvider } from '../hooks/theme-provider';
 import { AppThemeProvider } from './app-theme-context';
 import { ThemeSync } from '../utils/theme-sync';
 import { PostCreationProvider } from './postCreationContext';
