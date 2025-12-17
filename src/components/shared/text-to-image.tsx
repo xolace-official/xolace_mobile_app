@@ -10,7 +10,11 @@ interface TextToImageResultProps {
   attachment: string | null;
 }
 
-export function TextToImageResult({ onRemoveImage, onRetry, attachment }: TextToImageResultProps) {
+export function TextToImageResult({
+  onRemoveImage,
+  onRetry,
+  attachment,
+}: TextToImageResultProps) {
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   // function simulateTattoMachineVibrations() {

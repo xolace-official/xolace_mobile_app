@@ -28,7 +28,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 0.5, index, index + 1],
       [screenWidth / 3, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Card tilts from 0° to -4° then back to 0°.
@@ -39,7 +39,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 0.5],
       [0, -4, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Dramatic size change from 150% down to 100%, then slightly shrinks.
@@ -50,7 +50,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 0.5],
       [1.5, 1, 0.98],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

@@ -1,7 +1,10 @@
 import { NotificationFilterOption } from "@/src/context/NotificationFilterContext";
 import React, { useRef, useState } from "react";
 import { FlatList, View, ViewToken } from "react-native";
-import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue,
+} from "react-native-reanimated";
 
 import { TabIndicator } from "./tab-indicator";
 import { TabItem } from "./tab-item";
@@ -23,7 +26,7 @@ export function NotificationFilterTabs<T extends string>({
 }: Props<T>) {
   const activeIndex = Math.max(
     0,
-    options.findIndex((option) => option.value === activeValue)
+    options.findIndex((option) => option.value === activeValue),
   );
 
   const { tabWidths, tabOffsets } = useMeasureFlatListTabsLayout({
@@ -45,8 +48,12 @@ export function NotificationFilterTabs<T extends string>({
   const handleItemPress = (index: number) => {
     onChange(options[index].value);
 
-    const isPrevItemVisible = viewableItems.some((item) => item.index === index - 1);
-    const isCurrentItemVisible = viewableItems.some((item) => item.index === index);
+    const isPrevItemVisible = viewableItems.some(
+      (item) => item.index === index - 1,
+    );
+    const isCurrentItemVisible = viewableItems.some(
+      (item) => item.index === index,
+    );
 
     const viewPosition = isPrevItemVisible ? 1 : 0;
     const viewOffset = isPrevItemVisible ? -_sidePadding : _sidePadding;

@@ -1,9 +1,16 @@
 import { SearchTransitionContext } from "@/src/context/search-transition-context";
 import { use } from "react";
 import { View } from "react-native";
-import Animated, { interpolate, useAnimatedStyle } from "react-native-reanimated";
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+} from "react-native-reanimated";
 
-export const AnimatedTabsContainer = ({ children }: { children: React.ReactNode }) => {
+export const AnimatedTabsContainer = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const { transitionProgress } = use(SearchTransitionContext);
 
   const rContainerStyle = useAnimatedStyle(() => {
@@ -25,7 +32,9 @@ export const AnimatedTabsContainer = ({ children }: { children: React.ReactNode 
 
   return (
     <View style={{ flex: 1, backgroundColor: "black" }}>
-      <Animated.View style={[{ flex: 1, backgroundColor: "black" }, rContainerStyle]}>
+      <Animated.View
+        style={[{ flex: 1, backgroundColor: "black" }, rContainerStyle]}
+      >
         {children}
       </Animated.View>
     </View>

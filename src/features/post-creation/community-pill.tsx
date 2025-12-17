@@ -7,7 +7,9 @@ type CommunitySelectorPillProps = {
   onPress: () => void;
 };
 
-export const CommunitySelectorPill = ({ onPress }: CommunitySelectorPillProps) => {
+export const CommunitySelectorPill = ({
+  onPress,
+}: CommunitySelectorPillProps) => {
   const { community } = use(PostCreationContext);
   const label = community ? community.name : "Select a community";
 
@@ -21,9 +23,13 @@ export const CommunitySelectorPill = ({ onPress }: CommunitySelectorPillProps) =
     >
       <View className="flex-row items-center gap-3">
         <View className="rounded-full bg-gray-300/20 px-3 py-1 dark:bg-white/10">
-          <Text className="text-sm font-semibold text-foreground">{badgeLabel}</Text>
+          <Text className="text-sm font-semibold text-foreground">
+            {badgeLabel}
+          </Text>
         </View>
-        <Text className={`text-base ${community ? "text-foreground" : "text-muted-foreground"}`}>
+        <Text
+          className={`text-base ${community ? "text-foreground" : "text-muted-foreground"}`}
+        >
           {label}
         </Text>
         <IconSymbol name="chevron.compact.down" size={18} color="#9ca3af" />

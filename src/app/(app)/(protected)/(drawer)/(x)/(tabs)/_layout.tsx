@@ -1,7 +1,18 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
-import React, { FC, PropsWithChildren, useContext, useEffect, useRef } from "react";
-import { Platform, Animated as RNAnimated, StyleSheet, View } from "react-native";
+import React, {
+  FC,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
+import {
+  Platform,
+  Animated as RNAnimated,
+  StyleSheet,
+  View,
+} from "react-native";
 import Animated, {
   SharedValue,
   useAnimatedStyle,
@@ -81,7 +92,9 @@ export default function TabLayout() {
 
   const rFabStyle = useAnimatedStyle(() => {
     return {
-      opacity: withTiming(isBottomBlurVisible ? 1 : 0.25, { duration: _duration }),
+      opacity: withTiming(isBottomBlurVisible ? 1 : 0.25, {
+        duration: _duration,
+      }),
     };
   });
 
@@ -107,9 +120,15 @@ export default function TabLayout() {
             opacity: tabBarOpacity,
           },
           tabBarBackground: () => (
-            <Animated.View style={[StyleSheet.absoluteFillObject, rBlurContainerStyle]}>
+            <Animated.View
+              style={[StyleSheet.absoluteFillObject, rBlurContainerStyle]}
+            >
               {Platform.OS === "ios" ? (
-                <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFillObject} />
+                <BlurView
+                  intensity={50}
+                  tint="dark"
+                  style={StyleSheet.absoluteFillObject}
+                />
               ) : (
                 <View className="absolute inset-0 bg-neutral-950/95" />
               )}
@@ -161,7 +180,11 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => {
               return (
                 <AnimatedIconWrapper scale={discoveryIconScale}>
-                  <IconSymbol size={28} name="dot.radiowaves.left.and.right" color={color} />
+                  <IconSymbol
+                    size={28}
+                    name="dot.radiowaves.left.and.right"
+                    color={color}
+                  />
                 </AnimatedIconWrapper>
               );
             },
@@ -196,9 +219,17 @@ export default function TabLayout() {
               return (
                 <AnimatedIconWrapper scale={checkinIconScale}>
                   {focused ? (
-                    <IconSymbol size={28} name="heart.text.square.fill" color={color} />
+                    <IconSymbol
+                      size={28}
+                      name="heart.text.square.fill"
+                      color={color}
+                    />
                   ) : (
-                    <IconSymbol size={28} name="heart.text.square" color={color} />
+                    <IconSymbol
+                      size={28}
+                      name="heart.text.square"
+                      color={color}
+                    />
                   )}
                 </AnimatedIconWrapper>
               );

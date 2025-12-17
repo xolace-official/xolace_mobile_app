@@ -16,7 +16,7 @@ export function useColorScheme() {
         console.error("Failed to save theme:", error);
       }
     },
-    [theme]
+    [theme],
   );
 
   return {

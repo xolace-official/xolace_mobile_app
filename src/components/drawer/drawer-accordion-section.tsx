@@ -8,7 +8,13 @@ import { DrawerNavItem, DrawerNavItemProps } from "./drawer-nav-item";
 
 type DrawerAccordionItem = Pick<
   DrawerNavItemProps,
-  "label" | "icon" | "onPress" | "isActive" | "badgeLabel" | "badgeVariant" | "badgeClassName"
+  | "label"
+  | "icon"
+  | "onPress"
+  | "isActive"
+  | "badgeLabel"
+  | "badgeVariant"
+  | "badgeClassName"
 > & { id: string };
 
 export interface DrawerAccordionSectionProps {
@@ -47,7 +53,10 @@ export function DrawerAccordionSection({
           <View className="flex flex-row items-center justify-start gap-2 ">
             <IconComponent className={cn("text-foreground")} size={22} />
             <AppText
-              className={cn("text-base font-semibold", isDarkMode ? "text-white" : "text-gray-900")}
+              className={cn(
+                "text-base font-semibold",
+                isDarkMode ? "text-white" : "text-gray-900",
+              )}
             >
               {title}
             </AppText>
@@ -64,7 +73,12 @@ export function DrawerAccordionSection({
         <Accordion.Content className="ml-3 px-1 py-1">
           <View className="gap-1 rounded-2xl">
             {items.map((item) => (
-              <DrawerNavItem key={item.id} {...item} isDarkMode={isDarkMode} depth={1} />
+              <DrawerNavItem
+                key={item.id}
+                {...item}
+                isDarkMode={isDarkMode}
+                depth={1}
+              />
             ))}
           </View>
         </Accordion.Content>

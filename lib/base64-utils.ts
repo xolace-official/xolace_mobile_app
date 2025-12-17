@@ -16,7 +16,8 @@ export function stripDataUrlPrefix(b64: string): string {
  */
 export function base64ToBytes(b64: string): Uint8Array {
   b64 = stripDataUrlPrefix(b64).replace(/\s/g, "");
-  const table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  const table =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
   const len = b64.length;
 
   // compute output length

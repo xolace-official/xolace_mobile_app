@@ -5,7 +5,14 @@ import BottomSheet, {
   BottomSheetBackdropProps,
   BottomSheetView,
 } from "@gorhom/bottom-sheet";
-import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import { IconSymbol } from "@/src/components/ui/icon-symbol";
 import { moods } from "@/src/constants/mood";
@@ -44,7 +51,12 @@ export const MoodPicker = memo((props: MoodPickerProps) => {
     if (Platform.OS === "android") {
       return (
         // appearsOnIndex/disappearsOnIndex tie visibility to sheet index transitions for smooth fade
-        <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} opacity={0.5} />
+        <BottomSheetBackdrop
+          {...props}
+          appearsOnIndex={0}
+          disappearsOnIndex={-1}
+          opacity={0.5}
+        />
       );
     }
     return <Backdrop {...props} />;
@@ -66,7 +78,9 @@ export const MoodPicker = memo((props: MoodPickerProps) => {
         <View className="w-[45] h-[6px] mt-2 rounded-full bg-white/30 self-center" />
         <View className="px-7 pb-5">
           <View className="flex-row items-center mt-2">
-            <Text className="text-white text-xl font-medium flex-1">How are you feeling?</Text>
+            <Text className="text-white text-xl font-medium flex-1">
+              How are you feeling?
+            </Text>
             <Pressable
               hitSlop={8}
               onPress={() => props.setIsVisible(false)}

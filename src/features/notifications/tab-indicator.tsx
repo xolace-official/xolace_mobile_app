@@ -17,17 +17,28 @@ type Props = {
   tabOffsets: SharedValue<number[]>;
 };
 
-export function TabIndicator({ activeIndex, tabBarOffsetX, tabWidths, tabOffsets }: Props) {
+export function TabIndicator({
+  activeIndex,
+  tabBarOffsetX,
+  tabWidths,
+  tabOffsets,
+}: Props) {
   const rIndicatorStyle = useAnimatedStyle(() => {
     const indices = Object.keys(tabOffsets.value).map(Number);
 
-    const left = withTiming(interpolate(activeIndex, indices, tabOffsets.value), {
-      duration: _duration,
-    });
+    const left = withTiming(
+      interpolate(activeIndex, indices, tabOffsets.value),
+      {
+        duration: _duration,
+      },
+    );
 
-    const width = withTiming(interpolate(activeIndex, indices, tabWidths.value), {
-      duration: _duration,
-    });
+    const width = withTiming(
+      interpolate(activeIndex, indices, tabWidths.value),
+      {
+        duration: _duration,
+      },
+    );
 
     return {
       left,

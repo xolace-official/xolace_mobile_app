@@ -28,7 +28,8 @@ export const Feed = () => {
   //   setRefreshing(false);
   // };
 
-  const { tabBarHeight, scrollDirection, handleXTabsOnScroll } = useContext(TabsContext);
+  const { tabBarHeight, scrollDirection, handleXTabsOnScroll } =
+    useContext(TabsContext);
 
   const { rHeaderStyle, rBlurViewStyle, scrollHandler } = useHeaderAnimation({
     headerHeight,
@@ -61,7 +62,11 @@ export const Feed = () => {
         {/* BlurView is experimental on Android and should be used with caution */}
         {/* To apply blur effect on Android, you need use experimentalBlurMethod prop */}
         <Animated.View style={[StyleSheet.absoluteFillObject, rBlurViewStyle]}>
-          <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFillObject} />
+          <BlurView
+            intensity={50}
+            tint="dark"
+            style={StyleSheet.absoluteFillObject}
+          />
         </Animated.View>
         <View
           className="bg-background/50 border-b border-primary"
@@ -96,7 +101,10 @@ export const Feed = () => {
         ListHeaderComponentStyle={{ paddingBottom: 20 }}
         scrollEventThrottle={1000 / 60}
         ListFooterComponent={<View style={{ height: 80 }} />}
-        contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight + 10 }}
+        contentContainerStyle={{
+          paddingBottom: tabBarHeight + 16,
+          paddingTop: headerHeight + 10,
+        }}
         showsVerticalScrollIndicator={false}
       />
     </View>

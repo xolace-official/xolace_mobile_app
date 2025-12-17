@@ -1,4 +1,11 @@
-import { Keyboard, Platform, Pressable, TextInput, View, Alert } from "react-native";
+import {
+  Keyboard,
+  Platform,
+  Pressable,
+  TextInput,
+  View,
+  Alert,
+} from "react-native";
 // import { AudioLines, LayoutGrid, Mic, Plus, Search } from "lucide-react-native";
 import { playgroundEntranceHaptic } from "@/lib/haptics-patterns.ios";
 import CoreHaptics from "@/modules/native-core-haptics";
@@ -71,12 +78,22 @@ export const PostCreationScreen = () => {
   // that was applied to prevent visual jump. 200ms delay ensures keyboard animation
   // completes before resetting offset, preventing visual glitches during transition
   useEffect(() => {
-    if (!isKeyboardVisible && !isModalVisible && !isTextInputFocused && !isMoodPickerVisible) {
+    if (
+      !isKeyboardVisible &&
+      !isModalVisible &&
+      !isTextInputFocused &&
+      !isMoodPickerVisible
+    ) {
       setTimeout(() => {
         setKeyboardOffsetClosed(0);
       }, 200);
     }
-  }, [isKeyboardVisible, isModalVisible, isTextInputFocused, isMoodPickerVisible]);
+  }, [
+    isKeyboardVisible,
+    isModalVisible,
+    isTextInputFocused,
+    isMoodPickerVisible,
+  ]);
 
   // Pan gesture enables swipe-to-focus interaction: upward swipe focuses text input
   // runOnJS(true) ensures focus call executes on JS thread for reliability
@@ -126,7 +143,7 @@ export const PostCreationScreen = () => {
                           dismissToHome();
                         },
                       },
-                    ]
+                    ],
                   );
                 } else {
                   dismissToHome();
@@ -202,7 +219,10 @@ export const PostCreationScreen = () => {
       <GestureDetector gesture={panGesture}>
         <View
           className="flex-1 bg-background/95"
-          style={{ paddingTop: insets.top + 20, paddingBottom: insets.bottom + 12 }}
+          style={{
+            paddingTop: insets.top + 20,
+            paddingBottom: insets.bottom + 12,
+          }}
         >
           <Pressable className="flex-1" onPress={Keyboard.dismiss}>
             {/* Header row: BreathingIcon provides subtle pulsing animation to draw attention
@@ -243,7 +263,10 @@ export const PostCreationScreen = () => {
         opened: Platform-specific spacing (Android: 36px, iOS: 24px) accounts for
         different keyboard behaviors and safe area handling */}
           <KeyboardStickyView
-            offset={{ closed: keyboardOffsetClosed, opened: Platform.OS === "android" ? 36 : 24 }}
+            offset={{
+              closed: keyboardOffsetClosed,
+              opened: Platform.OS === "android" ? 36 : 24,
+            }}
           >
             {/* <Pressable
             onPress={()=>{}}
@@ -285,7 +308,9 @@ export const PostCreationScreen = () => {
                       if (textInputRef.current?.isFocused()) {
                         setIsTextInputFocused(true);
                         setKeyboardOffsetClosed(
-                          -maxKeyboardHeight + insets.bottom - (Platform.OS === "android" ? 60 : 10)
+                          -maxKeyboardHeight +
+                            insets.bottom -
+                            (Platform.OS === "android" ? 60 : 10),
                         );
                         setTimeout(() => KeyboardController.dismiss(), 200);
                       }
@@ -301,7 +326,9 @@ export const PostCreationScreen = () => {
                       if (textInputRef.current?.isFocused()) {
                         setIsTextInputFocused(true);
                         setKeyboardOffsetClosed(
-                          -maxKeyboardHeight + insets.bottom - (Platform.OS === "android" ? 60 : 10)
+                          -maxKeyboardHeight +
+                            insets.bottom -
+                            (Platform.OS === "android" ? 60 : 10),
                         );
                         setTimeout(() => KeyboardController.dismiss(), 200);
                       }
@@ -335,7 +362,10 @@ export const PostCreationScreen = () => {
             isVisible={isModalVisible}
             setIsVisible={setIsModalVisible}
           />
-          <MoodPicker isVisible={isMoodPickerVisible} setIsVisible={setIsMoodPickerVisible} />
+          <MoodPicker
+            isVisible={isMoodPickerVisible}
+            setIsVisible={setIsMoodPickerVisible}
+          />
         </View>
       </GestureDetector>
     </>

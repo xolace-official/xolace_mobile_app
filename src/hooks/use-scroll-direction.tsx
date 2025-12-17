@@ -27,9 +27,12 @@ export const useScrollDirection = (param?: "include-negative") => {
     const offsetY = typeof e === "number" ? e : e.contentOffset.y;
 
     // Handle negative scroll values (bounce effect) based on parameter
-    const positiveOffsetY = param === "include-negative" ? offsetY : Math.max(offsetY, 0);
+    const positiveOffsetY =
+      param === "include-negative" ? offsetY : Math.max(offsetY, 0);
     const positivePrevOffsetY =
-      param === "include-negative" ? prevOffsetY.get() : Math.max(prevOffsetY.get(), 0);
+      param === "include-negative"
+        ? prevOffsetY.get()
+        : Math.max(prevOffsetY.get(), 0);
 
     // Detect downward scroll: current > previous position
     if (
@@ -42,7 +45,8 @@ export const useScrollDirection = (param?: "include-negative") => {
     // Detect upward scroll: current < previous position
     if (
       positivePrevOffsetY - positiveOffsetY > 0 &&
-      (scrollDirection.get() === "idle" || scrollDirection.get() === "to-bottom")
+      (scrollDirection.get() === "idle" ||
+        scrollDirection.get() === "to-bottom")
     ) {
       scrollDirection.set("to-top");
       offsetYAnchorOnChangeDirection.set(offsetY); // Mark direction change point

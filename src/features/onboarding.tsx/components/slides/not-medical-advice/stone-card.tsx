@@ -28,7 +28,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 1],
       [screenWidth * 0.25, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Card rotates from 2° to 4° then straightens to 0°.
@@ -39,7 +39,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 0.5],
       [2, 4, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

@@ -36,7 +36,7 @@ export const Backdrop: FC<BottomSheetBackdropProps> = ({ animatedIndex }) => {
       animatedIndex.get(),
       [-1, 0],
       [0, maxIntensity],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -45,7 +45,11 @@ export const Backdrop: FC<BottomSheetBackdropProps> = ({ animatedIndex }) => {
   });
 
   return (
-    <AnimatedPressable className="absolute inset-0" style={rPressableStyle} onPress={() => close()}>
+    <AnimatedPressable
+      className="absolute inset-0"
+      style={rPressableStyle}
+      onPress={() => close()}
+    >
       <AnimatedBlurView
         animatedProps={animatedIntensity}
         tint="dark"

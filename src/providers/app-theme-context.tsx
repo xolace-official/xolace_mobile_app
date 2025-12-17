@@ -12,9 +12,13 @@ interface AppThemeContextType {
   toggleTheme: () => void;
 }
 
-const AppThemeContext = createContext<AppThemeContextType | undefined>(undefined);
+const AppThemeContext = createContext<AppThemeContextType | undefined>(
+  undefined,
+);
 
-export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   // This tells you what Uniwind currently has applied
   const { theme: appliedTheme } = useUniwind();
 
@@ -27,12 +31,12 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const isLight = useMemo(
     () => appliedTheme === "light" || appliedTheme.endsWith("-light"),
-    [appliedTheme]
+    [appliedTheme],
   );
 
   const isDark = useMemo(
     () => appliedTheme === "dark" || appliedTheme.endsWith("-dark"),
-    [appliedTheme]
+    [appliedTheme],
   );
 
   const setTheme = useCallback(
@@ -41,7 +45,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       setStoredTheme(newTheme); // persists
       Uniwind.setTheme(newTheme); // immediate apply
     },
-    [setStoredTheme]
+    [setStoredTheme],
   );
 
   const toggleTheme = useCallback(() => {
@@ -84,10 +88,14 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       setTheme,
       toggleTheme,
     }),
-    [currentTheme, isLight, isDark, setTheme, toggleTheme]
+    [currentTheme, isLight, isDark, setTheme, toggleTheme],
   );
 
-  return <AppThemeContext.Provider value={value}>{children}</AppThemeContext.Provider>;
+  return (
+    <AppThemeContext.Provider value={value}>
+      {children}
+    </AppThemeContext.Provider>
+  );
 };
 
 export const useAppTheme = () => {

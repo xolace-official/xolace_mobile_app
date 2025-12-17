@@ -1,6 +1,10 @@
 import { View, useWindowDimensions } from "react-native";
 import React from "react";
-import Animated, { useAnimatedStyle, interpolate, Extrapolation } from "react-native-reanimated";
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
+  Extrapolation,
+} from "react-native-reanimated";
 import { SharedValue } from "react-native-reanimated";
 
 // fuse-info-cards-carousel-animation 🔽
@@ -17,7 +21,11 @@ const Dot: React.FC<DotProps> = ({ scrollOffsetX, index }) => {
   const dotStyle = useAnimatedStyle(() => {
     // Interpolate around the current page center: prev → current → next
     // Using absolute offsets (index * width) keeps math simple with pagingEnabled
-    const inputRange = [(index - 1) * cardWidth, index * cardWidth, (index + 1) * cardWidth];
+    const inputRange = [
+      (index - 1) * cardWidth,
+      index * cardWidth,
+      (index + 1) * cardWidth,
+    ];
 
     // Opacity focus ring: 25% when adjacent, 100% when centered
     // Opacity chosen over scale to avoid layout jitter and visual jumpiness
@@ -25,7 +33,7 @@ const Dot: React.FC<DotProps> = ({ scrollOffsetX, index }) => {
       scrollOffsetX.get(),
       inputRange,
       [0.25, 1, 0.25],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -33,7 +41,12 @@ const Dot: React.FC<DotProps> = ({ scrollOffsetX, index }) => {
     };
   });
 
-  return <Animated.View className="w-[5px] h-[5px] rounded-full bg-foreground" style={dotStyle} />;
+  return (
+    <Animated.View
+      className="w-[5px] h-[5px] rounded-full bg-foreground"
+      style={dotStyle}
+    />
+  );
 };
 
 interface PaginationDotsProps {
@@ -41,7 +54,10 @@ interface PaginationDotsProps {
   scrollOffsetX: SharedValue<number>;
 }
 
-export const PaginationDots = ({ numberOfItems, scrollOffsetX }: PaginationDotsProps) => {
+export const PaginationDots = ({
+  numberOfItems,
+  scrollOffsetX,
+}: PaginationDotsProps) => {
   return (
     <View className="flex-row items-center justify-center gap-2">
       {/* Each dot subscribes to the same shared scroll value for lockstep updates */}

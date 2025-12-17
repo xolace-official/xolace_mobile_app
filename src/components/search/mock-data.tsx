@@ -2,9 +2,15 @@ import { Feather } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 
 // Helper to render icon
-const Icon = ({ name, color, size }: { name: any; color: string; size: number }) => (
-  <Feather name={name} size={size} color={color} />
-);
+const Icon = ({
+  name,
+  color,
+  size,
+}: {
+  name: any;
+  color: string;
+  size: number;
+}) => <Feather name={name} size={size} color={color} />;
 
 export const sections = [
   {
@@ -33,9 +39,15 @@ export const sections = [
   },
 ];
 
-export const renderSectionHeader = ({ section: { title } }: { section: { title: string } }) => (
+export const renderSectionHeader = ({
+  section: { title },
+}: {
+  section: { title: string };
+}) => (
   <View className="px-4 py-2 mt-2">
-    <Text className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">{title}</Text>
+    <Text className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">
+      {title}
+    </Text>
   </View>
 );
 
@@ -45,7 +57,9 @@ export const renderListItem = ({ item }: { item: any }) => {
       <View className="w-8 h-8 items-center justify-center bg-white/5 rounded-lg">
         <Icon name={item.icon} size={16} color="#a3a3a3" />
       </View>
-      <Text className="text-neutral-200 text-[15px] font-medium">{item.title}</Text>
+      <Text className="text-neutral-200 text-[15px] font-medium">
+        {item.title}
+      </Text>
     </View>
   );
 };

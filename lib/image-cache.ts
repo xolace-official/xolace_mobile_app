@@ -29,7 +29,7 @@ function ensureCacheDirectory(): Directory {
  */
 export async function cacheBase64Image(
   base64: string,
-  ext: "png" | "jpg" = "png"
+  ext: "png" | "jpg" = "png",
 ): Promise<string> {
   const cacheDir = ensureCacheDirectory();
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
@@ -51,7 +51,10 @@ export async function cacheBase64Image(
  * @param ext - File extension (default: "jpg")
  * @returns The file URI where the image was cached
  */
-export async function cacheImageFromUrl(url: string, ext: "png" | "jpg" = "jpg"): Promise<string> {
+export async function cacheImageFromUrl(
+  url: string,
+  ext: "png" | "jpg" = "jpg",
+): Promise<string> {
   const cacheDir = ensureCacheDirectory();
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
   const file = new File(cacheDir, fileName);

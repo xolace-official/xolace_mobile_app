@@ -131,7 +131,9 @@ const ThemeCircle: React.FC<{
           />
         </View>
       </View>
-      <Text className="text-xs mt-2 text-foreground font-medium">{theme.name}</Text>
+      <Text className="text-xs mt-2 text-foreground font-medium">
+        {theme.name}
+      </Text>
     </Pressable>
   );
 };

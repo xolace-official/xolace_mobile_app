@@ -21,21 +21,33 @@ const buttonVariants = cva(
     "shrink-0 flex-row items-center justify-center gap-2 rounded-lg",
     Platform.select({
       web: "outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary/50",
-    })
+    }),
   ),
   {
     variants: {
       variant: {
-        default: cn("bg-primary", Platform.select({ web: "hover:bg-primary/90" })),
-        destructive: cn("bg-destructive", Platform.select({ web: "hover:bg-destructive/90" })),
+        default: cn(
+          "bg-primary",
+          Platform.select({ web: "hover:bg-primary/90" }),
+        ),
+        destructive: cn(
+          "bg-destructive",
+          Platform.select({ web: "hover:bg-destructive/90" }),
+        ),
         outline: cn(
           "border border-border bg-background",
-          Platform.select({ web: "hover:bg-muted" })
+          Platform.select({ web: "hover:bg-muted" }),
         ),
-        secondary: cn("bg-secondary", Platform.select({ web: "hover:bg-secondary/80" })),
+        secondary: cn(
+          "bg-secondary",
+          Platform.select({ web: "hover:bg-secondary/80" }),
+        ),
         ghost: cn("bg-transparent", Platform.select({ web: "hover:bg-muted" })),
         link: "bg-transparent",
-        soft: cn("bg-primary/10", Platform.select({ web: "hover:bg-primary/20" })),
+        soft: cn(
+          "bg-primary/10",
+          Platform.select({ web: "hover:bg-primary/20" }),
+        ),
       },
       size: {
         xs: "h-7 px-2.5",
@@ -66,7 +78,7 @@ const buttonVariants = cva(
       radius: "lg",
       fullWidth: true,
     },
-  }
+  },
 );
 
 /**
@@ -74,7 +86,10 @@ const buttonVariants = cva(
  */
 const buttonTextVariants = cva(
   // Base text styles
-  cn("font-semibold", Platform.select({ web: "pointer-events-none transition-colors" })),
+  cn(
+    "font-semibold",
+    Platform.select({ web: "pointer-events-none transition-colors" }),
+  ),
   {
     variants: {
       variant: {
@@ -85,7 +100,7 @@ const buttonTextVariants = cva(
         ghost: "text-foreground",
         link: cn(
           "text-primary",
-          Platform.select({ web: "underline-offset-4 group-hover:underline" })
+          Platform.select({ web: "underline-offset-4 group-hover:underline" }),
         ),
         soft: "text-primary",
       },
@@ -103,7 +118,7 @@ const buttonTextVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 /**
@@ -233,7 +248,7 @@ export function Button({
             toValue: 1,
             duration: 1000,
             useNativeDriver: true,
-          })
+          }),
         ).start();
       };
       spin();
@@ -308,7 +323,11 @@ export function Button({
     if (loading) {
       return (
         <Animated.View style={{ transform: [{ rotate: spinInterpolate }] }}>
-          <IconSymbol name="arrow.2.circlepath" size={iconSize} color={iconColor} />
+          <IconSymbol
+            name="arrow.2.circlepath"
+            size={iconSize}
+            color={iconColor}
+          />
         </Animated.View>
       );
     }
@@ -332,16 +351,25 @@ export function Button({
   return (
     <StyledPressableScale
       className={cn(
-        buttonVariants({ variant, size: isIconOnly ? "icon" : size, radius, fullWidth }),
+        buttonVariants({
+          variant,
+          size: isIconOnly ? "icon" : size,
+          radius,
+          fullWidth,
+        }),
         isDisabled && "opacity-50",
-        className
+        className,
       )}
       onPress={isDisabled ? undefined : handlePress}
     >
       {showLeftIcon && iconElement}
 
       {children && (
-        <Text className={cn(buttonTextVariants({ variant, size }), textClassName)}>{children}</Text>
+        <Text
+          className={cn(buttonTextVariants({ variant, size }), textClassName)}
+        >
+          {children}
+        </Text>
       )}
 
       {/* Icon-only mode: center the icon */}

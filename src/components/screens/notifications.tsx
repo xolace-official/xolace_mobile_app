@@ -82,7 +82,10 @@ const getTimeAgo = (timestamp: string) => {
   return `${months}mo ago`;
 };
 
-const matchesStatus = (item: NotificationItem, status: NotificationStatusFilter) => {
+const matchesStatus = (
+  item: NotificationItem,
+  status: NotificationStatusFilter,
+) => {
   if (status === "all") return true;
   if (status === "important") return item.important;
   if (status === "unread") return !item.read;
@@ -90,7 +93,10 @@ const matchesStatus = (item: NotificationItem, status: NotificationStatusFilter)
   return true;
 };
 
-const matchesTimeRange = (item: NotificationItem, range: NotificationTimeFilter) => {
+const matchesTimeRange = (
+  item: NotificationItem,
+  range: NotificationTimeFilter,
+) => {
   if (range === "all") return true;
 
   const now = new Date();
@@ -99,7 +105,11 @@ const matchesTimeRange = (item: NotificationItem, range: NotificationTimeFilter)
   const oneDay = 24 * 60 * 60 * 1000;
 
   if (range === "today") {
-    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const startOfDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+    ).getTime();
     return createdAt.getTime() >= startOfDay;
   }
 
@@ -115,30 +125,41 @@ const matchesTimeRange = (item: NotificationItem, range: NotificationTimeFilter)
 };
 
 const getFilterOptions = (
-  mode: NotificationFilterMode
-): NotificationFilterOption<NotificationStatusFilter | NotificationTimeFilter>[] =>
-  mode === "status" ? statusFilterOptions : timeFilterOptions;
+  mode: NotificationFilterMode,
+): NotificationFilterOption<
+  NotificationStatusFilter | NotificationTimeFilter
+>[] => (mode === "status" ? statusFilterOptions : timeFilterOptions);
 
 export const Notifications = () => {
   const insets = useSafeAreaInsets();
   const headerHeight = insets.top + 44;
   const bottomTabHeight = useBottomTabBarHeight();
-  const { filterMode, selectedStatus, selectedTimeRange, setSelectedStatus, setSelectedTimeRange } =
-    useNotificationFilter();
+  const {
+    filterMode,
+    selectedStatus,
+    selectedTimeRange,
+    setSelectedStatus,
+    setSelectedTimeRange,
+  } = useNotificationFilter();
 
   const filteredNotifications = useMemo(() => {
     if (filterMode === "status") {
-      return notifications.filter((notification) => matchesStatus(notification, selectedStatus));
+      return notifications.filter((notification) =>
+        matchesStatus(notification, selectedStatus),
+      );
     }
 
     return notifications.filter((notification) =>
-      matchesTimeRange(notification, selectedTimeRange)
+      matchesTimeRange(notification, selectedTimeRange),
     );
   }, [filterMode, selectedStatus, selectedTimeRange]);
 
-  const activeFilterValue = filterMode === "status" ? selectedStatus : selectedTimeRange;
+  const activeFilterValue =
+    filterMode === "status" ? selectedStatus : selectedTimeRange;
 
-  const handleFilterChange = (value: NotificationStatusFilter | NotificationTimeFilter) => {
+  const handleFilterChange = (
+    value: NotificationStatusFilter | NotificationTimeFilter,
+  ) => {
     if (filterMode === "status") {
       setSelectedStatus(value as NotificationStatusFilter);
     } else {
@@ -154,7 +175,9 @@ export const Notifications = () => {
         ListHeaderComponent={
           <View className="gap-2 pb-4">
             <View className="flex-between flex-row px-2">
-              <Text className="text-lg font-semibold text-foreground">Filters</Text>
+              <Text className="text-lg font-semibold text-foreground">
+                Filters
+              </Text>
               <Text className="text-destructive">Delete All</Text>
             </View>
             <NotificationFilterTabs
@@ -174,7 +197,9 @@ export const Notifications = () => {
         }}
         ListEmptyComponent={
           <View className="items-center justify-center py-16">
-            <Text className="text-base font-semibold text-foreground">Nothing here yet</Text>
+            <Text className="text-base font-semibold text-foreground">
+              Nothing here yet
+            </Text>
             <Text className="text-sm text-muted-foreground">
               Adjust your filters or check back later.
             </Text>
@@ -198,7 +223,13 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
         }`}
       >
         <IconSymbol
-          name={item.important ? "exclamationmark" : item.read ? "envelope.open" : "envelope.badge"}
+          name={
+            item.important
+              ? "exclamationmark"
+              : item.read
+                ? "envelope.open"
+                : "envelope.badge"
+          }
           color={item.important ? "#ff99c8" : "#e5e5e5"}
           size={22}
         />
@@ -206,10 +237,15 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
 
       <View className="flex-1">
         <View className="flex-row items-start justify-between">
-          <Text className="flex-1 text-base font-semibold text-foreground" numberOfLines={1}>
+          <Text
+            className="flex-1 text-base font-semibold text-foreground"
+            numberOfLines={1}
+          >
             {item.title}
           </Text>
-          <Text className="ml-2 text-xs text-muted-foreground">{getTimeAgo(item.timestamp)}</Text>
+          <Text className="ml-2 text-xs text-muted-foreground">
+            {getTimeAgo(item.timestamp)}
+          </Text>
         </View>
         <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>
           {item.body}
@@ -221,7 +257,9 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
           >
             <Text
               className={`text-xs font-semibold ${
-                item.important ? "text-primary-foreground" : "text-muted-foreground"
+                item.important
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               {item.important ? "Important" : item.read ? "Read" : "Unread"}

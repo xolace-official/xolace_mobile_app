@@ -1,6 +1,10 @@
 import { FC } from "react";
 import { View } from "react-native";
-import Animated, { interpolateColor, SharedValue, useAnimatedStyle } from "react-native-reanimated";
+import Animated, {
+  interpolateColor,
+  SharedValue,
+  useAnimatedStyle,
+} from "react-native-reanimated";
 
 // longevity-deck-onboarding-animation 🔽
 
@@ -20,12 +24,14 @@ const Dot: FC<DotProps> = ({ index, activeIndex }) => {
       backgroundColor: interpolateColor(
         activeIndex.get(),
         [index - 1, index, index + 1],
-        ["#6f6f6f", "#ffffff", "#6f6f6f"]
+        ["#6f6f6f", "#ffffff", "#6f6f6f"],
       ),
     };
   });
 
-  return <Animated.View className="size-2 rounded-full" style={animatedStyle} />;
+  return (
+    <Animated.View className="size-2 rounded-full" style={animatedStyle} />
+  );
 };
 
 interface PaginationDotsProps {
@@ -33,7 +39,10 @@ interface PaginationDotsProps {
   activeIndex: SharedValue<number>;
 }
 
-export const PaginationDots: FC<PaginationDotsProps> = ({ numberOfDots, activeIndex }) => {
+export const PaginationDots: FC<PaginationDotsProps> = ({
+  numberOfDots,
+  activeIndex,
+}) => {
   return (
     <View className="flex-row items-center justify-center gap-2">
       {Array.from({ length: numberOfDots }, (_, index) => (

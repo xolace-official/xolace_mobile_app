@@ -50,7 +50,10 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
   const ovalY = height * 0.84;
 
   // Pre-compute Skia colors from the palette strings (memoized to avoid re-creating on each render)
-  const skiaColors = useMemo(() => palette.map((c) => Skia.Color(c)), [palette]);
+  const skiaColors = useMemo(
+    () => palette.map((c) => Skia.Color(c)),
+    [palette],
+  );
   const inputRange = useMemo(() => palette.map((_, index) => index), [palette]);
 
   /**
@@ -63,7 +66,7 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
     breathe.value = withRepeat(
       withTiming(1, { duration: 3000, easing: Easing.inOut(Easing.ease) }),
       -1, // infinite repeats
-      true // reverse on each iteration (ping-pong)
+      true, // reverse on each iteration (ping-pong)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

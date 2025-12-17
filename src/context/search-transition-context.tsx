@@ -1,7 +1,11 @@
 import { useRouter } from "expo-router";
 import { createContext } from "react";
 import { KeyboardController } from "react-native-keyboard-controller";
-import { SharedValue, useSharedValue, withSpring } from "react-native-reanimated";
+import {
+  SharedValue,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 const DURATION = 700;
 
@@ -11,11 +15,12 @@ export interface SearchTransitionContextValue {
   onCloseSearchModal: () => void;
 }
 
-export const SearchTransitionContext = createContext<SearchTransitionContextValue>({
-  transitionProgress: 0 as unknown as SharedValue<number>,
-  onOpenSearchModal: () => {},
-  onCloseSearchModal: () => {},
-});
+export const SearchTransitionContext =
+  createContext<SearchTransitionContextValue>({
+    transitionProgress: 0 as unknown as SharedValue<number>,
+    onOpenSearchModal: () => {},
+    onCloseSearchModal: () => {},
+  });
 
 export const useSearchTransition = () => {
   const transitionProgress = useSharedValue(0);
@@ -29,11 +34,15 @@ export const useSearchTransition = () => {
 
   const onCloseSearchModal = () => {
     // Closing phase (1→2) with reset to 0
-    transitionProgress.value = withSpring(2, { duration: DURATION }, (finished) => {
-      if (finished) {
-        transitionProgress.value = 0;
-      }
-    });
+    transitionProgress.value = withSpring(
+      2,
+      { duration: DURATION },
+      (finished) => {
+        if (finished) {
+          transitionProgress.value = 0;
+        }
+      },
+    );
     KeyboardController.dismiss();
     setTimeout(() => {
       if (router.canGoBack()) {

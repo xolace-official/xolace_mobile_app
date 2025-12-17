@@ -2,7 +2,11 @@ import React from "react";
 import { Stack } from "expo-router";
 import { useNavigation } from "expo-router";
 import { Pressable } from "react-native";
-import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/src/components/ui/avatar";
 import { AppText } from "@/src/components/builders/app-text";
 
 const NotificationLayout = () => {
@@ -19,7 +23,10 @@ const NotificationLayout = () => {
           title: "Notifications",
           headerShown: true,
           headerLeft: () => (
-            <Pressable onPress={() => navigation.openDrawer()} className="rounded-b-full">
+            <Pressable
+              onPress={() => navigation.openDrawer()}
+              className="rounded-b-full"
+            >
               <Avatar alt="Nathan" className="size-9">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>

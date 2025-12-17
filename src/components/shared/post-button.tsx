@@ -27,7 +27,7 @@ export const PostButton: FC = () => {
   const bounceTheButton = () => {
     addButtonScale.value = withSequence(
       withTiming(1.1, { duration: DURATION / 2 }),
-      withTiming(1, { duration: DURATION / 2 })
+      withTiming(1, { duration: DURATION / 2 }),
     );
   };
 
@@ -54,7 +54,7 @@ export const PostButton: FC = () => {
           scale: isAddButtonVisible
             ? withSequence(
                 withTiming(1.1, { duration: DURATION / 2 }),
-                withTiming(1, { duration: DURATION / 2 })
+                withTiming(1, { duration: DURATION / 2 }),
               )
             : withTiming(0.9, { duration: DURATION / 2 }),
         },

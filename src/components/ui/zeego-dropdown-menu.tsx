@@ -11,7 +11,7 @@ export const ZeegoDropdownMenuTrigger = DropdownMenu.create(
       <View aria-role="button">{props.children}</View>
     </DropdownMenu.Trigger>
   ),
-  "Trigger"
+  "Trigger",
 );
 export const ZeegoDropdownMenuContent = DropdownMenu.Content;
 
@@ -19,37 +19,49 @@ export const ZeegoDropdownMenuItem = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Item>) => (
     <DropdownMenu.Item {...props} style={{ height: 34 }} />
   ),
-  "Item"
+  "Item",
 );
 
 export const ZeegoDropdownMenuItemTitle = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.ItemTitle>) => <DropdownMenu.ItemTitle {...props} />,
-  "ItemTitle"
+  (props: ComponentProps<typeof DropdownMenu.ItemTitle>) => (
+    <DropdownMenu.ItemTitle {...props} />
+  ),
+  "ItemTitle",
 );
 
 export const ZeegoDropdownMenuItemIcon = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.ItemIcon>) => <DropdownMenu.ItemIcon {...props} />,
-  "ItemIcon"
+  (props: ComponentProps<typeof DropdownMenu.ItemIcon>) => (
+    <DropdownMenu.ItemIcon {...props} />
+  ),
+  "ItemIcon",
 );
 
 export const ZeegoDropdownMenuItemImage = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.ItemImage>) => <DropdownMenu.ItemImage {...props} />,
-  "ItemImage"
+  (props: ComponentProps<typeof DropdownMenu.ItemImage>) => (
+    <DropdownMenu.ItemImage {...props} />
+  ),
+  "ItemImage",
 );
 
 export const ZeegoDropdownMenuLabel = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.Label>) => <DropdownMenu.Label {...props} />,
-  "Label"
+  (props: ComponentProps<typeof DropdownMenu.Label>) => (
+    <DropdownMenu.Label {...props} />
+  ),
+  "Label",
 );
 
 export const ZeegoDropdownMenuSeparator = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.Separator>) => <DropdownMenu.Separator {...props} />,
-  "Separator"
+  (props: ComponentProps<typeof DropdownMenu.Separator>) => (
+    <DropdownMenu.Separator {...props} />
+  ),
+  "Separator",
 );
 
 export const ZeegoDropdownMenuGroup = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.Group>) => <DropdownMenu.Group {...props} />,
-  "Group"
+  (props: ComponentProps<typeof DropdownMenu.Group>) => (
+    <DropdownMenu.Group {...props} />
+  ),
+  "Group",
 );
 
 export const ZeegoDropdownMenuCheckboxItem = DropdownMenu.create(
@@ -61,29 +73,35 @@ export const ZeegoDropdownMenuCheckboxItem = DropdownMenu.create(
       <DropdownMenu.ItemIndicator />
     </DropdownMenu.CheckboxItem>
   ),
-  "CheckboxItem"
+  "CheckboxItem",
 );
 
 export const ZeegoDropdownMenuSubTrigger = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.SubTrigger>) => <DropdownMenu.SubTrigger {...props} />,
-  "SubTrigger"
+  (props: ComponentProps<typeof DropdownMenu.SubTrigger>) => (
+    <DropdownMenu.SubTrigger {...props} />
+  ),
+  "SubTrigger",
 );
 
 export const ZeegoDropdownMenuSubContent = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.SubContent>) => <DropdownMenu.SubContent {...props} />,
-  "SubContent"
+  (props: ComponentProps<typeof DropdownMenu.SubContent>) => (
+    <DropdownMenu.SubContent {...props} />
+  ),
+  "SubContent",
 );
 
 export const ZeegoDropdownMenuSub = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.Sub>) => <DropdownMenu.Sub {...props} />,
-  "Sub"
+  (props: ComponentProps<typeof DropdownMenu.Sub>) => (
+    <DropdownMenu.Sub {...props} />
+  ),
+  "Sub",
 );
 
 export const ZeegoDropdownMenuItemIndicator = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.ItemIndicator>) => (
     <DropdownMenu.ItemIndicator {...props} />
   ),
-  "ItemIndicator"
+  "ItemIndicator",
 );
 
 // export const DropdownMenuPreview = DropdownMenu.create(
@@ -94,6 +112,8 @@ export const ZeegoDropdownMenuItemIndicator = DropdownMenu.create(
 // )
 
 export const ZeegoDropdownMenuArrow = DropdownMenu.create(
-  (props: ComponentProps<typeof DropdownMenu.Arrow>) => <DropdownMenu.Arrow {...props} />,
-  "Arrow"
+  (props: ComponentProps<typeof DropdownMenu.Arrow>) => (
+    <DropdownMenu.Arrow {...props} />
+  ),
+  "Arrow",
 );

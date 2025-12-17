@@ -28,7 +28,7 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1, index + 2],
       [0, screenWidth, screenWidth * 2],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Dynamic rotation that changes direction (-2° → -4° → 3°).
@@ -39,7 +39,7 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1, index + 2],
       [-2, -4, 3],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Dramatic size change (1 → 0.98 → 1.2) as card moves.
@@ -50,7 +50,7 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1, index + 2],
       [1, 0.98, 1.2],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

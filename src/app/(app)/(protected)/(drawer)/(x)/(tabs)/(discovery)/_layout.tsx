@@ -1,7 +1,11 @@
 import { Stack } from "expo-router";
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Pressable, Text } from "react-native";
-import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/src/components/ui/avatar";
 import { useNavigation } from "expo-router";
 
 const DiscoveryLayout = () => {
@@ -22,7 +26,10 @@ const DiscoveryLayout = () => {
           headerTransparent: true,
           headerBlurEffect: !isGlassAvailable ? "dark" : undefined,
           headerLeft: () => (
-            <Pressable onPress={() => navigation.openDrawer()} className="rounded-b-full">
+            <Pressable
+              onPress={() => navigation.openDrawer()}
+              className="rounded-b-full"
+            >
               <Avatar alt="Nathan" className="size-9">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>

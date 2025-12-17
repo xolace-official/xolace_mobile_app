@@ -37,7 +37,13 @@
 import { useHapticOnScroll } from "@/src/hooks/use-haptic-on-scroll";
 import { useScrollDirection } from "@/src/hooks/use-scroll-direction";
 import { cn } from "@/src/utils/cn";
-import React, { cloneElement, createContext, ReactElement, useContext, useEffect } from "react";
+import React, {
+  cloneElement,
+  createContext,
+  ReactElement,
+  useContext,
+  useEffect,
+} from "react";
 import { useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
@@ -168,7 +174,8 @@ interface PullToRefreshContextValue {
   hasRefreshed: SharedValue<boolean>;
 }
 
-const WithPullToRefreshContext = createContext<PullToRefreshContextValue | null>(null);
+const WithPullToRefreshContext =
+  createContext<PullToRefreshContextValue | null>(null);
 
 /**
  * Hook to access pull-to-refresh context values.
@@ -188,7 +195,9 @@ const WithPullToRefreshContext = createContext<PullToRefreshContextValue | null>
 export const usePullToRefresh = () => {
   const context = useContext(WithPullToRefreshContext);
   if (!context) {
-    throw new Error("usePullToRefresh must be used within WithPullToRefresh component");
+    throw new Error(
+      "usePullToRefresh must be used within WithPullToRefresh component",
+    );
   }
   return context;
 };
@@ -308,7 +317,7 @@ export function WithPullToRefresh({
         rawRefreshContainerHeight.get(),
         [0, effectiveThreshold],
         [0, 1],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
     }
 
@@ -316,7 +325,7 @@ export function WithPullToRefresh({
       rawRefreshContainerHeight.get(),
       [0, refreshThreshold],
       [0, 1],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
   });
 
@@ -378,7 +387,10 @@ export function WithPullToRefresh({
     ListHeaderComponent: (
       <>
         <Animated.View
-          className={cn("items-center justify-center", refreshComponentContainerClassName)}
+          className={cn(
+            "items-center justify-center",
+            refreshComponentContainerClassName,
+          )}
           style={rHeaderStyle}
         >
           {refreshComponent}
@@ -454,7 +466,10 @@ export function WithPullToRefresh({
       lastDragY.set(e.translationY);
 
       if (listOffsetY.get() <= 0 || rawRefreshContainerHeight.get() > 1) {
-        const next = Math.max(0, Math.min(rawRefreshContainerHeight.get() + deltaY, screenHeight));
+        const next = Math.max(
+          0,
+          Math.min(rawRefreshContainerHeight.get() + deltaY, screenHeight),
+        );
         rawRefreshContainerHeight.set(next);
         scrollDirectionOnScroll(next);
         singleHapticOnScroll(next);
@@ -476,14 +491,16 @@ export function WithPullToRefresh({
          */
         rawRefreshContainerHeight.set(
           withSpring(
-            lockRefreshViewOnRelease ? lockedRefreshContainerHeight.get() : refreshViewBaseHeight,
+            lockRefreshViewOnRelease
+              ? lockedRefreshContainerHeight.get()
+              : refreshViewBaseHeight,
             {},
             (finished) => {
               if (finished) {
                 isAnimating.set(false);
               }
-            }
-          )
+            },
+          ),
         );
         /**
          * Schedule refresh callback on JS thread without blocking animations.
@@ -500,7 +517,7 @@ export function WithPullToRefresh({
             if (finished) {
               isAnimating.set(false);
             }
-          })
+          }),
         );
       }
 
@@ -549,7 +566,7 @@ export function WithPullToRefresh({
             hasRefreshed.set(false);
             isAnimating.set(false);
           }
-        })
+        }),
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -575,7 +592,9 @@ export function WithPullToRefresh({
 
   return (
     <WithPullToRefreshContext.Provider value={contextValue}>
-      <GestureDetector gesture={composedGestures}>{clonedChild}</GestureDetector>
+      <GestureDetector gesture={composedGestures}>
+        {clonedChild}
+      </GestureDetector>
     </WithPullToRefreshContext.Provider>
   );
 }

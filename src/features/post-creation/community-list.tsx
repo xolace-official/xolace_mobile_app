@@ -66,8 +66,13 @@ export const CommunityList = ({
                   )}
                 </View>
                 <View className="flex-1">
-                  <Text className="text-base font-semibold text-foreground">{item.slug}</Text>
-                  <Text className="text-xs text-muted-foreground" numberOfLines={2}>
+                  <Text className="text-base font-semibold text-foreground">
+                    {item.slug}
+                  </Text>
+                  <Text
+                    className="text-xs text-muted-foreground"
+                    numberOfLines={2}
+                  >
                     {item.description}
                   </Text>
                   <Text className="mt-1 text-xs text-muted-foreground">

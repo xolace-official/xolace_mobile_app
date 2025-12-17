@@ -8,7 +8,10 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { HeaderTitle as HeaderTitleComponent, HeaderTitleProps } from "@react-navigation/elements";
+import {
+  HeaderTitle as HeaderTitleComponent,
+  HeaderTitleProps,
+} from "@react-navigation/elements";
 import { cn } from "@/src/utils/cn";
 
 // whatsapp-header-large-title-animation 🔽
@@ -61,7 +64,16 @@ export const LargeTitle: FC<Props> = ({
       opacity: offsetY.value < scrollDistance ? 1 : 0,
       // Interpolation: slight scale-up on negative offset (overscroll/pull-down)
       // Input: [0, -200] px scroll → Output: [1, 1.1] scale, clamped to avoid over-zoom
-      transform: [{ scale: interpolate(offsetY.value, [0, -200], [1, 1.1], Extrapolation.CLAMP) }],
+      transform: [
+        {
+          scale: interpolate(
+            offsetY.value,
+            [0, -200],
+            [1, 1.1],
+            Extrapolation.CLAMP,
+          ),
+        },
+      ],
     };
   });
 

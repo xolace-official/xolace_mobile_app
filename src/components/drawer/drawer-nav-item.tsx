@@ -48,7 +48,7 @@ export function DrawerNavItem({
       accessibilityState={{ selected: isActive }}
       className={cn(
         "flex-row items-center justify-between rounded-2xl py-2",
-        isActive ? `bg-accent` : "bg-transparent"
+        isActive ? `bg-accent` : "bg-transparent",
       )}
       onPress={onPress}
       android_ripple={{
@@ -59,11 +59,16 @@ export function DrawerNavItem({
       <View className="flex-row items-center gap-3 px-4">
         <View className="rounded-xl bg-transparent">
           <IconComponent
-            className={cn("text-foreground", isActive && "text-accent-foreground")}
+            className={cn(
+              "text-foreground",
+              isActive && "text-accent-foreground",
+            )}
             size={22}
           />
         </View>
-        <AppText className={cn("text-base font-semibold", textColor)}>{label}</AppText>
+        <AppText className={cn("text-base font-semibold", textColor)}>
+          {label}
+        </AppText>
         {badgeLabel ? (
           <Chip variant={badgeVariant} size="sm">
             <Chip.Label>{badgeLabel}</Chip.Label>

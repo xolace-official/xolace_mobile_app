@@ -8,7 +8,11 @@ import { Uniwind } from "uniwind";
 
 import { useColorScheme } from "./use-color-scheme";
 
-export function GlobalThemeProvider({ children }: { children: React.ReactNode }) {
+export function GlobalThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { colorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 

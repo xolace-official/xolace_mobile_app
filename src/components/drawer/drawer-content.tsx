@@ -43,7 +43,7 @@ function isRouteActive(pathname: string, href: string) {
     (alias) =>
       pathname === alias ||
       pathname.startsWith(`${alias}/`) ||
-      (alias === href && pathname === href)
+      (alias === href && pathname === href),
   );
 }
 
@@ -59,7 +59,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         ...item,
         isActive: isRouteActive(pathname, item.href),
       })),
-    [pathname]
+    [pathname],
   );
 
   const navigateTo = useCallback(
@@ -73,7 +73,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         }
       });
     },
-    [props.navigation]
+    [props.navigation],
   );
 
   return (
@@ -109,7 +109,12 @@ export function DrawerContent(props: DrawerContentComponentProps) {
             ))}
           </View>
 
-          <View className={cn("my-6 h-px", isDarkMode ? "bg-white/10" : "bg-gray-200")} />
+          <View
+            className={cn(
+              "my-6 h-px",
+              isDarkMode ? "bg-white/10" : "bg-gray-200",
+            )}
+          />
 
           <DrawerAccordionSection
             value="campfire"

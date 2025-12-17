@@ -41,7 +41,10 @@ const FILTER_OPTIONS = [
   },
 ];
 
-export function FeedDropdown({ selected, onSelect }: FeedHeaderTitleDropdownProps) {
+export function FeedDropdown({
+  selected,
+  onSelect,
+}: FeedHeaderTitleDropdownProps) {
   const selectedItem = FILTER_OPTIONS.find((item) => item.key === selected);
 
   return (
@@ -57,8 +60,13 @@ export function FeedDropdown({ selected, onSelect }: FeedHeaderTitleDropdownProp
 
       <ZeegoDropdownMenuContent>
         {FILTER_OPTIONS.map((item) => (
-          <ZeegoDropdownMenuItem key={item.key} onSelect={() => onSelect(item.key)}>
-            <ZeegoDropdownMenuItemTitle>{item.title}</ZeegoDropdownMenuItemTitle>
+          <ZeegoDropdownMenuItem
+            key={item.key}
+            onSelect={() => onSelect(item.key)}
+          >
+            <ZeegoDropdownMenuItemTitle>
+              {item.title}
+            </ZeegoDropdownMenuItemTitle>
             <ZeegoDropdownMenuItemIcon
               ios={{
                 name: item.icon as IconSymbolName,

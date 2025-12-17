@@ -22,11 +22,19 @@ const SignInScreen = () => {
         Delete
       </Button>
 
-      <Button variant="outline" size="lg" onPress={() => console.log("pressed")}>
+      <Button
+        variant="outline"
+        size="lg"
+        onPress={() => console.log("pressed")}
+      >
         Outline
       </Button>
 
-      <Button variant="secondary" size="lg" onPress={() => console.log("pressed")}>
+      <Button
+        variant="secondary"
+        size="lg"
+        onPress={() => console.log("pressed")}
+      >
         Secondary
       </Button>
 
@@ -39,7 +47,11 @@ const SignInScreen = () => {
       </Button>
 
       {/* link */}
-      <Button variant="link" size="lg" onPress={() => router.push("/(app)/(tabs)")}>
+      <Button
+        variant="link"
+        size="lg"
+        onPress={() => router.push("/(app)/(tabs)")}
+      >
         Link
       </Button>
 

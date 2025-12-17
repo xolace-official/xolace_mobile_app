@@ -18,8 +18,10 @@ import { SearchBar } from "../shared/search-bar";
 const _searchBarHeight = 36;
 const _searchBarMarginBottomMin = 12;
 const _searchBarMarginBottomMax = 36;
-const _searchBarMarginBottomDistance = _searchBarMarginBottomMax - _searchBarMarginBottomMin;
-const _searchBarAnimationDistance = _searchBarHeight + _searchBarMarginBottomDistance;
+const _searchBarMarginBottomDistance =
+  _searchBarMarginBottomMax - _searchBarMarginBottomMin;
+const _searchBarAnimationDistance =
+  _searchBarHeight + _searchBarMarginBottomDistance;
 
 // Placeholder discovery items
 const discoveryData = Array.from({ length: 20 }, (_, i) => ({
@@ -61,7 +63,7 @@ export function Discovery() {
         offsetY.value,
         [0, _searchBarAnimationDistance],
         [0, _searchBarAnimationDistance],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       ),
     };
   });

@@ -15,7 +15,8 @@ export const PostToScreen = () => {
   const colorScheme = "dark";
 
   const [searchQuery, setSearchQuery] = useState("");
-  const { community: selectedCommunity, setCommunity } = use(PostCreationContext);
+  const { community: selectedCommunity, setCommunity } =
+    use(PostCreationContext);
 
   const filteredCommunities = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -26,7 +27,7 @@ export const PostToScreen = () => {
       (community) =>
         community.name.toLowerCase().includes(normalizedQuery) ||
         community.slug.toLowerCase().includes(normalizedQuery) ||
-        (community.description ?? "").toLowerCase().includes(normalizedQuery)
+        (community.description ?? "").toLowerCase().includes(normalizedQuery),
     );
   }, [searchQuery]);
 
@@ -67,8 +68,12 @@ export const PostToScreen = () => {
 
       {selectedCommunity && (
         <View className="mx-4 mb-4 rounded-2xl border border-gray-200 bg-background px-4 py-3 dark:border-white/10 dark:bg-white/5">
-          <Text className="text-xs uppercase text-muted-foreground">Posting to</Text>
-          <Text className="text-lg font-semibold text-foreground">{selectedCommunity.slug}</Text>
+          <Text className="text-xs uppercase text-muted-foreground">
+            Posting to
+          </Text>
+          <Text className="text-lg font-semibold text-foreground">
+            {selectedCommunity.slug}
+          </Text>
           <Text className="text-sm text-muted-foreground" numberOfLines={2}>
             {selectedCommunity.description}
           </Text>
@@ -92,7 +97,9 @@ export const PostToScreen = () => {
           onSelect={handleSelect}
           ListEmptyComponent={() => (
             <View className="mt-20 items-center">
-              <Text className="text-sm text-muted-foreground">No campfires found.</Text>
+              <Text className="text-sm text-muted-foreground">
+                No campfires found.
+              </Text>
             </View>
           )}
         />

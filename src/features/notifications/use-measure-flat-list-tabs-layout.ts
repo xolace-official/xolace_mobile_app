@@ -10,7 +10,11 @@ type Props = {
  * Measures tab widths (updated via onLayout) and calculates left offsets for
  * positioning an animated indicator behind a horizontally scrolling FlatList.
  */
-export const useMeasureFlatListTabsLayout = ({ tabsLength, sidePadding, gap }: Props) => {
+export const useMeasureFlatListTabsLayout = ({
+  tabsLength,
+  sidePadding,
+  gap,
+}: Props) => {
   const tabWidths = useSharedValue<number[]>(new Array(tabsLength).fill(0));
 
   const tabOffsets = useDerivedValue(() => {

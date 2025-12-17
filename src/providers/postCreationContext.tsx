@@ -48,7 +48,11 @@ export const PostCreationContext = createContext<PostCreationContextValue>({
   handleShare: () => Promise.resolve(),
 });
 
-export function PostCreationProvider({ children }: { children: React.ReactNode }) {
+export function PostCreationProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [prompt, setPrompt] = useState("");
   const [attachment, setAttachment] = useState<string | null>(null);
   const [community, setCommunity] = useState<PostDraftCommunity | null>(null);
@@ -114,7 +118,7 @@ export function PostCreationProvider({ children }: { children: React.ReactNode }
             setPrompt("");
           },
         },
-      ]
+      ],
     );
   }
 

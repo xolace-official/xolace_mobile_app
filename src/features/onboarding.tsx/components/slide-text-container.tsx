@@ -29,13 +29,18 @@ export const SlideTextContainer: FC<PropsWithChildren<Props>> = ({
       style={[styles.borderCurve, style]}
       className={cn(
         "p-4 rounded-full overflow-hidden",
-        Platform.OS === "android" && "bg-[#161522]/80 border border-neutral-600/30",
-        className
+        Platform.OS === "android" &&
+          "bg-[#161522]/80 border border-neutral-600/30",
+        className,
       )}
       {...props}
     >
-      {Platform.OS === "ios" && <BlurView tint="dark" style={StyleSheet.absoluteFill} />}
-      <Text className={cn("text-xl font-medium text-white", textClassName)}>{children}</Text>
+      {Platform.OS === "ios" && (
+        <BlurView tint="dark" style={StyleSheet.absoluteFill} />
+      )}
+      <Text className={cn("text-xl font-medium text-white", textClassName)}>
+        {children}
+      </Text>
     </Animated.View>
   );
 };

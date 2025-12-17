@@ -24,7 +24,7 @@ export function DrawerFooterAction({
     <View
       className={cn(
         "mt-6 rounded-3xl border px-4 py-4",
-        isDarkMode ? "border-white/5 bg-white/5" : "border-black/5 bg-black/5"
+        isDarkMode ? "border-white/5 bg-white/5" : "border-black/5 bg-black/5",
       )}
     >
       <Button onPress={onPress} variant="primary">

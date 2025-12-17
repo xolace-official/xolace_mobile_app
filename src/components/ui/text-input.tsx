@@ -14,7 +14,7 @@ const inputContainerVariants = cva(
     "flex-row items-center w-full",
     Platform.select({
       web: "transition-[color,box-shadow,border-color]",
-    })
+    }),
   ),
   {
     variants: {
@@ -23,25 +23,25 @@ const inputContainerVariants = cva(
           "border border-border bg-background",
           Platform.select({
             web: "focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
-          })
+          }),
         ),
         soft: cn(
           "bg-muted border-0",
           Platform.select({
             web: "focus-within:ring-ring/50 focus-within:ring-[3px]",
-          })
+          }),
         ),
         subtle: cn(
           "border border-border bg-muted",
           Platform.select({
             web: "focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
-          })
+          }),
         ),
         underline: cn(
           "border-b border-border bg-transparent rounded-none",
           Platform.select({
             web: "focus-within:border-ring",
-          })
+          }),
         ),
       },
       size: {
@@ -65,7 +65,7 @@ const inputContainerVariants = cva(
           "border-destructive",
           Platform.select({
             web: "focus-within:border-destructive focus-within:ring-destructive/20",
-          })
+          }),
         ),
         false: "",
       },
@@ -89,7 +89,7 @@ const inputContainerVariants = cva(
       error: false,
       disabled: false,
     },
-  }
+  },
 );
 
 /**
@@ -102,7 +102,7 @@ const inputTextVariants = cva(
     Platform.select({
       web: "outline-none",
       native: "py-0", // Remove default padding on native
-    })
+    }),
   ),
   {
     variants: {
@@ -118,11 +118,13 @@ const inputTextVariants = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export interface InputProps
-  extends Omit<TextInputProps, "editable">, VariantProps<typeof inputContainerVariants> {
+  extends
+    Omit<TextInputProps, "editable">,
+    VariantProps<typeof inputContainerVariants> {
   /** Additional className for the container */
   className?: string;
   /** Additional className for the input element */
@@ -190,7 +192,7 @@ export const Input = forwardRef<TextInput, InputProps>(
       placeholderTextColor,
       ...props
     },
-    ref
+    ref,
   ) => {
     // Get placeholder color from CSS variable for theme support
     const mutedForeground = useCSSVariable("--color-muted-foreground");
@@ -199,16 +201,20 @@ export const Input = forwardRef<TextInput, InputProps>(
     // Use destructive color for placeholder when in error state
     const resolvedPlaceholderColor =
       placeholderTextColor ??
-      (error ? ((destructive as string) ?? "#ef4444") : ((mutedForeground as string) ?? "#9ca3af"));
+      (error
+        ? ((destructive as string) ?? "#ef4444")
+        : ((mutedForeground as string) ?? "#9ca3af"));
 
     return (
       <View
         className={cn(
           inputContainerVariants({ variant, size, radius, error, disabled }),
-          className
+          className,
         )}
       >
-        {leftAddon && <View className="mr-2 items-center justify-center">{leftAddon}</View>}
+        {leftAddon && (
+          <View className="mr-2 items-center justify-center">{leftAddon}</View>
+        )}
 
         <TextInput
           ref={ref}
@@ -218,10 +224,12 @@ export const Input = forwardRef<TextInput, InputProps>(
           {...props}
         />
 
-        {rightAddon && <View className="ml-2 items-center justify-center">{rightAddon}</View>}
+        {rightAddon && (
+          <View className="ml-2 items-center justify-center">{rightAddon}</View>
+        )}
       </View>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
