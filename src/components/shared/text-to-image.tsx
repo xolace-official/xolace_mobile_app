@@ -34,7 +34,6 @@ export function TextToImageResult({
     };
   }, [setIsKeyboardVisible]);
 
-
   return attachment ? (
     <Animated.View
       style={{
@@ -45,7 +44,6 @@ export function TextToImageResult({
       entering={FadeIn.duration(1000)}
       exiting={FadeOut.duration(1000)}
     >
-        
       <View
         style={{
           flexDirection: "row",
@@ -80,9 +78,7 @@ export function TextToImageResult({
         )}
       </View>
       {attachment && (
-        <Text
-          style={{ color: "#71717a", textAlign: "center" }}
-        >
+        <Text style={{ color: "#71717a", textAlign: "center" }}>
           Change styles, sizes, and colors to create your perfect tattoo
           {/* {lastGenerationUris.length === 1
             ? "Add one more to combine"
@@ -92,13 +88,13 @@ export function TextToImageResult({
     </Animated.View>
   ) : (
     <WithShimmer
-                  delay={2}
-                  duration={4}
-                  angle={75}
-                  colors={{ start: "#D9D9DB", middle: "#71717a", end: "#D9D9DB" }}
-                >
-                  <Text className="text-2xl">No need to hold back</Text>
-                </WithShimmer>
+      delay={2}
+      duration={4}
+      angle={75}
+      colors={{ start: "#D9D9DB", middle: "#71717a", end: "#D9D9DB" }}
+    >
+      <Text className="text-2xl">No need to hold back</Text>
+    </WithShimmer>
   );
 }
 

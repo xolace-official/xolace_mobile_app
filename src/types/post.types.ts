@@ -1,6 +1,6 @@
-import type { LucideIcon } from 'lucide-react-native';
+import type { LucideIcon } from "lucide-react-native";
 
-export type PostMode = 'text' | 'voice';
+export type PostMode = "text" | "voice";
 
 export type MoodType = {
   id: string;

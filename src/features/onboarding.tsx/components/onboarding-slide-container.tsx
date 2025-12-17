@@ -20,7 +20,9 @@ export const OnboardingSlideContainer: React.FC<PropsWithChildren<Props>> = ({
       <View className="w-full h-1/2">{children}</View>
       <View className="w-full h-1/2 items-center justify-center px-5">
         <Text className="text-zinc-50 text-4xl text-center">{title}</Text>
-        <Text className="text-zinc-300 text-lg mt-5 text-center">{description}</Text>
+        <Text className="text-zinc-300 text-lg mt-5 text-center">
+          {description}
+        </Text>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { OneDayAtATimeText} from "./one-day-at-a-time-text";
+import { OneDayAtATimeText } from "./one-day-at-a-time-text";
 import { BlueCard } from "./blue-card";
 import { StoneCard } from "./stone-card";
 import { SlideContainer } from "../../slide-container";

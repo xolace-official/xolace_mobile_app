@@ -13,7 +13,7 @@ type AnimatedIndexContextType = {
 };
 
 export const AnimatedIndexContext = createContext<AnimatedIndexContextType>(
-  {} as AnimatedIndexContextType
+  {} as AnimatedIndexContextType,
 );
 
 // longevity-deck-onboarding-animation 🔼

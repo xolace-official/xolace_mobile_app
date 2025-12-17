@@ -1,14 +1,14 @@
-import { Stack } from 'expo-router'
-import React from 'react'
+import { Stack } from "expo-router";
+import React from "react";
 
 const CampfireLayout = () => {
   return (
     <Stack
-    screenOptions={{
-      headerShown: true,
-    }}
+      screenOptions={{
+        headerShown: true,
+      }}
     />
-  )
-}
+  );
+};
 
-export default CampfireLayout
+export default CampfireLayout;

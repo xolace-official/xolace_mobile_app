@@ -37,7 +37,10 @@ export const InfoCarousel: React.FC = () => {
         ))}
       </Animated.ScrollView>
       {/* Dots consume the same shared value for lockstep feedback */}
-      <PaginationDots numberOfItems={data.length} scrollOffsetX={scrollOffsetX} />
+      <PaginationDots
+        numberOfItems={data.length}
+        scrollOffsetX={scrollOffsetX}
+      />
     </View>
   );
 };

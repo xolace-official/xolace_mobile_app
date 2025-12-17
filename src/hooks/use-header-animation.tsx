@@ -54,7 +54,7 @@ export const useHeaderAnimation = ({
         headerOpacityRefPoint.value = headerOpacity.value;
         headerTranslateYRefPoint.value = headerTranslateY.value;
       }
-    }
+    },
   );
 
   const scrollHandler = useAnimatedScrollHandler({
@@ -75,8 +75,12 @@ export const useHeaderAnimation = ({
       isListDragging.value = false;
 
       if (listOffsetY.value < headerHeight) {
-        headerOpacity.value = withTiming(1, { duration: _onEndDragAnimDuration * 2 });
-        headerTranslateY.value = withTiming(0, { duration: _onEndDragAnimDuration * 2 });
+        headerOpacity.value = withTiming(1, {
+          duration: _onEndDragAnimDuration * 2,
+        });
+        headerTranslateY.value = withTiming(0, {
+          duration: _onEndDragAnimDuration * 2,
+        });
         headerTransition.value = false;
         return;
       }
@@ -86,8 +90,12 @@ export const useHeaderAnimation = ({
         headerTransition.value === true &&
         scrollDirection.value === "to-bottom"
       ) {
-        headerOpacity.value = withTiming(0, { duration: _onEndDragAnimDuration });
-        headerTranslateY.value = withTiming(-headerHeight, { duration: _onEndDragAnimDuration });
+        headerOpacity.value = withTiming(0, {
+          duration: _onEndDragAnimDuration,
+        });
+        headerTranslateY.value = withTiming(-headerHeight, {
+          duration: _onEndDragAnimDuration,
+        });
         headerTransition.value = false;
         return;
       }
@@ -97,8 +105,12 @@ export const useHeaderAnimation = ({
         headerTransition.value === true &&
         scrollDirection.value === "to-top"
       ) {
-        headerOpacity.value = withTiming(1, { duration: _onEndDragAnimDuration });
-        headerTranslateY.value = withTiming(0, { duration: _onEndDragAnimDuration });
+        headerOpacity.value = withTiming(1, {
+          duration: _onEndDragAnimDuration,
+        });
+        headerTranslateY.value = withTiming(0, {
+          duration: _onEndDragAnimDuration,
+        });
         headerTransition.value = false;
         return;
       }
@@ -120,15 +132,18 @@ export const useHeaderAnimation = ({
       headerTransition.value = true;
       headerOpacity.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value + headerHeight / 2],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value + headerHeight / 2,
+        ],
         [headerOpacityRefPoint.value, 0],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
       headerTranslateY.value = interpolate(
         listOffsetY.value,
         [listOffsetYRefPoint.value, listOffsetYRefPoint.value + headerHeight],
         [headerTranslateYRefPoint.value, -headerHeight],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
     }
 
@@ -146,15 +161,21 @@ export const useHeaderAnimation = ({
       headerTransition.value = true;
       headerOpacity.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value - 2 * headerHeight],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value - 2 * headerHeight,
+        ],
         [headerOpacityRefPoint.value, 1],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
       headerTranslateY.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value - 2 * headerHeight],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value - 2 * headerHeight,
+        ],
         [headerTranslateYRefPoint.value, 0],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
     }
     return {

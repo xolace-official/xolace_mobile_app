@@ -1,7 +1,12 @@
 import React, { FC, use } from "react";
 import { useWindowDimensions } from "react-native";
 import { SlideTextContainer } from "../../slide-text-container";
-import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-native-reanimated";
+import {
+  Extrapolation,
+  interpolate,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { AnimatedIndexContext } from "../../../lib/animated-index-context";
 import { SlideItemProps } from "../../../lib/types";
@@ -23,7 +28,7 @@ export const PeopleWhoGetItText: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 1],
       [screenWidth * 0.75, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

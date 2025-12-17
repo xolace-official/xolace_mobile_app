@@ -27,7 +27,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1],
       [0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Straightens card from -6° tilt to 0° as slide becomes active.
@@ -38,7 +38,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 0.5],
       [-6, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Slightly shrinks card (1 → 0.98) as slide becomes active.
@@ -48,7 +48,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 0.5],
       [1, 0.98],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -66,12 +66,12 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       className="absolute top-[25%] left-0 w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
     >
       <Image
-                source={require("@/assets/images/onboarding/onboarding3.png")}
-                placeholder={{ blurhash }}
-                contentFit="contain"
-                transition={1000}
-                style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
-              />
+        source={require("@/assets/images/onboarding/onboarding3.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

@@ -31,7 +31,11 @@ export const timeFilterOptions: NotificationFilterOption<NotificationTimeFilter>
     { value: "all", label: "All time", icon: "calendar" },
     { value: "today", label: "Today", icon: "sun.max" },
     { value: "week", label: "This week", icon: "calendar.badge.clock" },
-    { value: "month", label: "This month", icon: "calendar.badge.exclamationmark" },
+    {
+      value: "month",
+      label: "This month",
+      icon: "calendar.badge.exclamationmark",
+    },
   ];
 
 type NotificationFilterContextValue = {
@@ -70,7 +74,7 @@ export function NotificationFilterProvider({
       setSelectedStatus(status);
       handleModeChange("status");
     },
-    [handleModeChange]
+    [handleModeChange],
   );
 
   const handleTimeChange = useCallback(
@@ -79,7 +83,7 @@ export function NotificationFilterProvider({
       setSelectedTimeRange(range);
       handleModeChange("time");
     },
-    [handleModeChange]
+    [handleModeChange],
   );
 
   const value = useMemo<NotificationFilterContextValue>(
@@ -98,7 +102,7 @@ export function NotificationFilterProvider({
       handleModeChange,
       handleStatusChange,
       handleTimeChange,
-    ]
+    ],
   );
 
   return (
@@ -112,7 +116,7 @@ export function useNotificationFilter() {
   const context = useContext(NotificationFilterContext);
   if (!context) {
     throw new Error(
-      "useNotificationFilter must be used within a NotificationFilterProvider"
+      "useNotificationFilter must be used within a NotificationFilterProvider",
     );
   }
   return context;

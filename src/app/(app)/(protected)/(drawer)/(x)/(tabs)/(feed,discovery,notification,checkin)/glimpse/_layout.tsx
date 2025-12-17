@@ -6,7 +6,7 @@ const GlimpseLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Glimpse',
+          title: "Glimpse",
         }}
       />
     </Stack>

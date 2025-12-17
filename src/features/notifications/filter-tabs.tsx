@@ -26,7 +26,7 @@ export function NotificationFilterTabs<T extends string>({
 }: Props<T>) {
   const activeIndex = Math.max(
     0,
-    options.findIndex((option) => option.value === activeValue)
+    options.findIndex((option) => option.value === activeValue),
   );
 
   const { tabWidths, tabOffsets } = useMeasureFlatListTabsLayout({
@@ -49,10 +49,10 @@ export function NotificationFilterTabs<T extends string>({
     onChange(options[index].value);
 
     const isPrevItemVisible = viewableItems.some(
-      (item) => item.index === index - 1
+      (item) => item.index === index - 1,
     );
     const isCurrentItemVisible = viewableItems.some(
-      (item) => item.index === index
+      (item) => item.index === index,
     );
 
     const viewPosition = isPrevItemVisible ? 1 : 0;

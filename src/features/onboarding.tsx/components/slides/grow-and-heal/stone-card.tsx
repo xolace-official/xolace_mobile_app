@@ -28,7 +28,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 0.25, index, index + 1],
       [screenWidth / 2.5, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Straightens card from 4° tilt to 0° as slide becomes active.
@@ -38,7 +38,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 0.5],
       [4, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Slightly shrinks card (1 → 0.97) as slide becomes active.
@@ -48,7 +48,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 0.5],
       [1, 0.97],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -66,12 +66,12 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       className="absolute top-[10%] left-[50%] w-[42%] aspect-[1/1.4] rounded-3xl items-center justify-center gap-10 bg-stone-300 overflow-hidden"
     >
       <Image
-               source={require("@/assets/images/onboarding/onboarding2.png")}
-               placeholder={{ blurhash }}
-               contentFit="contain"
-               transition={1000}
-               style={[ { width: lottieSize, height: lottieSize }]}
-             />
+        source={require("@/assets/images/onboarding/onboarding2.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[{ width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

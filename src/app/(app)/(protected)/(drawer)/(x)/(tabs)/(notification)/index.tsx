@@ -10,7 +10,7 @@ import { Stack } from "expo-router";
 import { SFSymbol } from "expo-symbols";
 
 function NotificationContent() {
-  const normalHeaderOptions = useNormalHeaderOptions()
+  const normalHeaderOptions = useNormalHeaderOptions();
   const {
     filterMode,
     selectedStatus,

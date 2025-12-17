@@ -5,7 +5,10 @@ export const useMaxKeyboardHeight = () => {
   const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 
   useEffect(() => {
-    let keyboardShowEvent = Keyboard.addListener("keyboardDidShow", keyboardDidShow);
+    let keyboardShowEvent = Keyboard.addListener(
+      "keyboardDidShow",
+      keyboardDidShow,
+    );
     return () => {
       keyboardShowEvent.remove();
     };

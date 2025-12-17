@@ -1,9 +1,7 @@
-import {Onboarding} from "@/src/components/screens/onboarding";
+import { Onboarding } from "@/src/components/screens/onboarding";
 
 const OnboardingScreen = () => {
-  return (
-    <Onboarding />
-  )
-}
+  return <Onboarding />;
+};
 
-export default OnboardingScreen
+export default OnboardingScreen;

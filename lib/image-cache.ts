@@ -29,12 +29,10 @@ function ensureCacheDirectory(): Directory {
  */
 export async function cacheBase64Image(
   base64: string,
-  ext: "png" | "jpg" = "png"
+  ext: "png" | "jpg" = "png",
 ): Promise<string> {
   const cacheDir = ensureCacheDirectory();
-  const fileName = `${Date.now()}-${Math.random()
-    .toString(36)
-    .substring(7)}.${ext}`;
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
   const file = new File(cacheDir, fileName);
 
   // Convert base64 to bytes and write to file
@@ -55,12 +53,10 @@ export async function cacheBase64Image(
  */
 export async function cacheImageFromUrl(
   url: string,
-  ext: "png" | "jpg" = "jpg"
+  ext: "png" | "jpg" = "jpg",
 ): Promise<string> {
   const cacheDir = ensureCacheDirectory();
-  const fileName = `${Date.now()}-${Math.random()
-    .toString(36)
-    .substring(7)}.${ext}`;
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
   const file = new File(cacheDir, fileName);
 
   // Download image directly to file (React Native compatible)

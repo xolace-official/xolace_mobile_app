@@ -44,23 +44,33 @@ export const InfoItem: React.FC<Props> = ({ index, scrollOffsetX }) => {
     const progress = scrollOffsetX.get() / itemWidth;
 
     // Cross-fade: fully visible at this index → fade to 0 by 70% into next page
-    const fadeOut = interpolate(progress, [index, index + 0.7], [1, 0], Extrapolation.CLAMP);
+    const fadeOut = interpolate(
+      progress,
+      [index, index + 0.7],
+      [1, 0],
+      Extrapolation.CLAMP,
+    );
     // Cross-fade in: start appearing 30% before reaching this page → fully visible at index
-    const fadeIn = interpolate(progress, [index - 0.3, index], [0, 1], Extrapolation.CLAMP);
+    const fadeIn = interpolate(
+      progress,
+      [index - 0.3, index],
+      [0, 1],
+      Extrapolation.CLAMP,
+    );
 
     // Slide out to the right as we leave this page; 70% of width minus gap for subtle easing
     const translateXOut = interpolate(
       progress,
       [index, index + 0.7],
       [0, itemWidth * 0.7 - _translateXGap],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     // Slide in from the left before we reach this page; begin 30% width ahead plus gap
     const translateXIn = interpolate(
       progress,
       [index - 0.3, index],
       [-itemWidth * 0.3 + _translateXGap, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -84,7 +94,7 @@ export const InfoItem: React.FC<Props> = ({ index, scrollOffsetX }) => {
       scrollOffsetX.get(),
       [(index - 1) * itemWidth, index * itemWidth, (index + 1) * itemWidth],
       [50, 0, 50],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -108,7 +118,7 @@ export const InfoItem: React.FC<Props> = ({ index, scrollOffsetX }) => {
 This component is disabled on Android for two reasons:
 1. Nested horizontal list inside parent horizontal list performs poorly on Android
 2. Tricky entering and exiting interpolation of carousel card works poorly on Android
-`
+`,
           );
         }
       }}

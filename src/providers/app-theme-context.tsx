@@ -13,7 +13,7 @@ interface AppThemeContextType {
 }
 
 const AppThemeContext = createContext<AppThemeContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -31,21 +31,21 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const isLight = useMemo(
     () => appliedTheme === "light" || appliedTheme.endsWith("-light"),
-    [appliedTheme]
+    [appliedTheme],
   );
 
   const isDark = useMemo(
     () => appliedTheme === "dark" || appliedTheme.endsWith("-dark"),
-    [appliedTheme]
+    [appliedTheme],
   );
 
   const setTheme = useCallback(
     (newTheme: ThemeName) => {
-        console.log('newTheme ', newTheme);
-      setStoredTheme(newTheme);      // persists
-      Uniwind.setTheme(newTheme);    // immediate apply
+      console.log("newTheme ", newTheme);
+      setStoredTheme(newTheme); // persists
+      Uniwind.setTheme(newTheme); // immediate apply
     },
-    [setStoredTheme]
+    [setStoredTheme],
   );
 
   const toggleTheme = useCallback(() => {
@@ -88,7 +88,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       setTheme,
       toggleTheme,
     }),
-    [currentTheme, isLight, isDark, setTheme, toggleTheme]
+    [currentTheme, isLight, isDark, setTheme, toggleTheme],
   );
 
   return (

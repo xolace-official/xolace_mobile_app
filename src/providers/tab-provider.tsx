@@ -1,15 +1,15 @@
-import type { FC, PropsWithChildren } from 'react';
-import React, { createContext, useState } from 'react';
+import type { FC, PropsWithChildren } from "react";
+import React, { createContext, useState } from "react";
 
-import { SharedValue } from 'react-native-reanimated';
-import { ReanimatedScrollEvent } from 'react-native-reanimated/lib/typescript/hook/commonTypes';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { scheduleOnRN } from 'react-native-worklets';
+import { SharedValue } from "react-native-reanimated";
+import { ReanimatedScrollEvent } from "react-native-reanimated/lib/typescript/hook/commonTypes";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { scheduleOnRN } from "react-native-worklets";
 
 import {
   ScrollDirection,
   useScrollDirection,
-} from '../hooks/use-scroll-direction';
+} from "../hooks/use-scroll-direction";
 
 const TAB_BAR_HEIGHT_WITHOUT_INSET = 30;
 
@@ -41,13 +41,13 @@ export const TabsProvider: FC<PropsWithChildren> = ({ children }) => {
     useScrollDirection();
 
   const handleXTabsOnScroll = (e: ReanimatedScrollEvent) => {
-    'worklet';
+    "worklet";
 
     handleScrollDirectionOnScroll(e);
 
-    if (scrollDirection.value === 'to-bottom') {
+    if (scrollDirection.value === "to-bottom") {
       scheduleOnRN(setIsBottomBlurVisible, false);
-    } else if (scrollDirection.value === 'to-top') {
+    } else if (scrollDirection.value === "to-top") {
       scheduleOnRN(setIsBottomBlurVisible, true);
     }
   };

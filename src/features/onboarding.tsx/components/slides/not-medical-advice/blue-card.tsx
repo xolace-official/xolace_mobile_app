@@ -28,7 +28,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 0.5, index, index + 1],
       [0, 1, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     /**
@@ -40,7 +40,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 1],
       [-screenWidth * 0.5, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Card tilts from -2° to -4° then straightens to 0°.
@@ -51,7 +51,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 0.5, index, index + 0.5],
       [-2, -4, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Slightly shrinks card (1 → 0.98) as slide becomes active.
@@ -61,7 +61,7 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 0.5],
       [1, 0.98],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -79,13 +79,13 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       style={[rContainerStyle, styles.borderCurve]}
       className="absolute top-[25%] left-[15%] w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
     >
-    <Image
-                   source={require("@/assets/images/onboarding/xolace-caution2.png")}
-                   placeholder={{ blurhash }}
-                   contentFit="contain"
-                   transition={1000}
-                   style={[{ width: lottieSize, height: lottieSize }]}
-                 />
+      <Image
+        source={require("@/assets/images/onboarding/xolace-caution2.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[{ width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

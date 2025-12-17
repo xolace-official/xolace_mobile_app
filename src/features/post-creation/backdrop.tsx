@@ -10,7 +10,6 @@ import Animated, {
 import { BlurView } from "expo-blur";
 import { Pressable } from "react-native";
 
-
 // Using Animated.createAnimatedComponent so Reanimated can drive props/styles of non-animated primitives.
 // - AnimatedPressable: lets us toggle pointerEvents on the UI thread based on sheet index (prevents touches when closed)
 // - AnimatedBlurView: enables animating BlurView's intensity prop without JS bridge overhead
@@ -37,7 +36,7 @@ export const Backdrop: FC<BottomSheetBackdropProps> = ({ animatedIndex }) => {
       animatedIndex.get(),
       [-1, 0],
       [0, maxIntensity],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -46,7 +45,11 @@ export const Backdrop: FC<BottomSheetBackdropProps> = ({ animatedIndex }) => {
   });
 
   return (
-    <AnimatedPressable className="absolute inset-0" style={rPressableStyle} onPress={() => close()}>
+    <AnimatedPressable
+      className="absolute inset-0"
+      style={rPressableStyle}
+      onPress={() => close()}
+    >
       <AnimatedBlurView
         animatedProps={animatedIntensity}
         tint="dark"

@@ -84,7 +84,7 @@ const getTimeAgo = (timestamp: string) => {
 
 const matchesStatus = (
   item: NotificationItem,
-  status: NotificationStatusFilter
+  status: NotificationStatusFilter,
 ) => {
   if (status === "all") return true;
   if (status === "important") return item.important;
@@ -95,7 +95,7 @@ const matchesStatus = (
 
 const matchesTimeRange = (
   item: NotificationItem,
-  range: NotificationTimeFilter
+  range: NotificationTimeFilter,
 ) => {
   if (range === "all") return true;
 
@@ -108,7 +108,7 @@ const matchesTimeRange = (
     const startOfDay = new Date(
       now.getFullYear(),
       now.getMonth(),
-      now.getDate()
+      now.getDate(),
     ).getTime();
     return createdAt.getTime() >= startOfDay;
   }
@@ -125,9 +125,10 @@ const matchesTimeRange = (
 };
 
 const getFilterOptions = (
-  mode: NotificationFilterMode
-): NotificationFilterOption<NotificationStatusFilter | NotificationTimeFilter>[] =>
-  mode === "status" ? statusFilterOptions : timeFilterOptions;
+  mode: NotificationFilterMode,
+): NotificationFilterOption<
+  NotificationStatusFilter | NotificationTimeFilter
+>[] => (mode === "status" ? statusFilterOptions : timeFilterOptions);
 
 export const Notifications = () => {
   const insets = useSafeAreaInsets();
@@ -144,12 +145,12 @@ export const Notifications = () => {
   const filteredNotifications = useMemo(() => {
     if (filterMode === "status") {
       return notifications.filter((notification) =>
-        matchesStatus(notification, selectedStatus)
+        matchesStatus(notification, selectedStatus),
       );
     }
 
     return notifications.filter((notification) =>
-      matchesTimeRange(notification, selectedTimeRange)
+      matchesTimeRange(notification, selectedTimeRange),
     );
   }, [filterMode, selectedStatus, selectedTimeRange]);
 
@@ -157,7 +158,7 @@ export const Notifications = () => {
     filterMode === "status" ? selectedStatus : selectedTimeRange;
 
   const handleFilterChange = (
-    value: NotificationStatusFilter | NotificationTimeFilter
+    value: NotificationStatusFilter | NotificationTimeFilter,
   ) => {
     if (filterMode === "status") {
       setSelectedStatus(value as NotificationStatusFilter);
@@ -175,9 +176,9 @@ export const Notifications = () => {
           <View className="gap-2 pb-4">
             <View className="flex-between flex-row px-2">
               <Text className="text-lg font-semibold text-foreground">
-              Filters
-            </Text>
-            <Text className="text-destructive">Delete All</Text>
+                Filters
+              </Text>
+              <Text className="text-destructive">Delete All</Text>
             </View>
             <NotificationFilterTabs
               options={getFilterOptions(filterMode)}
@@ -192,7 +193,7 @@ export const Notifications = () => {
         contentContainerStyle={{
           paddingBottom: bottomTabHeight,
           paddingVertical: 16,
-          paddingTop: headerHeight + 20
+          paddingTop: headerHeight + 20,
         }}
         ListEmptyComponent={
           <View className="items-center justify-center py-16">
@@ -213,7 +214,9 @@ export const Notifications = () => {
 
 const NotificationCard = ({ item }: { item: NotificationItem }) => {
   return (
-    <Pressable className={`flex-row gap-3 rounded-2xl border border-divider px-4 py-2 ${item.read ? "bg-surface/30" : "bg-surface/70"}`}>
+    <Pressable
+      className={`flex-row gap-3 rounded-2xl border border-divider px-4 py-2 ${item.read ? "bg-surface/30" : "bg-surface/70"}`}
+    >
       <View
         className={`h-12 w-12 items-center justify-center rounded-xl ${
           item.important ? "bg-primary/20" : "bg-muted/40"
@@ -224,8 +227,8 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
             item.important
               ? "exclamationmark"
               : item.read
-              ? "envelope.open"
-              : "envelope.badge"
+                ? "envelope.open"
+                : "envelope.badge"
           }
           color={item.important ? "#ff99c8" : "#e5e5e5"}
           size={22}
@@ -234,20 +237,23 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
 
       <View className="flex-1">
         <View className="flex-row items-start justify-between">
-          <Text className="flex-1 text-base font-semibold text-foreground" numberOfLines={1}>
+          <Text
+            className="flex-1 text-base font-semibold text-foreground"
+            numberOfLines={1}
+          >
             {item.title}
           </Text>
           <Text className="ml-2 text-xs text-muted-foreground">
             {getTimeAgo(item.timestamp)}
           </Text>
         </View>
-        <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>{item.body}</Text>
+        <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>
+          {item.body}
+        </Text>
 
         <View className="mt-1 flex-row items-center gap-2">
           <View
-            className={`rounded-full px-2 py-1 ${
-              item.important ? "bg-primary/20" : "bg-muted/50"
-            }`}
+            className={`rounded-full px-2 py-1 ${item.important ? "bg-primary/20" : "bg-muted/50"}`}
           >
             <Text
               className={`text-xs font-semibold ${
@@ -259,9 +265,7 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
               {item.important ? "Important" : item.read ? "Read" : "Unread"}
             </Text>
           </View>
-          {!item.read && (
-            <View className="h-2 w-2 rounded-full bg-primary" />
-          )}
+          {!item.read && <View className="h-2 w-2 rounded-full bg-primary" />}
         </View>
       </View>
     </Pressable>

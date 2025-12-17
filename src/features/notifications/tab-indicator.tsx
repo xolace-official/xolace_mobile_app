@@ -28,12 +28,16 @@ export function TabIndicator({
 
     const left = withTiming(
       interpolate(activeIndex, indices, tabOffsets.value),
-      { duration: _duration }
+      {
+        duration: _duration,
+      },
     );
 
     const width = withTiming(
       interpolate(activeIndex, indices, tabWidths.value),
-      { duration: _duration }
+      {
+        duration: _duration,
+      },
     );
 
     return {

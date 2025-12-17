@@ -1,36 +1,36 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from "react";
 
 import {
   type DrawerContentComponentProps,
   DrawerContentScrollView,
-} from '@react-navigation/drawer';
-import { router, usePathname } from 'expo-router';
-import { Flame, HouseHeart } from 'lucide-react-native';
-import { View } from 'react-native';
-import { useThemeColor } from 'heroui-native';
+} from "@react-navigation/drawer";
+import { router, usePathname } from "expo-router";
+import { Flame, HouseHeart } from "lucide-react-native";
+import { View } from "react-native";
+import { useThemeColor } from "heroui-native";
 
-import { AppText } from '../builders/app-text';
-import { cn } from '@/src/utils/cn';
+import { AppText } from "../builders/app-text";
+import { cn } from "@/src/utils/cn";
 
-import { DrawerAccordionSection } from './drawer-accordion-section';
-import { DrawerNavItem } from './drawer-nav-item';
-import { DrawerFooterAction } from './drawer-footer-action';
+import { DrawerAccordionSection } from "./drawer-accordion-section";
+import { DrawerNavItem } from "./drawer-nav-item";
+import { DrawerFooterAction } from "./drawer-footer-action";
 import {
   CAMPFIRE_ITEMS,
   HEALTH_SPACE_ITEMS,
   PRIMARY_NAV_ITEMS,
   WHATS_NEW_ACTION,
-} from './drawer-config';
+} from "./drawer-config";
 
 function getRouteAliases(href: string): string[] {
-  if (href.endsWith('/campfire/manage')) {
-    return ['/campfire/manage'];
+  if (href.endsWith("/campfire/manage")) {
+    return ["/campfire/manage"];
   }
 
-  if (href.endsWith('/post-creation-screen')) {
+  if (href.endsWith("/post-creation-screen")) {
     return [
-      '/(app)/(protected)/(drawer)/(tabs)/post-creation-screen',
-      '/(app)/(protected)/(drawer)/(tabs)/post-creation-screen/index',
+      "/(app)/(protected)/(drawer)/(tabs)/post-creation-screen",
+      "/(app)/(protected)/(drawer)/(tabs)/post-creation-screen/index",
     ];
   }
 
@@ -49,8 +49,8 @@ function isRouteActive(pathname: string, href: string) {
 
 export function DrawerContent(props: DrawerContentComponentProps) {
   const pathname = usePathname();
-  console.log('pathname ', pathname);
-  const themeColorBackground = useThemeColor('background');
+  console.log("pathname ", pathname);
+  const themeColorBackground = useThemeColor("background");
   const isDarkMode = true;
 
   const primaryItems = useMemo(
@@ -69,7 +69,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         try {
           router.push(href as never);
         } catch (error) {
-          console.warn('Navigation target is not ready yet:', href, error);
+          console.warn("Navigation target is not ready yet:", href, error);
         }
       });
     },
@@ -111,8 +111,8 @@ export function DrawerContent(props: DrawerContentComponentProps) {
 
           <View
             className={cn(
-              'my-6 h-px',
-              isDarkMode ? 'bg-white/10' : 'bg-gray-200',
+              "my-6 h-px",
+              isDarkMode ? "bg-white/10" : "bg-gray-200",
             )}
           />
 
@@ -152,11 +152,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         />
 
         <View className="mt-6 rounded-2xl border border-transparent px-2">
-          <AppText
-            className={cn(
-              'text-center text-xs text-muted',
-                )}
-          >
+          <AppText className={cn("text-center text-xs text-muted")}>
             Handcrafted for your daily rituals. Stay curious ✨
           </AppText>
         </View>

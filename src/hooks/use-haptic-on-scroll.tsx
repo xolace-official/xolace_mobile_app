@@ -1,4 +1,8 @@
-import { SharedValue, useAnimatedReaction, useSharedValue } from "react-native-reanimated";
+import {
+  SharedValue,
+  useAnimatedReaction,
+  useSharedValue,
+} from "react-native-reanimated";
 import * as Haptics from "expo-haptics";
 import { ReanimatedScrollEvent } from "react-native-reanimated/lib/typescript/hook/commonTypes";
 import { ScrollDirectionValue } from "./use-scroll-direction";
@@ -45,7 +49,7 @@ export const useHapticOnScroll = ({
         return;
       }
       isHapticTriggered.set(false);
-    }
+    },
   );
 
   const singleHapticOnScroll = (event: ReanimatedScrollEvent | number) => {
@@ -64,7 +68,10 @@ export const useHapticOnScroll = ({
     }
 
     // Downward crossing: fire once when offset surpasses positive trigger
-    if (scrollDirection.get() === "to-bottom" && hapticDirection === "to-bottom") {
+    if (
+      scrollDirection.get() === "to-bottom" &&
+      hapticDirection === "to-bottom"
+    ) {
       if (offsetY > triggerOffset && !isHapticTriggered.get()) {
         scheduleOnRN(handleHaptics); // schedule keeps heavy work off UI thread
       }

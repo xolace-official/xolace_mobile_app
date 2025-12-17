@@ -1,21 +1,21 @@
 import {
-    Blur,
-    Canvas,
-    Group,
-    interpolateColors,
-    RoundedRect,
-    Skia,
+  Blur,
+  Canvas,
+  Group,
+  interpolateColors,
+  RoundedRect,
+  Skia,
 } from "@shopify/react-native-skia";
 import { useEffect, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import {
-    Easing,
-    interpolate,
-    useDerivedValue,
-    useSharedValue,
-    withRepeat,
-    withTiming,
-    type SharedValue,
+  Easing,
+  interpolate,
+  useDerivedValue,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+  type SharedValue,
 } from "react-native-reanimated";
 
 // longevity-deck-onboarding-animation 🔽
@@ -50,7 +50,10 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
   const ovalY = height * 0.84;
 
   // Pre-compute Skia colors from the palette strings (memoized to avoid re-creating on each render)
-  const skiaColors = useMemo(() => palette.map((c) => Skia.Color(c)), [palette]);
+  const skiaColors = useMemo(
+    () => palette.map((c) => Skia.Color(c)),
+    [palette],
+  );
   const inputRange = useMemo(() => palette.map((_, index) => index), [palette]);
 
   /**
@@ -63,9 +66,9 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
     breathe.value = withRepeat(
       withTiming(1, { duration: 3000, easing: Easing.inOut(Easing.ease) }),
       -1, // infinite repeats
-      true // reverse on each iteration (ping-pong)
+      true, // reverse on each iteration (ping-pong)
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**

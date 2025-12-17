@@ -1,5 +1,11 @@
 import { IconSymbol } from "@/src/components/ui/icon-symbol";
-import { LayoutChangeEvent, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  LayoutChangeEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 export const _borderRadius = 10;
 export const _borderColor = "#28282B";
@@ -36,7 +42,11 @@ export function TabItem<T extends string>({
         />
       </View>
       <Text
-        className={isActive ? "text-sm font-medium text-foreground" : "text-sm font-medium text-muted-foreground"}
+        className={
+          isActive
+            ? "text-sm font-medium text-foreground"
+            : "text-sm font-medium text-muted-foreground"
+        }
       >
         {label}
       </Text>

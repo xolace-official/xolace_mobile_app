@@ -17,7 +17,7 @@ export const Welcome: FC = () => {
       <StoneCard index={SLIDE_INDEX} />
       <RedCard index={SLIDE_INDEX} />
       <MatterHereText index={SLIDE_INDEX} />
-      <DigitalCampfireText index={SLIDE_INDEX}/>
+      <DigitalCampfireText index={SLIDE_INDEX} />
     </View>
   );
 };

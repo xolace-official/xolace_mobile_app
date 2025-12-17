@@ -7,8 +7,7 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { TextField } from 'heroui-native';
-
+import { TextField } from "heroui-native";
 
 type Props = {
   offsetY: SharedValue<number>;
@@ -30,14 +29,19 @@ export const SearchBar: FC<Props> = ({
   const rHeightStyle = useAnimatedStyle(() => {
     return {
       // Height interpolation: 0 → height scroll maps to height → 0, clamped to avoid negative heights
-      height: interpolate(offsetY?.value ?? 0, [0, height], [height, 0], Extrapolation.CLAMP),
+      height: interpolate(
+        offsetY?.value ?? 0,
+        [0, height],
+        [height, 0],
+        Extrapolation.CLAMP,
+      ),
       // Margin interpolation: stays at max while height collapses, then eases to min after height reaches 0
       // Input: [0, height, height + (max-min)] → Output: [max, max, min]
       marginBottom: interpolate(
         offsetY?.value ?? 0,
         [0, height, height + marginBottomMax - marginBottomMin],
         [marginBottomMax, marginBottomMax, marginBottomMin],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       ),
     };
   });
@@ -46,7 +50,12 @@ export const SearchBar: FC<Props> = ({
     return {
       // Content fades quickly to avoid clipped text during height collapse
       // Input: [0, height/4] → Output: [1, 0], clamped to keep it hidden afterwards
-      opacity: interpolate(offsetY?.value ?? 0, [0, height / 4], [1, 0], Extrapolation.CLAMP),
+      opacity: interpolate(
+        offsetY?.value ?? 0,
+        [0, height / 4],
+        [1, 0],
+        Extrapolation.CLAMP,
+      ),
     };
   });
 
@@ -82,4 +91,3 @@ const styles = StyleSheet.create({
     left: 8,
   },
 });
-

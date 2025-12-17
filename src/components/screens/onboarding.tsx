@@ -78,7 +78,7 @@ export const Onboarding = () => {
         activeIndex.get(),
         [beforeLastIndex, lastIndex],
         [0, 1],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       ),
       pointerEvents: activeIndex.get() === lastIndex ? "auto" : "none",
     };
@@ -86,8 +86,16 @@ export const Onboarding = () => {
 
   return (
     <AnimatedIndexContext value={{ activeIndex }}>
-      <View className="flex-1 bg-[#161522]" style={{ paddingBottom: insets.bottom + 8 }}>
-        <BottomGlow palette={PALETTE} width={width} height={height} activeIndex={activeIndex} />
+      <View
+        className="flex-1 bg-[#161522]"
+        style={{ paddingBottom: insets.bottom + 8 }}
+      >
+        <BottomGlow
+          palette={PALETTE}
+          width={width}
+          height={height}
+          activeIndex={activeIndex}
+        />
 
         {/* scrollEventThrottle={16} ensures scroll events fire at ~60fps (1000ms/16ms).
             Critical for smooth animation - lower values = more events = smoother motion. */}
@@ -125,14 +133,19 @@ export const Onboarding = () => {
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
             title={"Xolace is support,\nnot medical advice."}
-            description={"Xolace is a peer-support and self-reflection space, not a diagnosis tool, and not an emergency service. If you’re in crisis or feel unsafe, contact local emergency services or a trusted crisis line in your country.\n\n Tap “I understand” to continue."}
+            description={
+              "Xolace is a peer-support and self-reflection space, not a diagnosis tool, and not an emergency service. If you’re in crisis or feel unsafe, contact local emergency services or a trusted crisis line in your country.\n\n Tap “I understand” to continue."
+            }
           >
             <NotMedicalAdvice />
           </OnboardingSlideContainer>
         </Animated.ScrollView>
 
         <View className="gap-5 px-5 pt-5">
-          <PaginationDots numberOfDots={TOTAL_SLIDES} activeIndex={activeIndex} />
+          <PaginationDots
+            numberOfDots={TOTAL_SLIDES}
+            activeIndex={activeIndex}
+          />
           <AnimatedPressable
             className="h-[50px] rounded-full bg-white justify-center items-center"
             style={[rButtonStyle, styles.borderCurve]}

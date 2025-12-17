@@ -10,7 +10,6 @@ import Animated, {
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-
 export const StoneCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
@@ -25,7 +24,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1],
       [0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * scale: Slightly shrinks card (1 → 0.98) when slide becomes inactive.
@@ -36,7 +35,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index - 0.5],
       [1, 0.98],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

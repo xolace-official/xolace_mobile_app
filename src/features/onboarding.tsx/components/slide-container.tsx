@@ -15,7 +15,10 @@ type Props = {
  * Interpolation: [index-0.5, index, index+0.5] → [0, 1, 0] opacity
  * CLAMP ensures opacity stays within [0, 1] bounds.
  */
-export const SlideContainer: FC<PropsWithChildren<Props>> = ({ children, index }) => {
+export const SlideContainer: FC<PropsWithChildren<Props>> = ({
+  children,
+  index,
+}) => {
   const { activeIndex } = use(AnimatedIndexContext);
 
   const rContainerStyle = useAnimatedStyle(() => {
@@ -23,7 +26,7 @@ export const SlideContainer: FC<PropsWithChildren<Props>> = ({ children, index }
       activeIndex.get(),
       [index - 0.5, index, index + 0.5],
       [0, 1, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {

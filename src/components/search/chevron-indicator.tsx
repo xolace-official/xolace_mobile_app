@@ -33,9 +33,12 @@ export const ChevronIndicator = () => {
     () => transitionProgress.value,
     (transition) => {
       if (transition > 0.75 && entranceProgress.value === 1) {
-        entranceProgress.value = withSpring(0, { duration: 1500, dampingRatio: 0.75 });
+        entranceProgress.value = withSpring(0, {
+          duration: 1500,
+          dampingRatio: 0.75,
+        });
       }
-    }
+    },
   );
 
   const combinedProgress = useDerivedValue(() => {
@@ -57,7 +60,7 @@ export const ChevronIndicator = () => {
     const chevronWidth = interpolate(
       combinedProgress.value,
       [0, 1],
-      [CHEVRON_WIDTH, CHEVRON_WIDTH * 0.85]
+      [CHEVRON_WIDTH, CHEVRON_WIDTH * 0.85],
     );
 
     const vOffset = strokeW / 2;
@@ -67,7 +70,11 @@ export const ChevronIndicator = () => {
     const midX = chevronWidth;
     const midY = midDrop + vOffset;
 
-    const stroke = interpolateColor(combinedProgress.value, [0, 1], ["#525252", "#737373"]);
+    const stroke = interpolateColor(
+      combinedProgress.value,
+      [0, 1],
+      ["#525252", "#737373"],
+    );
 
     return {
       d: `M${left} ${vOffset} L ${midX} ${midY} L ${right} ${vOffset}`,

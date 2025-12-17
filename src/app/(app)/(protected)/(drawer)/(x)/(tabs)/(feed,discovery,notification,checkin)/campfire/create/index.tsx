@@ -1,7 +1,7 @@
-import { CreateCampfire } from "@/src/components/screens/create-campfire"
+import { CreateCampfire } from "@/src/components/screens/create-campfire";
 
 const CreateCampfireScreen = () => {
-  return <CreateCampfire/>
-}
+  return <CreateCampfire />;
+};
 
-export default CreateCampfireScreen
+export default CreateCampfireScreen;

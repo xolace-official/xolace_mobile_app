@@ -1,21 +1,19 @@
-import { Stack } from 'expo-router';
-
+import { Stack } from "expo-router";
 
 const ProtectedLayout = () => {
-
   return (
     <Stack>
       {/* <Stack.Screen name="campfireSelection" options={{ headerShown: false }} /> */}
       <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
       <Stack.Screen
-          name="(post-creation)"
-          options={{
-            presentation: "card",
-            animation: "slide_from_right",
-            gestureEnabled: false,
-            headerShown: false,
-          }}
-        />
+        name="(post-creation)"
+        options={{
+          presentation: "card",
+          animation: "slide_from_right",
+          gestureEnabled: false,
+          headerShown: false,
+        }}
+      />
       {/* <Stack.Screen
         name="post-to"
         options={{ presentation: 'pageSheet', headerShown: false }}

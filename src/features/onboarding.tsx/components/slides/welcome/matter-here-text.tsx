@@ -2,7 +2,12 @@ import React, { FC, use } from "react";
 import { useWindowDimensions } from "react-native";
 import { SlideTextContainer } from "../../slide-text-container";
 import { AnimatedIndexContext } from "../../../lib/animated-index-context";
-import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-native-reanimated";
+import {
+  Extrapolation,
+  interpolate,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
@@ -23,7 +28,7 @@ export const MatterHereText: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index, index + 1],
       [0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -32,7 +37,11 @@ export const MatterHereText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[75%] left-[33%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[75%] left-[33%]"
+      textClassName="text-base"
+    >
       💛 You Matter Here
     </SlideTextContainer>
   );

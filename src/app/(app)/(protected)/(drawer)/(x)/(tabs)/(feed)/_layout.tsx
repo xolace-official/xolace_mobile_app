@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router'
+import { Stack } from "expo-router";
 
 const FeedLayout = () => {
   return (
@@ -8,7 +8,7 @@ const FeedLayout = () => {
       <Stack.Screen
         name="glimpse"
         options={{
-          title: 'Glimpses',
+          title: "Glimpses",
           headerShown: false,
         }}
       />
@@ -16,7 +16,7 @@ const FeedLayout = () => {
       <Stack.Screen
         name="health-tips"
         options={{
-          title: 'Health tips',
+          title: "Health tips",
           headerShown: false,
         }}
       />
@@ -24,7 +24,7 @@ const FeedLayout = () => {
       <Stack.Screen
         name="campfire"
         options={{
-          title: 'Campfire',
+          title: "Campfire",
           headerShown: false,
         }}
       />
@@ -32,12 +32,12 @@ const FeedLayout = () => {
       <Stack.Screen
         name="collections"
         options={{
-          title: 'Collections',
+          title: "Collections",
           headerShown: false,
         }}
       />
     </Stack>
-  )
-}
+  );
+};
 
-export default FeedLayout
+export default FeedLayout;

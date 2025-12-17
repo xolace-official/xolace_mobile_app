@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ThemeProvider, DefaultTheme } from '@react-navigation/native';
-import { SplashScreen } from 'expo-router';
-import { Platform } from 'react-native';
-import { Uniwind } from 'uniwind';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ThemeProvider, DefaultTheme } from "@react-navigation/native";
+import { SplashScreen } from "expo-router";
+import { Platform } from "react-native";
+import { Uniwind } from "uniwind";
 
-import { useColorScheme } from './use-color-scheme';
-
+import { useColorScheme } from "./use-color-scheme";
 
 export function GlobalThemeProvider({
   children,
@@ -20,13 +19,13 @@ export function GlobalThemeProvider({
   useEffect(() => {
     (async () => {
       try {
-        const savedTheme = await AsyncStorage.getItem('theme');
-        console.log('from provider ',savedTheme)
+        const savedTheme = await AsyncStorage.getItem("theme");
+        console.log("from provider ", savedTheme);
 
-        if (Platform.OS === 'web') {
-          if (typeof document !== 'undefined') {
+        if (Platform.OS === "web") {
+          if (typeof document !== "undefined") {
             // Adds the background color to the html element to prevent white background on overscroll.
-            document.documentElement.classList.add('bg-background');
+            document.documentElement.classList.add("bg-background");
           }
         }
 
@@ -38,10 +37,10 @@ export function GlobalThemeProvider({
           }
         } else {
           // If no saved theme, save the current one (likely system default)
-          await AsyncStorage.setItem('theme', colorScheme);
+          await AsyncStorage.setItem("theme", colorScheme);
         }
       } catch (error) {
-        console.error('Failed to load theme:', error);
+        console.error("Failed to load theme:", error);
       } finally {
         setIsColorSchemeLoaded(true);
         SplashScreen.hideAsync();
@@ -54,9 +53,5 @@ export function GlobalThemeProvider({
     return null;
   }
 
-  return (
-    <ThemeProvider value={DefaultTheme}>
-      {children}
-    </ThemeProvider>
-  );
+  return <ThemeProvider value={DefaultTheme}>{children}</ThemeProvider>;
 }

@@ -1,9 +1,7 @@
-import { ManageCampfires } from "@/src/components/screens/manage-campfires"
+import { ManageCampfires } from "@/src/components/screens/manage-campfires";
 
 const ManageCampfiresScreen = () => {
-  return (
-    <ManageCampfires />
-  )
-}
+  return <ManageCampfires />;
+};
 
-export default ManageCampfiresScreen
+export default ManageCampfiresScreen;

@@ -1,21 +1,22 @@
-import { useRouter } from 'expo-router';
-import { use, useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { useRouter } from "expo-router";
+import { use, useMemo, useState } from "react";
+import { Pressable, Text, TextInput, View } from "react-native";
 
-import { IconSymbol } from '@/src/components/ui/icon-symbol';
-import { MOCK_COMMUNITIES } from '@/src/constants/mock-communities';
-import { CommunityList } from '@/src/features/post-creation/community-list';
-import type { PostDraftCommunity } from '@/src/providers/postCreationContext';
-import { PostCreationContext } from '@/src/providers/postCreationContext';
+import { IconSymbol } from "@/src/components/ui/icon-symbol";
+import { MOCK_COMMUNITIES } from "@/src/constants/mock-communities";
+import { CommunityList } from "@/src/features/post-creation/community-list";
+import type { PostDraftCommunity } from "@/src/providers/postCreationContext";
+import { PostCreationContext } from "@/src/providers/postCreationContext";
 
 export const PostToScreen = () => {
   const router = useRouter();
   // Using simple hardcoded colors for now as requested or matching global theme
   // We don't have direct access to useColorScheme from @xolacekit/ui here based on imports shown
-  const colorScheme = 'dark'; 
+  const colorScheme = "dark";
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const { community: selectedCommunity, setCommunity } = use(PostCreationContext);
+  const [searchQuery, setSearchQuery] = useState("");
+  const { community: selectedCommunity, setCommunity } =
+    use(PostCreationContext);
 
   const filteredCommunities = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -26,7 +27,7 @@ export const PostToScreen = () => {
       (community) =>
         community.name.toLowerCase().includes(normalizedQuery) ||
         community.slug.toLowerCase().includes(normalizedQuery) ||
-        (community.description ?? '').toLowerCase().includes(normalizedQuery),
+        (community.description ?? "").toLowerCase().includes(normalizedQuery),
     );
   }, [searchQuery]);
 
@@ -46,7 +47,11 @@ export const PostToScreen = () => {
           onPress={() => router.back()}
           className="h-10 w-10 items-center justify-center rounded-full active:bg-white/10"
         >
-          <IconSymbol name="xmark" size={22} color={colorScheme === 'dark' ? '#f4f4f5' : '#0f172a'} />
+          <IconSymbol
+            name="xmark"
+            size={22}
+            color={colorScheme === "dark" ? "#f4f4f5" : "#0f172a"}
+          />
         </Pressable>
         <Text className="text-lg font-semibold text-foreground">Post to</Text>
         {selectedCommunity ? (
@@ -80,7 +85,7 @@ export const PostToScreen = () => {
           value={searchQuery}
           onChangeText={setSearchQuery}
           placeholder="Search for a campfire"
-          placeholderTextColor={colorScheme === 'dark' ? '#9ca3af' : '#6b7280'}
+          placeholderTextColor={colorScheme === "dark" ? "#9ca3af" : "#6b7280"}
           className="h-12 bg-muted/20 text-base text-foreground"
         />
       </View>

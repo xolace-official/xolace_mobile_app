@@ -19,13 +19,17 @@ type Props = {
   pickImageFromGallery: () => Promise<boolean>;
 };
 
-export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible, pickImageFromGallery }) => {
+export const OptionsModal: FC<Props> = ({
+  isVisible,
+  setIsVisible,
+  pickImageFromGallery,
+}) => {
   const ref = useRef<BottomSheet>(null);
 
   const [webEnabled, setWebEnabled] = useState(true);
   const [academicEnabled, setAcademicEnabled] = useState(false);
   const [financeEnabled, setFinanceEnabled] = useState(false);
-//   const [socialEnabled, setSocialEnabled] = useState(false);
+  //   const [socialEnabled, setSocialEnabled] = useState(false);
 
   const insets = useSafeAreaInsets();
 
@@ -44,7 +48,12 @@ export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible, pickImageFrom
     if (Platform.OS === "android") {
       return (
         // appearsOnIndex/disappearsOnIndex tie visibility to sheet index transitions for smooth fade
-        <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} opacity={0.5} />
+        <BottomSheetBackdrop
+          {...props}
+          appearsOnIndex={0}
+          disappearsOnIndex={-1}
+          opacity={0.5}
+        />
       );
     }
     return <Backdrop {...props} />;
@@ -69,7 +78,9 @@ export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible, pickImageFrom
         <View className="w-[45] h-[6px] mt-2 rounded-full bg-white/30 self-center" />
         <View className="px-9 pb-5">
           <View className="flex-row items-center mt-1">
-            <Text className="text-white text-2xl font-medium flex-1">Sources</Text>
+            <Text className="text-white text-2xl font-medium flex-1">
+              Sources
+            </Text>
             <Pressable
               hitSlop={8}
               onPress={() => setIsVisible(false)}

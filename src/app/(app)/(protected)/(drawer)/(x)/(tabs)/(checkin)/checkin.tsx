@@ -1,11 +1,11 @@
-import { useHeaderHeight } from '@react-navigation/elements';
-import { useThemeColor } from 'heroui-native';
-import React from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
-import { useAppTheme } from '@/src/providers/app-theme-context';
-import { SwitchContent } from '@/src/components/extras/switch-content';
-import { TextInputContent } from '@/src/components/extras/text-input-content';
+import { useHeaderHeight } from "@react-navigation/elements";
+import { useThemeColor } from "heroui-native";
+import React from "react";
+import { Pressable, Text, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import { useAppTheme } from "@/src/providers/app-theme-context";
+import { SwitchContent } from "@/src/components/extras/switch-content";
+import { TextInputContent } from "@/src/components/extras/text-input-content";
 
 type ThemeOption = {
   id: string;
@@ -17,47 +17,47 @@ type ThemeOption = {
 
 const availableThemes: ThemeOption[] = [
   {
-    id: 'default',
-    name: 'Default',
-    lightVariant: 'light',
-    darkVariant: 'dark',
+    id: "default",
+    name: "Default",
+    lightVariant: "light",
+    darkVariant: "dark",
     colors: {
-      primary: '#006FEE',
-      secondary: '#17C964',
-      tertiary: '#F5A524',
+      primary: "#006FEE",
+      secondary: "#17C964",
+      tertiary: "#F5A524",
     },
   },
   {
-    id: 'lavender',
-    name: 'Lavender',
-    lightVariant: 'lavender-light',
-    darkVariant: 'lavender-dark',
+    id: "lavender",
+    name: "Lavender",
+    lightVariant: "lavender-light",
+    darkVariant: "lavender-dark",
     colors: {
-      primary: '#B569E0',
-      secondary: '#64C9A8',
-      tertiary: '#E8C765',
+      primary: "#B569E0",
+      secondary: "#64C9A8",
+      tertiary: "#E8C765",
     },
   },
   {
-    id: 'mint',
-    name: 'Mint',
-    lightVariant: 'mint-light',
-    darkVariant: 'mint-dark',
+    id: "mint",
+    name: "Mint",
+    lightVariant: "mint-light",
+    darkVariant: "mint-dark",
     colors: {
-      primary: '#5FC9AB',
-      secondary: '#6DD597',
-      tertiary: '#E5CF6C',
+      primary: "#5FC9AB",
+      secondary: "#6DD597",
+      tertiary: "#E5CF6C",
     },
   },
   {
-    id: 'sky',
-    name: 'Sky',
-    lightVariant: 'sky-light',
-    darkVariant: 'sky-dark',
+    id: "sky",
+    name: "Sky",
+    lightVariant: "sky-light",
+    darkVariant: "sky-dark",
     colors: {
-      primary: '#6CA9D6',
-      secondary: '#64C9B2',
-      tertiary: '#E8C963',
+      primary: "#6CA9D6",
+      secondary: "#64C9B2",
+      tertiary: "#E8C963",
     },
   },
 ];
@@ -67,16 +67,16 @@ const ThemeCircle: React.FC<{
   isActive: boolean;
   onPress: () => void;
 }> = ({ theme, isActive, onPress }) => {
-  const themeColorAccent = useThemeColor('accent');
+  const themeColorAccent = useThemeColor("accent");
 
   return (
     <Pressable onPress={onPress} className="items-center">
-      <View style={{ position: 'relative', padding: 4 }}>
+      <View style={{ position: "relative", padding: 4 }}>
         {/* Active ring */}
         {isActive && (
           <View
             style={{
-              position: 'absolute',
+              position: "absolute",
               width: 68,
               height: 68,
               borderRadius: 34,
@@ -93,16 +93,16 @@ const ThemeCircle: React.FC<{
             width: 60,
             height: 60,
             borderRadius: 30,
-            overflow: 'hidden',
-            position: 'relative',
+            overflow: "hidden",
+            position: "relative",
           }}
         >
           {/* First section - 50% */}
           <View
             style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
+              position: "absolute",
+              width: "100%",
+              height: "100%",
               backgroundColor: theme.colors.primary,
             }}
           />
@@ -110,9 +110,9 @@ const ThemeCircle: React.FC<{
           {/* Second section - 25% */}
           <View
             style={{
-              position: 'absolute',
-              width: '100%',
-              height: '50%',
+              position: "absolute",
+              width: "100%",
+              height: "50%",
               backgroundColor: theme.colors.secondary,
               bottom: 0,
             }}
@@ -121,9 +121,9 @@ const ThemeCircle: React.FC<{
           {/* Third section - 25% */}
           <View
             style={{
-              position: 'absolute',
-              width: '50%',
-              height: '50%',
+              position: "absolute",
+              width: "50%",
+              height: "50%",
               backgroundColor: theme.colors.tertiary,
               bottom: 0,
               right: 0,
@@ -143,11 +143,11 @@ export default function CheckinScreen() {
   const headerHeight = useHeaderHeight();
 
   const getCurrentThemeId = () => {
-    if (currentTheme === 'light' || currentTheme === 'dark') return 'default';
-    if (currentTheme.startsWith('lavender')) return 'lavender';
-    if (currentTheme.startsWith('mint')) return 'mint';
-    if (currentTheme.startsWith('sky')) return 'sky';
-    return 'default';
+    if (currentTheme === "light" || currentTheme === "dark") return "default";
+    if (currentTheme.startsWith("lavender")) return "lavender";
+    if (currentTheme.startsWith("mint")) return "mint";
+    if (currentTheme.startsWith("sky")) return "sky";
+    return "default";
   };
 
   const handleThemeSelect = (theme: ThemeOption) => {
@@ -175,8 +175,8 @@ export default function CheckinScreen() {
           />
         ))}
       </View>
-      <SwitchContent/>
-      <TextInputContent/>
+      <SwitchContent />
+      <TextInputContent />
     </KeyboardAwareScrollView>
   );
 }

@@ -1,13 +1,13 @@
-import { View } from 'react-native';
+import { View } from "react-native";
 
-import { Button, cn } from 'heroui-native';
-import { withUniwind } from 'uniwind';
+import { Button, cn } from "heroui-native";
+import { withUniwind } from "uniwind";
 
-import type { DrawerNavItemProps } from './drawer-nav-item';
+import type { DrawerNavItemProps } from "./drawer-nav-item";
 
 interface DrawerFooterActionProps {
   label: string;
-  icon: DrawerNavItemProps['icon'];
+  icon: DrawerNavItemProps["icon"];
   onPress: () => void;
   isDarkMode?: boolean;
 }
@@ -23,14 +23,11 @@ export function DrawerFooterAction({
   return (
     <View
       className={cn(
-        'mt-6 rounded-3xl border px-4 py-4',
-        isDarkMode ? 'border-white/5 bg-white/5' : 'border-black/5 bg-black/5',
+        "mt-6 rounded-3xl border px-4 py-4",
+        isDarkMode ? "border-white/5 bg-white/5" : "border-black/5 bg-black/5",
       )}
     >
-      <Button
-        onPress={onPress}
-        variant='primary'
-      >
+      <Button onPress={onPress} variant="primary">
         <IconComponent className="text-accent-foreground" size={20} />
         <Button.Label>{label}</Button.Label>
       </Button>

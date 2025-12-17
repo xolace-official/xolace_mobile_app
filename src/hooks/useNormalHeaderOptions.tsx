@@ -10,23 +10,23 @@ import { Platform } from "react-native";
  */
 export function useNormalHeaderOptions(): NativeStackNavigationOptions {
   //const isGlassAvailable = isLiquidGlassAvailable();
-   const { isDark } = useAppTheme();
-  const themeColorForeground = useThemeColor('foreground');
-  const themeColorBackground = useThemeColor('background');
+  const { isDark } = useAppTheme();
+  const themeColorForeground = useThemeColor("foreground");
+  const themeColorBackground = useThemeColor("background");
 
   return {
-    headerTitleAlign: 'center',
-          headerTransparent: true,
-          headerBlurEffect: isDark ? 'dark' : 'light',
-          headerTintColor: themeColorForeground,
-          headerStyle: {
-            backgroundColor: Platform.select({
-              ios: undefined,
-              android: themeColorBackground,
-            }),
-          },
-          contentStyle: {
-            backgroundColor: themeColorBackground,
-          },
+    headerTitleAlign: "center",
+    headerTransparent: true,
+    headerBlurEffect: isDark ? "dark" : "light",
+    headerTintColor: themeColorForeground,
+    headerStyle: {
+      backgroundColor: Platform.select({
+        ios: undefined,
+        android: themeColorBackground,
+      }),
+    },
+    contentStyle: {
+      backgroundColor: themeColorBackground,
+    },
   };
 }

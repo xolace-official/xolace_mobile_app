@@ -1,12 +1,12 @@
-import { cn } from '@/src/utils/cn';
-import { cva, type VariantProps } from 'class-variance-authority';
-import * as Haptics from 'expo-haptics';
-import { SFSymbol } from 'expo-symbols';
-import { PressableScale } from 'pressto';
-import React, { useEffect, useMemo, useRef } from 'react';
-import { Alert, Animated, Platform, Text } from 'react-native';
-import { useCSSVariable, withUniwind } from 'uniwind';
-import { IconSymbol } from './icon-symbol';
+import { cn } from "@/src/utils/cn";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as Haptics from "expo-haptics";
+import { SFSymbol } from "expo-symbols";
+import { PressableScale } from "pressto";
+import React, { useEffect, useMemo, useRef } from "react";
+import { Alert, Animated, Platform, Text } from "react-native";
+import { useCSSVariable, withUniwind } from "uniwind";
+import { IconSymbol } from "./icon-symbol";
 
 // Wrap PressableScale with Uniwind for className support
 const StyledPressableScale = withUniwind(PressableScale);
@@ -18,70 +18,67 @@ const StyledPressableScale = withUniwind(PressableScale);
 const buttonVariants = cva(
   // Base styles applied to all buttons
   cn(
-    'shrink-0 flex-row items-center justify-center gap-2 rounded-lg',
+    "shrink-0 flex-row items-center justify-center gap-2 rounded-lg",
     Platform.select({
-      web: 'outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary/50',
-    })
+      web: "outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary/50",
+    }),
   ),
   {
     variants: {
       variant: {
         default: cn(
-          'bg-primary',
-          Platform.select({ web: 'hover:bg-primary/90' })
+          "bg-primary",
+          Platform.select({ web: "hover:bg-primary/90" }),
         ),
         destructive: cn(
-          'bg-destructive',
-          Platform.select({ web: 'hover:bg-destructive/90' })
+          "bg-destructive",
+          Platform.select({ web: "hover:bg-destructive/90" }),
         ),
         outline: cn(
-          'border border-border bg-background',
-          Platform.select({ web: 'hover:bg-muted' })
+          "border border-border bg-background",
+          Platform.select({ web: "hover:bg-muted" }),
         ),
         secondary: cn(
-          'bg-secondary',
-          Platform.select({ web: 'hover:bg-secondary/80' })
+          "bg-secondary",
+          Platform.select({ web: "hover:bg-secondary/80" }),
         ),
-        ghost: cn(
-          'bg-transparent',
-          Platform.select({ web: 'hover:bg-muted' })
-        ),
-        link: 'bg-transparent',
+        ghost: cn("bg-transparent", Platform.select({ web: "hover:bg-muted" })),
+        link: "bg-transparent",
         soft: cn(
-          'bg-primary/10',
-          Platform.select({ web: 'hover:bg-primary/20' })
+          "bg-primary/10",
+          Platform.select({ web: "hover:bg-primary/20" }),
         ),
       },
       size: {
-        xs: 'h-7 px-2.5',
-        sm: 'h-9 px-3',
-        md: 'h-12 px-4',
-        lg: 'h-14 px-5',
-        xl: 'h-16 px-6',
-        '2xl': 'h-[72px] px-7',
-        icon: 'h-10 w-10',
+        xs: "h-7 px-2.5",
+        sm: "h-9 px-3",
+        md: "h-12 px-4",
+        lg: "h-14 px-5",
+        xl: "h-16 px-6",
+        "2xl": "h-[72px] px-7",
+        icon: "h-10 w-10",
       },
       radius: {
-        none: 'rounded-none',
-        sm: 'rounded-sm',
-        md: 'rounded-md',
-        lg: 'rounded-lg',
-        xl: 'rounded-xl',
-        '2xl': 'rounded-2xl',
-        full: 'rounded-full',
+        none: "rounded-none",
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        "2xl": "rounded-2xl",
+        full: "rounded-full",
       },
       fullWidth: {
-        true: 'w-full',
-        false: '',
+        true: "w-full",
+        false: "",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'md',
-      radius: 'lg',
+      variant: "default",
+      size: "md",
+      radius: "lg",
       fullWidth: true,
     },
-  }
+  },
 );
 
 /**
@@ -90,50 +87,50 @@ const buttonVariants = cva(
 const buttonTextVariants = cva(
   // Base text styles
   cn(
-    'font-semibold',
-    Platform.select({ web: 'pointer-events-none transition-colors' })
+    "font-semibold",
+    Platform.select({ web: "pointer-events-none transition-colors" }),
   ),
   {
     variants: {
       variant: {
-        default: 'text-primary-foreground',
-        destructive: 'text-white',
-        outline: 'text-foreground',
-        secondary: 'text-secondary-foreground',
-        ghost: 'text-foreground',
+        default: "text-primary-foreground",
+        destructive: "text-white",
+        outline: "text-foreground",
+        secondary: "text-secondary-foreground",
+        ghost: "text-foreground",
         link: cn(
-          'text-primary',
-          Platform.select({ web: 'underline-offset-4 group-hover:underline' })
+          "text-primary",
+          Platform.select({ web: "underline-offset-4 group-hover:underline" }),
         ),
-        soft: 'text-primary',
+        soft: "text-primary",
       },
       size: {
-        xs: 'text-xs',
-        sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
-        xl: 'text-xl',
-        '2xl': 'text-xl',
-        icon: 'text-base',
+        xs: "text-xs",
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
+        xl: "text-xl",
+        "2xl": "text-xl",
+        icon: "text-base",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'md',
+      variant: "default",
+      size: "md",
     },
-  }
+  },
 );
 
 /**
  * Icon size mapping based on button size
  */
-const ICON_SIZES: Record<NonNullable<ButtonProps['size']>, number> = {
+const ICON_SIZES: Record<NonNullable<ButtonProps["size"]>, number> = {
   xs: 14,
   sm: 16,
   md: 20,
   lg: 22,
   xl: 24,
-  '2xl': 26,
+  "2xl": 26,
   icon: 20,
 };
 
@@ -164,11 +161,11 @@ export interface ButtonProps extends VariantProps<typeof buttonVariants> {
   /** Custom icon React node (for Lucide, custom SVGs, etc.) */
   icon?: React.ReactNode;
   /** Icon position when using symbol or icon */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
   /** Enable haptic feedback on press */
   haptic?: boolean;
   /** Haptic feedback intensity */
-  hapticStyle?: 'light' | 'medium' | 'heavy';
+  hapticStyle?: "light" | "medium" | "heavy";
   /** Optional confirmation dialog before executing onPress */
   confirmationAlert?: ConfirmationAlert;
 }
@@ -219,24 +216,24 @@ export function Button({
   onPress,
   disabled = false,
   loading = false,
-  variant = 'default',
-  size = 'md',
-  radius = 'lg',
+  variant = "default",
+  size = "md",
+  radius = "lg",
   fullWidth = true,
   className,
   textClassName,
   symbol,
   icon,
-  iconPosition = 'left',
+  iconPosition = "left",
   haptic = false,
-  hapticStyle = 'light',
+  hapticStyle = "light",
   confirmationAlert,
 }: ButtonProps) {
   // Get theme colors for icons using CSS variables
   const [primaryForeground, foreground, primary] = useCSSVariable([
-    '--color-primary-foreground',
-    '--color-foreground',
-    '--color-primary',
+    "--color-primary-foreground",
+    "--color-foreground",
+    "--color-primary",
   ]);
 
   // Loading spinner animation
@@ -251,7 +248,7 @@ export function Button({
             toValue: 1,
             duration: 1000,
             useNativeDriver: true,
-          })
+          }),
         ).start();
       };
       spin();
@@ -262,27 +259,27 @@ export function Button({
 
   const spinInterpolate = spinValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
+    outputRange: ["0deg", "360deg"],
   });
 
   const isDisabled = disabled || loading;
-  const iconSize = ICON_SIZES[size ?? 'md'];
+  const iconSize = ICON_SIZES[size ?? "md"];
 
   // Determine the icon color based on variant (with fallbacks for undefined CSS vars)
   const iconColor = useMemo((): string => {
-    const defaultColor = '#ffffff';
+    const defaultColor = "#ffffff";
     switch (variant) {
-      case 'default':
+      case "default":
         return (primaryForeground as string) ?? defaultColor;
-      case 'destructive':
-        return '#ffffff'; // text-white
-      case 'outline':
-      case 'ghost':
+      case "destructive":
+        return "#ffffff"; // text-white
+      case "outline":
+      case "ghost":
         return (foreground as string) ?? defaultColor;
-      case 'secondary':
+      case "secondary":
         return (foreground as string) ?? defaultColor;
-      case 'link':
-      case 'soft':
+      case "link":
+      case "soft":
         return (primary as string) ?? defaultColor;
       default:
         return (primaryForeground as string) ?? defaultColor;
@@ -306,13 +303,13 @@ export function Button({
     if (confirmationAlert) {
       Alert.alert(confirmationAlert.title, confirmationAlert.message, [
         {
-          text: confirmationAlert.cancelText || 'Cancel',
-          style: 'cancel',
+          text: confirmationAlert.cancelText || "Cancel",
+          style: "cancel",
           onPress: confirmationAlert.onCancel,
         },
         {
-          text: confirmationAlert.confirmText || 'Confirm',
-          style: 'default',
+          text: confirmationAlert.confirmText || "Confirm",
+          style: "default",
           onPress: confirmationAlert.onConfirm || onPress,
         },
       ]);
@@ -336,13 +333,7 @@ export function Button({
     }
 
     if (symbol) {
-      return (
-        <IconSymbol
-          name={symbol}
-          size={iconSize}
-          color={iconColor}
-        />
-      );
+      return <IconSymbol name={symbol} size={iconSize} color={iconColor} />;
     }
 
     if (icon) {
@@ -353,16 +344,21 @@ export function Button({
   };
 
   const iconElement = renderIcon();
-  const showLeftIcon = iconElement && iconPosition === 'left';
-  const showRightIcon = iconElement && iconPosition === 'right';
+  const showLeftIcon = iconElement && iconPosition === "left";
+  const showRightIcon = iconElement && iconPosition === "right";
   const isIconOnly = !children && (symbol || icon || loading);
 
   return (
     <StyledPressableScale
       className={cn(
-        buttonVariants({ variant, size: isIconOnly ? 'icon' : size, radius, fullWidth }),
-        isDisabled && 'opacity-50',
-        className
+        buttonVariants({
+          variant,
+          size: isIconOnly ? "icon" : size,
+          radius,
+          fullWidth,
+        }),
+        isDisabled && "opacity-50",
+        className,
       )}
       onPress={isDisabled ? undefined : handlePress}
     >
@@ -370,10 +366,7 @@ export function Button({
 
       {children && (
         <Text
-          className={cn(
-            buttonTextVariants({ variant, size }),
-            textClassName
-          )}
+          className={cn(buttonTextVariants({ variant, size }), textClassName)}
         >
           {children}
         </Text>
@@ -389,4 +382,3 @@ export function Button({
 
 // Export variants for external use (e.g., custom button compositions)
 export { buttonTextVariants, buttonVariants };
-

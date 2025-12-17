@@ -28,7 +28,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 1],
       [screenWidth * 0.25, 0, -screenWidth],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
     /**
      * rotate: Card rotates from 2° to 4° then straightens to 0°.
@@ -39,7 +39,7 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       activeIndex.get(),
       [index - 1, index, index + 0.5],
       [2, 4, 0],
-      Extrapolation.CLAMP
+      Extrapolation.CLAMP,
     );
 
     return {
@@ -55,13 +55,13 @@ export const StoneCard: FC<SlideItemProps> = ({ index }) => {
       style={[rContainerStyle, styles.borderCurve]}
       className="absolute top-[10%] left-[50%] w-[42%] aspect-[1/1.4] rounded-3xl items-center justify-center gap-10 bg-stone-300 overflow-hidden"
     >
-    <Image
-                   source={require("@/assets/images/onboarding/xolace-caution1.png")}
-                   placeholder={{ blurhash }}
-                   contentFit="contain"
-                   transition={1000}
-                   style={[{ width: lottieSize, height: lottieSize }]}
-                 />
+      <Image
+        source={require("@/assets/images/onboarding/xolace-caution1.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[{ width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

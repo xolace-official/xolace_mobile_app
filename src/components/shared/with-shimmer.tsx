@@ -95,8 +95,8 @@ export function WithShimmer({
               withTiming(startValue, {
                 duration: 0, // Instant return to start position
                 easing: Easing.linear,
-              })
-            )
+              }),
+            ),
           )
         : withTiming(endValue, {
             duration: duration * 1000,
@@ -106,7 +106,7 @@ export function WithShimmer({
     translateX.value = withRepeat(
       animationSequence,
       -1, // Infinite repetition
-      false // Don't reverse the animation
+      false, // Don't reverse the animation
     );
   }, [duration, delay, direction, translateX]);
 
@@ -118,7 +118,8 @@ export function WithShimmer({
 
   // Handle layout measurement to get children's natural dimensions
   const handleLayout = (event: LayoutChangeEvent) => {
-    const { width: measuredWidth, height: measuredHeight } = event.nativeEvent.layout;
+    const { width: measuredWidth, height: measuredHeight } =
+      event.nativeEvent.layout;
     if (measuredWidth > 0 && measuredHeight > 0) {
       setWidth(measuredWidth);
       setHeight(measuredHeight);
