@@ -118,5 +118,3 @@ export function NetworkStatusBanner() {
     </Modal>
   );
 }
-
-export default NetworkStatusBanner;

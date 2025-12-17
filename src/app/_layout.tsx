@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
-import NetworkStatusBanner from "../components/shared/NetworkStatusBanner";
+import { NetworkStatusBanner } from "../components/shared/NetworkStatusBanner";
 
 import { useAppStore } from "../store";
 // import from packages
