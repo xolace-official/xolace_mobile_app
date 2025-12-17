@@ -1,9 +1,22 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Text, View, Pressable } from "react-native";
 import { Stack } from "expo-router";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { Pressable, View } from "react-native";
 
+import { FilterBottomSheet } from "@/src/features/campfire/manage/filter-bottom-sheet";
+import { useMockJoinedCampfires } from "@/src/features/campfire/manage/hooks/use-mock-joined-campfires";
+import { JoinedCampfireCard } from "@/src/features/campfire/manage/join-campfire-card";
+import { CampfireFilter, UserCampfireFavoriteJoin } from "@/src/types";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { LegendListRef } from "@legendapp/list";
 import { AnimatedLegendList } from "@legendapp/list/reanimated";
+import { Divider, SkeletonGroup } from "heroui-native";
+import { SquareDashedMousePointer } from "lucide-react-native";
 import Animated, {
   Extrapolation,
   interpolate,
@@ -12,18 +25,11 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { SquareDashedMousePointer } from "lucide-react-native";
 import { scheduleOnRN } from "react-native-worklets";
-import { LargeTitle } from "../shared/large-title";
-import { SearchBar } from "../shared/search-bar";
-import { CampfireFilter, UserCampfireFavoriteJoin } from "@/src/types";
-import BottomSheet from "@gorhom/bottom-sheet";
-import { useMockJoinedCampfires } from "@/src/features/campfire/manage/hooks/use-mock-joined-campfires";
-import { FilterBottomSheet } from "@/src/features/campfire/manage/filter-bottom-sheet";
 import { withUniwind } from "uniwind";
 import { AppText } from "../builders/app-text";
-import { Skeleton, SkeletonGroup, Divider } from "heroui-native";
-import { JoinedCampfireCard } from "@/src/features/campfire/manage/join-campfire-card";
+import { LargeTitle } from "../shared/large-title";
+import { SearchBar } from "../shared/search-bar";
 
 const UniSquareDashedMousePointer = withUniwind(SquareDashedMousePointer);
 
@@ -35,14 +41,6 @@ const _searchBarMarginBottomDistance =
   _searchBarMarginBottomMax - _searchBarMarginBottomMin;
 const _searchBarAnimationDistance =
   _searchBarHeight + _searchBarMarginBottomDistance;
-
-const manageData = Array.from({ length: 20 }, (_, i) => ({
-  id: `item-${i}`,
-  title: `Discovery Item ${i + 1}`,
-  description: "Description for discovery item", // Added mock description
-}));
-
-type ManageItem = (typeof manageData)[number];
 
 export const ManageCampfires = () => {
   const insets = useSafeAreaInsets();
@@ -60,6 +58,15 @@ export const ManageCampfires = () => {
   const joinedCount = useMemo(() => {
     return campfires.filter((c) => c.isJoined).length;
   }, [campfires]);
+
+  // Reset scroll position and animation value when loading starts
+  // This prevents layout shifts caused by the container padding reacting to stale scroll position
+  useEffect(() => {
+    if (isLoading) {
+      offsetY.value = 0;
+      listRef.current?.scrollToOffset({ offset: 0, animated: false });
+    }
+  }, [isLoading, offsetY]);
 
   const handleOpenFilter = () => {
     bottomSheetRef.current?.expand();
