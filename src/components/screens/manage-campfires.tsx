@@ -16,13 +16,14 @@ import { SquareDashedMousePointer } from "lucide-react-native";
 import { scheduleOnRN } from "react-native-worklets";
 import { LargeTitle } from "../shared/large-title";
 import { SearchBar } from "../shared/search-bar";
-import { CampfireFilter } from "@/src/types";
+import { CampfireFilter, UserCampfireFavoriteJoin } from "@/src/types";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useMockJoinedCampfires } from "@/src/features/campfire/manage/hooks/use-mock-joined-campfires";
 import { FilterBottomSheet } from "@/src/features/campfire/manage/filter-bottom-sheet";
 import { withUniwind } from "uniwind";
 import { AppText } from "../builders/app-text";
-import { Skeleton, SkeletonGroup } from "heroui-native";
+import { Skeleton, SkeletonGroup, Divider } from "heroui-native";
+import { JoinedCampfireCard } from "@/src/features/campfire/manage/join-campfire-card";
 
 const UniSquareDashedMousePointer = withUniwind(SquareDashedMousePointer);
 
@@ -119,17 +120,12 @@ export const ManageCampfires = () => {
     );
   }, [joinedCount, offsetY]);
 
-  const renderItem = useCallback(({ item }: { item: ManageItem }) => {
-    return (
-      <View className="flex-row items-center mb-6 px-5">
-        <View className="h-12 w-12 rounded-full bg-neutral-900 mr-3" />
-        <View>
-          <Text className="text-white text-base mb-1">{item.title}</Text>
-          <View className="h-4 w-24 bg-neutral-900 rounded-full opacity-60" />
-        </View>
-      </View>
-    );
-  }, []);
+  const renderItem = useCallback(
+    ({ item }: { item: UserCampfireFavoriteJoin }) => {
+      return <JoinedCampfireCard campfire={item} />;
+    },
+    [],
+  );
 
   const EmptyComponent = () => {
     return (
@@ -180,9 +176,9 @@ export const ManageCampfires = () => {
       <Animated.View style={rContainerStyle} className="flex-1 bg-background">
         <AnimatedLegendList
           ref={listRef}
-          data={isLoading ? [] : manageData}
+          data={isLoading ? [] : campfires}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.campfireId}
           onScroll={scrollHandler}
           scrollEventThrottle={1000 / 60}
           ListHeaderComponent={ListHeader}
@@ -190,6 +186,7 @@ export const ManageCampfires = () => {
           ListEmptyComponent={isLoading ? LoadingComponent : EmptyComponent}
           contentContainerStyle={{ paddingBottom: 80 }}
           showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <Divider variant="thin" />}
           estimatedItemSize={72}
         />
       </Animated.View>
