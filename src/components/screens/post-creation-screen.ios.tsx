@@ -96,7 +96,7 @@ export const PostCreationScreen = () => {
     if (router.canGoBack()) {
       router.back();
     } else {
-      router.replace("/(app)/(x)/(tabs)/(feed)");
+      router.replace("/(app)/(protected)/(drawer)/(x)/(tabs)/(feed)");
     }
   }
 

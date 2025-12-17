@@ -1,0 +1,19 @@
+import { Drawer } from 'expo-router/drawer';
+
+import { DrawerContent } from '@/src/components/drawer';
+
+export default function DrawerLayout() {
+  return (
+    <Drawer
+      drawerContent={(props) => <DrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        swipeEdgeWidth: 0,
+        drawerType: 'slide',
+        drawerStyle: { width: 300 },
+        drawerHideStatusBarOnOpen: true,
+        drawerStatusBarAnimation: 'slide',
+      }}
+    />
+  );
+}
