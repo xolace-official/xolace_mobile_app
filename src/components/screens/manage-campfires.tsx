@@ -1,5 +1,6 @@
-import React, { useCallback, useRef } from "react";
-import { Text, View } from "react-native";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Text, View, Pressable } from "react-native";
+import { Stack } from "expo-router";
 
 import { LegendListRef } from "@legendapp/list";
 import { AnimatedLegendList } from "@legendapp/list/reanimated";
@@ -11,9 +12,19 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SquareDashedMousePointer } from "lucide-react-native";
 import { scheduleOnRN } from "react-native-worklets";
 import { LargeTitle } from "../shared/large-title";
 import { SearchBar } from "../shared/search-bar";
+import { CampfireFilter } from "@/src/types";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { useMockJoinedCampfires } from "@/src/features/campfire/manage/hooks/use-mock-joined-campfires";
+import { FilterBottomSheet } from "@/src/features/campfire/manage/filter-bottom-sheet";
+import { withUniwind } from "uniwind";
+import { AppText } from "../builders/app-text";
+import { Skeleton, SkeletonGroup } from "heroui-native";
+
+const UniSquareDashedMousePointer = withUniwind(SquareDashedMousePointer);
 
 // Animation constants tuned to match WhatsApp proportions
 const _searchBarHeight = 36;
@@ -37,6 +48,26 @@ export const ManageCampfires = () => {
   const headerHeight = insets.top + 55;
   const listRef = useRef<LegendListRef>(null);
   const offsetY = useSharedValue(0);
+
+  // filters
+  const [activeFilter, setActiveFilter] = useState<CampfireFilter>("all");
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  // Mock data hook - replace with actual data fetching
+  const { campfires, isLoading } = useMockJoinedCampfires("", activeFilter);
+
+  const joinedCount = useMemo(() => {
+    return campfires.filter((c) => c.isJoined).length;
+  }, [campfires]);
+
+  const handleOpenFilter = () => {
+    bottomSheetRef.current?.expand();
+  };
+
+  const handleFilterChange = (filter: CampfireFilter) => {
+    setActiveFilter(filter);
+    bottomSheetRef.current?.close();
+  };
 
   const scrollToOffset = (offset: number) => {
     listRef.current?.scrollToOffset({ offset, animated: true });
@@ -73,7 +104,7 @@ export const ManageCampfires = () => {
       <View className="px-5">
         <LargeTitle
           title="Manage Campfires"
-          subtitle="10 Joined"
+          subtitle={`${joinedCount} Joined`}
           offsetY={offsetY}
           searchBarAnimationDistance={_searchBarAnimationDistance}
           className="mb-4"
@@ -86,7 +117,7 @@ export const ManageCampfires = () => {
         />
       </View>
     );
-  }, [offsetY]);
+  }, [joinedCount, offsetY]);
 
   const renderItem = useCallback(({ item }: { item: ManageItem }) => {
     return (
@@ -100,21 +131,74 @@ export const ManageCampfires = () => {
     );
   }, []);
 
+  const EmptyComponent = () => {
+    return (
+      <View className="flex-1 items-center justify-center py-12">
+        <AppText className="text-center text-base text-muted-foreground">
+          You haven&apos;t joined any campfires yet.
+        </AppText>
+      </View>
+    );
+  };
+
+  const LoadingComponent = () => {
+    return (
+      <View className="flex-1 items-center justify-center py-5 gap-3 px-5">
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <SkeletonGroup
+            key={item}
+            isLoading={isLoading}
+            isSkeletonOnly
+            variant={"shimmer"}
+            className="flex-row items-center gap-3"
+          >
+            <SkeletonGroup.Item className="size-12 rounded-xl" />
+            <View className="flex-1 gap-1.5">
+              <SkeletonGroup.Item className="h-4 w-full rounded-md" />
+              <SkeletonGroup.Item className="h-3 w-2/3 rounded-md" />
+            </View>
+          </SkeletonGroup>
+        ))}
+      </View>
+    );
+  };
+
   return (
-    <Animated.View style={rContainerStyle} className="flex-1 bg-background">
-      <AnimatedLegendList
-        ref={listRef}
-        data={manageData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        onScroll={scrollHandler}
-        scrollEventThrottle={1000 / 60}
-        ListHeaderComponent={ListHeader}
-        ListHeaderComponentStyle={{ paddingTop: headerHeight }}
-        contentContainerStyle={{ paddingBottom: 80 }}
-        showsVerticalScrollIndicator={false}
-        estimatedItemSize={72}
+    <>
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <Pressable className="pl-1" onPress={handleOpenFilter}>
+              <UniSquareDashedMousePointer
+                size={30}
+                className="text-foreground"
+              />
+            </Pressable>
+          ),
+        }}
       />
-    </Animated.View>
+      <Animated.View style={rContainerStyle} className="flex-1 bg-background">
+        <AnimatedLegendList
+          ref={listRef}
+          data={isLoading ? [] : manageData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          onScroll={scrollHandler}
+          scrollEventThrottle={1000 / 60}
+          ListHeaderComponent={ListHeader}
+          ListHeaderComponentStyle={{ paddingTop: headerHeight }}
+          ListEmptyComponent={isLoading ? LoadingComponent : EmptyComponent}
+          contentContainerStyle={{ paddingBottom: 80 }}
+          showsVerticalScrollIndicator={false}
+          estimatedItemSize={72}
+        />
+      </Animated.View>
+
+      <FilterBottomSheet
+        ref={bottomSheetRef}
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+      />
+    </>
   );
 };
