@@ -71,7 +71,7 @@ export const PostButton: FC = () => {
             radius={'full'}
             fullWidth={false}
             className="bg-segment"
-            onPress={()=> router.push('/(app)/(post-creation)')}
+            onPress={()=> router.push('/(app)/(protected)/(post-creation)')}
         >
             <AntDesign name="plus" size={20} color="#fff" />
         </Button>
