@@ -9,6 +9,7 @@ import { Pressable, View } from "react-native";
 
 import { AppText } from "@/src/components/builders/app-text";
 import { useThemeColor } from "heroui-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { CampfireFilter } from "@/src/types";
 
@@ -21,10 +22,11 @@ export const FilterBottomSheet = forwardRef<
   BottomSheet,
   FilterBottomSheetProps
 >(({ activeFilter, onFilterChange }, ref) => {
-  const themeColorForeground = useThemeColor("foreground");
-  const themeColorBackground = useThemeColor("background");
+  const themeColorForeground = useThemeColor("overlay-foreground");
+  const themeColorBackground = useThemeColor("overlay");
 
   const snapPoints = useMemo(() => [280], []);
+  const insets = useSafeAreaInsets();
 
   const filters: { value: CampfireFilter; label: string }[] = [
     { value: "all", label: "All Campfires" },
@@ -35,6 +37,8 @@ export const FilterBottomSheet = forwardRef<
     <BottomSheet
       ref={ref}
       index={-1}
+      detached
+      bottomInset={insets.bottom + 32}
       snapPoints={snapPoints}
       enablePanDownToClose
       backdropComponent={(props) => (
@@ -70,13 +74,13 @@ export const FilterBottomSheet = forwardRef<
                 onPress={() => onFilterChange(filter.value)}
                 className={`rounded-2xl border p-4 active:opacity-70 ${
                   isActive
-                    ? "bg-primary/10 border-white/10"
-                    : "border-white/10 bg-white/5"
+                    ? "bg-accent border-white/10"
+                    : "border-white/10 bg-overlay/95"
                 }`}
               >
                 <AppText
                   className={`text-base font-medium ${
-                    isActive ? "text-primary" : "text-foreground"
+                    isActive ? "text-accent-foreground" : "text-foreground"
                   }`}
                 >
                   {filter.label}
