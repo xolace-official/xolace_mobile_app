@@ -13,12 +13,14 @@ import {
   HeaderTitleProps,
 } from "@react-navigation/elements";
 import { cn } from "@/src/utils/cn";
+import { AppText } from "../builders/app-text";
 
 // whatsapp-header-large-title-animation 🔽
 // whatsapp-updates-screen-header-animation 🔽
 
 type Props = {
   title: string;
+  subtitle?: string;
   offsetY: SharedValue<number>;
   searchBarAnimationDistance?: number;
   className?: string;
@@ -26,6 +28,7 @@ type Props = {
 
 export const LargeTitle: FC<Props> = ({
   title,
+  subtitle,
   offsetY,
   searchBarAnimationDistance = 0,
   className,
@@ -86,11 +89,14 @@ export const LargeTitle: FC<Props> = ({
           // Why: headerTitle must be wrapped to receive animated styles (opacity here)
           <Animated.View style={rTitleOpacityStyle}>
             <HeaderTitleComponent {...props}>{title}</HeaderTitleComponent>
+            {subtitle && (
+              <AppText className="text-muted text-xs">{subtitle}</AppText>
+            )}
           </Animated.View>
         );
       },
     });
-  }, [title, navigation, rTitleOpacityStyle]);
+  }, [title, subtitle, navigation, rTitleOpacityStyle]);
 
   return (
     <Animated.Text
