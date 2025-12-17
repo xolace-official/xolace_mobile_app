@@ -3,7 +3,6 @@ import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Pressable, Text } from 'react-native';
 import { Avatar, AvatarFallback , AvatarImage } from '@/src/components/ui/avatar';
 import { useNavigation } from 'expo-router';
-import { DrawerToggleButton } from '@react-navigation/drawer';
 
 const DiscoveryLayout = () => {
   const navigation = useNavigation() as any;

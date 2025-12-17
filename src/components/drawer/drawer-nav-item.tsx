@@ -1,6 +1,6 @@
 import { ComponentType, ReactNode } from 'react';
 
-import { Pressable, View, Text } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { AppText } from '../builders/app-text';
 import { Chip } from 'heroui-native';
 import { withUniwind } from 'uniwind';

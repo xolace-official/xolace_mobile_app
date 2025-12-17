@@ -1,5 +1,4 @@
 import { Stack } from 'expo-router';
-import { Uniwind } from 'uniwind'
 
 
 const ProtectedLayout = () => {

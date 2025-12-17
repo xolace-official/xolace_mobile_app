@@ -1,6 +1,5 @@
 import { View } from 'react-native';
 import { withUniwind } from 'uniwind';
-import { ChevronDown } from 'lucide-react-native';
 
 import {
   Accordion,
@@ -33,7 +32,6 @@ export interface DrawerAccordionSectionProps {
   defaultOpen?: boolean;
 }
 
-const ChevronDownComponent = withUniwind(ChevronDown);
 
 export function DrawerAccordionSection({
   value,
