@@ -7,7 +7,7 @@ import Animated, {
   Extrapolation,
   withSpring,
 } from "react-native-reanimated";
-import { Image } from 'expo-image';
+import { Image } from "expo-image";
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 import { blurhash } from "@/src/constants/image";
@@ -68,12 +68,12 @@ export const RedCard: FC<SlideItemProps> = ({ index }) => {
       className="absolute w-[45%] aspect-[1/1.4] top-0 left-[28%] rounded-3xl items-center justify-center gap-10 bg-red-500 overflow-hidden"
     >
       <Image
-          source={require("@/assets/images/onboarding/onboarding1.png")}
-          placeholder={{ blurhash }}
-          contentFit="contain"
-          transition={1000}
-          style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
-        />
+        source={require("@/assets/images/onboarding/onboarding1.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };
@@ -83,6 +83,6 @@ const styles = StyleSheet.create({
     borderCurve: "continuous",
   },
   lottie: {
-    alignSelf: 'center'
+    alignSelf: "center",
   },
 });

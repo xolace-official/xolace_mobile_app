@@ -1,19 +1,21 @@
-import { ReactNode, useCallback } from 'react';
+import { ReactNode, useCallback } from "react";
 
-import { HeroUINativeProvider } from 'heroui-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { KeyboardAvoidingView, KeyboardProvider } from 'react-native-keyboard-controller';
+import { HeroUINativeProvider } from "heroui-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import {
+  KeyboardAvoidingView,
+  KeyboardProvider,
+} from "react-native-keyboard-controller";
 
-import { Toaster } from 'sonner-native';
+import { Toaster } from "sonner-native";
 
-import { AppThemeProvider } from './app-theme-context';
-import { ThemeSync } from '../utils/theme-sync';
-import { PostCreationProvider } from './postCreationContext';
-import { QueryProvider } from './query-provider';
+import { AppThemeProvider } from "./app-theme-context";
+import { ThemeSync } from "../utils/theme-sync";
+import { PostCreationProvider } from "./postCreationContext";
+import { QueryProvider } from "./query-provider";
 
 export function RootProvider({ children }: { children: ReactNode }) {
-
-    const contentWrapper = useCallback(
+  const contentWrapper = useCallback(
     (children: React.ReactNode) => (
       <KeyboardAvoidingView
         pointerEvents="box-none"
@@ -24,7 +26,7 @@ export function RootProvider({ children }: { children: ReactNode }) {
         {children}
       </KeyboardAvoidingView>
     ),
-    []
+    [],
   );
 
   return (
@@ -35,11 +37,11 @@ export function RootProvider({ children }: { children: ReactNode }) {
           <KeyboardProvider>
             <PostCreationProvider>
               <HeroUINativeProvider
-              config={{
-            toast: {
-              contentWrapper,
-            },
-          }}
+                config={{
+                  toast: {
+                    contentWrapper,
+                  },
+                }}
               >
                 {children}
               </HeroUINativeProvider>

@@ -1,5 +1,5 @@
 import { BlurView } from "expo-blur";
-import { Tabs } from 'expo-router';
+import { Tabs } from "expo-router";
 import React, { FC, PropsWithChildren, useContext, useEffect, useRef } from "react";
 import { Platform, Animated as RNAnimated, StyleSheet, View } from "react-native";
 import Animated, {
@@ -9,18 +9,17 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { HapticTab } from '@/src/components/haptic-tab';
+import { HapticTab } from "@/src/components/haptic-tab";
 import { AnimatedTabsContainer } from "@/src/components/search/animated-tabs-container";
 import { PostButton } from "@/src/components/shared/post-button";
-import { IconSymbol } from '@/src/components/ui/icon-symbol';
+import { IconSymbol } from "@/src/components/ui/icon-symbol";
 import { SearchTransitionContext } from "@/src/context/search-transition-context";
-import { TabsContext } from '@/src/providers/tab-provider';
-
+import { TabsContext } from "@/src/providers/tab-provider";
 
 const _duration = 200;
 
 export type RouteParams = {
-  isBottomBlurVisible?: 'true' | 'false';
+  isBottomBlurVisible?: "true" | "false";
 };
 
 type AnimatedIconWrapperProps = {
@@ -46,10 +45,8 @@ const AnimatedIconWrapper: FC<PropsWithChildren<AnimatedIconWrapperProps>> = ({
   );
 };
 
-
 export default function TabLayout() {
-
-    const {
+  const {
     tabBarHeight,
     tabBarPaddingBottom,
     isBottomBlurVisible,
@@ -57,7 +54,7 @@ export default function TabLayout() {
     setIsAddButtonVisible,
   } = useContext(TabsContext);
 
-   const homeIconScale = useSharedValue(1);
+  const homeIconScale = useSharedValue(1);
   const discoveryIconScale = useSharedValue(1);
   const checkinIconScale = useSharedValue(1);
   const notificationIconScale = useSharedValue(1);
@@ -65,8 +62,7 @@ export default function TabLayout() {
 
   const { onOpenSearchModal } = useContext(SearchTransitionContext);
 
-
-    const tabBarOpacity = useRef(new RNAnimated.Value(0)).current;
+  const tabBarOpacity = useRef(new RNAnimated.Value(0)).current;
 
   useEffect(() => {
     RNAnimated.timing(tabBarOpacity, {
@@ -74,11 +70,10 @@ export default function TabLayout() {
       duration: _duration,
       useNativeDriver: true,
     }).start();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBottomBlurVisible]);
 
-
-    const rBlurContainerStyle = useAnimatedStyle(() => {
+  const rBlurContainerStyle = useAnimatedStyle(() => {
     return {
       opacity: withTiming(isBottomBlurVisible ? 1 : 0, { duration: _duration }),
     };
@@ -92,9 +87,9 @@ export default function TabLayout() {
 
   return (
     <AnimatedTabsContainer>
-    <Tabs
-      screenOptions={{
-        headerShown: false,
+      <Tabs
+        screenOptions={{
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: "pink",
           tabBarInactiveTintColor: "#D9D9D9",
@@ -120,129 +115,126 @@ export default function TabLayout() {
               )}
             </Animated.View>
           ),
-        tabBarButton: HapticTab,
-      }}
-       screenListeners={{
-        tabPress: () => {
-          setTimeout(() => {
-            setIsBottomBlurVisible(true);
-          }, 50);
-        },
-        focus: (e) => {
-            if (e.target?.includes('checkin')) {
+          tabBarButton: HapticTab,
+        }}
+        screenListeners={{
+          tabPress: () => {
+            setTimeout(() => {
+              setIsBottomBlurVisible(true);
+            }, 50);
+          },
+          focus: (e) => {
+            if (e.target?.includes("checkin")) {
               setIsAddButtonVisible(false);
             } else {
               setIsAddButtonVisible(true);
             }
           },
-      }}
+        }}
       >
-      <Tabs.Screen
-        name="(feed)"
-        options={{
-          tabBarLabel: 'Fireside',
-          title: 'Fireside',
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <AnimatedIconWrapper scale={homeIconScale}>
-                {
-                  focused && Platform.OS === "ios" ? (
+        <Tabs.Screen
+          name="(feed)"
+          options={{
+            tabBarLabel: "Fireside",
+            title: "Fireside",
+            tabBarIcon: ({ color, focused }) => {
+              return (
+                <AnimatedIconWrapper scale={homeIconScale}>
+                  {focused && Platform.OS === "ios" ? (
                     <IconSymbol size={28} name="fireplace.fill" color={color} />
                   ) : focused ? (
                     <IconSymbol size={28} name="fireplace" color={color} />
-                  ): (
+                  ) : (
                     <IconSymbol size={28} name="fireplace" color={color} />
-                  )
-                }
-              </AnimatedIconWrapper>
-            )
-          },
-        }}
-      />
+                  )}
+                </AnimatedIconWrapper>
+              );
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="(discovery)"
-        options={{
-          tabBarLabel: 'Discovery',
-          title: 'Discovery',
-          tabBarIcon: ({ color }) => {
-            return (
-              <AnimatedIconWrapper scale={discoveryIconScale}>
-                <IconSymbol size={28} name="dot.radiowaves.left.and.right" color={color} />
-              </AnimatedIconWrapper>
-            )
-          },
-        }}
-      />
+        <Tabs.Screen
+          name="(discovery)"
+          options={{
+            tabBarLabel: "Discovery",
+            title: "Discovery",
+            tabBarIcon: ({ color }) => {
+              return (
+                <AnimatedIconWrapper scale={discoveryIconScale}>
+                  <IconSymbol size={28} name="dot.radiowaves.left.and.right" color={color} />
+                </AnimatedIconWrapper>
+              );
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="(notification)"
-        options={{
-          tabBarLabel: 'Notifications',
-          title: 'Notifications',
-          tabBarIcon: ({ color , focused}) => {
-            return (
-              <AnimatedIconWrapper scale={notificationIconScale}>
-                {
-                  focused ? (
+        <Tabs.Screen
+          name="(notification)"
+          options={{
+            tabBarLabel: "Notifications",
+            title: "Notifications",
+            tabBarIcon: ({ color, focused }) => {
+              return (
+                <AnimatedIconWrapper scale={notificationIconScale}>
+                  {focused ? (
                     <IconSymbol size={28} name="bell.fill" color={color} />
                   ) : (
                     <IconSymbol size={28} name="bell" color={color} />
-                  )
-                }
-              </AnimatedIconWrapper>
-            )
-          },
-        }}
-      />
+                  )}
+                </AnimatedIconWrapper>
+              );
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="(checkin)"
-        options={{
-          tabBarLabel: 'Check-in',
-          title: 'Check-in',
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <AnimatedIconWrapper scale={checkinIconScale}>
-                {
-                  focused ? (
+        <Tabs.Screen
+          name="(checkin)"
+          options={{
+            tabBarLabel: "Check-in",
+            title: "Check-in",
+            tabBarIcon: ({ color, focused }) => {
+              return (
+                <AnimatedIconWrapper scale={checkinIconScale}>
+                  {focused ? (
                     <IconSymbol size={28} name="heart.text.square.fill" color={color} />
                   ) : (
                     <IconSymbol size={28} name="heart.text.square" color={color} />
-                  )
-                }
-              </AnimatedIconWrapper>
-            )
-          },
-        }}
-      />
+                  )}
+                </AnimatedIconWrapper>
+              );
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="search"
-        options={{
-          tabBarButton: (props) => (
-            <HapticTab {...props} onPress={(e) => {
-               // Prevent default navigation if handled here?
-               // Usually for modals we just fire the action.
-               // e.preventDefault() might be needed if we don't want to navigate to the "search" route.
-               // But usually we just return false or prevent default.
-               // HapticTab passes onPress.
-               e.preventDefault();
-               onOpenSearchModal();
-            }} />
-          ),
-          tabBarIcon: ({ color }) => {
-            return (
-              <AnimatedIconWrapper scale={exploreIconScale}>
-                <IconSymbol size={28} name="magnifyingglass" color={color} />
-              </AnimatedIconWrapper>
-            )
-          },
-        }}
-      />
-    </Tabs>
+        <Tabs.Screen
+          name="search"
+          options={{
+            tabBarButton: (props) => (
+              <HapticTab
+                {...props}
+                onPress={(e) => {
+                  // Prevent default navigation if handled here?
+                  // Usually for modals we just fire the action.
+                  // e.preventDefault() might be needed if we don't want to navigate to the "search" route.
+                  // But usually we just return false or prevent default.
+                  // HapticTab passes onPress.
+                  e.preventDefault();
+                  onOpenSearchModal();
+                }}
+              />
+            ),
+            tabBarIcon: ({ color }) => {
+              return (
+                <AnimatedIconWrapper scale={exploreIconScale}>
+                  <IconSymbol size={28} name="magnifyingglass" color={color} />
+                </AnimatedIconWrapper>
+              );
+            },
+          }}
+        />
+      </Tabs>
 
-     <Animated.View
+      <Animated.View
         className="absolute right-4"
         style={[rFabStyle, { bottom: tabBarHeight + 12 }]}
       >

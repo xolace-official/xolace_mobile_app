@@ -12,7 +12,6 @@ import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 import { blurhash } from "@/src/constants/image";
 
-
 export const BlueCard: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
   const lottieSize = screenWidth * 0.7;
@@ -68,13 +67,13 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       style={[rContainerStyle, styles.borderCurve]}
       className="absolute top-[25%] left-[15%] w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
     >
-     <Image
-               source={require("@/assets/images/onboarding/onboarding5.png")}
-               placeholder={{ blurhash }}
-               contentFit="contain"
-               transition={1000}
-               style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
-             />
+      <Image
+        source={require("@/assets/images/onboarding/onboarding5.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };
@@ -87,4 +86,3 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
-

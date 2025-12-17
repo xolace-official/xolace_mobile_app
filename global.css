@@ -1,11 +1,11 @@
-@import 'tailwindcss';
-@import 'uniwind';
+@import "tailwindcss";
+@import "uniwind";
 
-@import 'heroui-native/styles';
+@import "heroui-native/styles";
 
-@import './themes/lavander.css';
-@import './themes/mint.css';
-@import './themes/sky.css';
+@import "./themes/lavander.css";
+@import "./themes/mint.css";
+@import "./themes/sky.css";
 
 /* Path to the heroui-native lib inside node_modules from the root of your project */
 @source './node_modules/heroui-native/lib';
@@ -55,7 +55,7 @@
       --surface-foreground: oklch(0.9513 0.0074 260.7315);
       --overlay: oklch(0.23 0.04 281.8285);
       --overlay-foreground: oklch(0.9513 0.0074 260.7315);
-      
+
       --default: oklch(0.25 0.05 281.8285);
       --default-foreground: oklch(0.9513 0.0074 260.7315);
 
@@ -75,7 +75,6 @@
       --segment-foreground: oklch(0.9513 0.0074 260.7315);
       --divider: oklch(0.28 0.045 281.8285);
       --link: oklch(0.75 0.18 341.4084);
-
     }
 
     /* Light theme variables */
@@ -102,7 +101,7 @@
       --surface-foreground: oklch(0.1649 0.0352 281.8285);
       --overlay: oklch(0.99 0.002 247.839);
       --overlay-foreground: oklch(0.1649 0.0352 281.8285);
-      
+
       --default: oklch(0.94 0.01 247.839);
       --default-foreground: oklch(0.1649 0.0352 281.8285);
 
@@ -146,7 +145,7 @@
 }
 
 @layer utilities {
-    .flex-row-center {
+  .flex-row-center {
     @apply flex flex-row items-center justify-center;
   }
 

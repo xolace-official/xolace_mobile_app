@@ -12,13 +12,9 @@ interface AppThemeContextType {
   toggleTheme: () => void;
 }
 
-const AppThemeContext = createContext<AppThemeContextType | undefined>(
-  undefined
-);
+const AppThemeContext = createContext<AppThemeContextType | undefined>(undefined);
 
-export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // This tells you what Uniwind currently has applied
   const { theme: appliedTheme } = useUniwind();
 
@@ -41,9 +37,9 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setTheme = useCallback(
     (newTheme: ThemeName) => {
-        console.log('newTheme ', newTheme);
-      setStoredTheme(newTheme);      // persists
-      Uniwind.setTheme(newTheme);    // immediate apply
+      console.log("newTheme ", newTheme);
+      setStoredTheme(newTheme); // persists
+      Uniwind.setTheme(newTheme); // immediate apply
     },
     [setStoredTheme]
   );
@@ -91,11 +87,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     [currentTheme, isLight, isDark, setTheme, toggleTheme]
   );
 
-  return (
-    <AppThemeContext.Provider value={value}>
-      {children}
-    </AppThemeContext.Provider>
-  );
+  return <AppThemeContext.Provider value={value}>{children}</AppThemeContext.Provider>;
 };
 
 export const useAppTheme = () => {

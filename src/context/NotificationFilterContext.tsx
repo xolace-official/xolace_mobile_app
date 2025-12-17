@@ -1,12 +1,5 @@
 import * as Haptics from "expo-haptics";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useMemo,
-  useCallback,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useMemo, useCallback, useState } from "react";
 
 export type NotificationFilterMode = "status" | "time";
 export type NotificationStatusFilter = "all" | "important" | "unread" | "read";
@@ -18,21 +11,19 @@ export type NotificationFilterOption<T extends string> = {
   icon: string;
 };
 
-export const statusFilterOptions: NotificationFilterOption<NotificationStatusFilter>[] =
-  [
-    { value: "all", label: "All", icon: "bell.badge" },
-    { value: "important", label: "Important", icon: "exclamationmark.circle" },
-    { value: "unread", label: "Unread", icon: "envelope.badge" },
-    { value: "read", label: "Read", icon: "envelope.open" },
-  ];
+export const statusFilterOptions: NotificationFilterOption<NotificationStatusFilter>[] = [
+  { value: "all", label: "All", icon: "bell.badge" },
+  { value: "important", label: "Important", icon: "exclamationmark.circle" },
+  { value: "unread", label: "Unread", icon: "envelope.badge" },
+  { value: "read", label: "Read", icon: "envelope.open" },
+];
 
-export const timeFilterOptions: NotificationFilterOption<NotificationTimeFilter>[] =
-  [
-    { value: "all", label: "All time", icon: "calendar" },
-    { value: "today", label: "Today", icon: "sun.max" },
-    { value: "week", label: "This week", icon: "calendar.badge.clock" },
-    { value: "month", label: "This month", icon: "calendar.badge.exclamationmark" },
-  ];
+export const timeFilterOptions: NotificationFilterOption<NotificationTimeFilter>[] = [
+  { value: "all", label: "All time", icon: "calendar" },
+  { value: "today", label: "Today", icon: "sun.max" },
+  { value: "week", label: "This week", icon: "calendar.badge.clock" },
+  { value: "month", label: "This month", icon: "calendar.badge.exclamationmark" },
+];
 
 type NotificationFilterContextValue = {
   filterMode: NotificationFilterMode;
@@ -43,21 +34,14 @@ type NotificationFilterContextValue = {
   setSelectedTimeRange: (range: NotificationTimeFilter) => void;
 };
 
-const NotificationFilterContext = createContext<
-  NotificationFilterContextValue | undefined
->(undefined);
+const NotificationFilterContext = createContext<NotificationFilterContextValue | undefined>(
+  undefined
+);
 
-export function NotificationFilterProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const [filterMode, setFilterMode] =
-    useState<NotificationFilterMode>("status");
-  const [selectedStatus, setSelectedStatus] =
-    useState<NotificationStatusFilter>("all");
-  const [selectedTimeRange, setSelectedTimeRange] =
-    useState<NotificationTimeFilter>("all");
+export function NotificationFilterProvider({ children }: { children: ReactNode }) {
+  const [filterMode, setFilterMode] = useState<NotificationFilterMode>("status");
+  const [selectedStatus, setSelectedStatus] = useState<NotificationStatusFilter>("all");
+  const [selectedTimeRange, setSelectedTimeRange] = useState<NotificationTimeFilter>("all");
 
   const handleModeChange = useCallback((mode: NotificationFilterMode) => {
     Haptics.selectionAsync();
@@ -111,9 +95,7 @@ export function NotificationFilterProvider({
 export function useNotificationFilter() {
   const context = useContext(NotificationFilterContext);
   if (!context) {
-    throw new Error(
-      "useNotificationFilter must be used within a NotificationFilterProvider"
-    );
+    throw new Error("useNotificationFilter must be used within a NotificationFilterProvider");
   }
   return context;
 }

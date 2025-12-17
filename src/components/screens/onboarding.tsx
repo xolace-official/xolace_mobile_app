@@ -125,7 +125,9 @@ export const Onboarding = () => {
           </OnboardingSlideContainer>
           <OnboardingSlideContainer
             title={"Xolace is support,\nnot medical advice."}
-            description={"Xolace is a peer-support and self-reflection space, not a diagnosis tool, and not an emergency service. If you’re in crisis or feel unsafe, contact local emergency services or a trusted crisis line in your country.\n\n Tap “I understand” to continue."}
+            description={
+              "Xolace is a peer-support and self-reflection space, not a diagnosis tool, and not an emergency service. If you’re in crisis or feel unsafe, contact local emergency services or a trusted crisis line in your country.\n\n Tap “I understand” to continue."
+            }
           >
             <NotMedicalAdvice />
           </OnboardingSlideContainer>

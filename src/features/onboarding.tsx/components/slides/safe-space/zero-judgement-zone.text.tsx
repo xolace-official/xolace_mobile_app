@@ -29,7 +29,11 @@ export const ZeroJudgmentZoneText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute -top-[5%] left-[2%]" textClassName="text-sm">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute -top-[5%] left-[2%]"
+      textClassName="text-sm"
+    >
       🤫 Zero Judgment Zone
     </SlideTextContainer>
   );

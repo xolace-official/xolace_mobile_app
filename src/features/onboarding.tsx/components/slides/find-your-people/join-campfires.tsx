@@ -30,7 +30,11 @@ export const JoinCampfireText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute -top-[10%] left-[5%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute -top-[10%] left-[5%]"
+      textClassName="text-base"
+    >
       🔥 Join Campfires
     </SlideTextContainer>
   );

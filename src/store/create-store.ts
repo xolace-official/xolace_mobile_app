@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-import { createJSONStorage, devtools, persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
-import { mmkvStorage } from './storage/mmkv';
-import { ThemeName } from '../types/theme.types';
+import { mmkvStorage } from "./storage/mmkv";
+import { ThemeName } from "../types/theme.types";
 
-export const ONBOARDING_VERSION = '2025.10.1';
+export const ONBOARDING_VERSION = "2025.10.1";
 
 type OnboardingSlice = {
   onboardingCompletedVersion: string | null;
@@ -38,7 +38,7 @@ type PrefLocalSlice = {
   resetToggles: () => void;
 };
 
-export type FeedFilterOption = 'latest' | 'popular' | 'trending' | 'campfires';
+export type FeedFilterOption = "latest" | "popular" | "trending" | "campfires";
 
 type FeedSlice = {
   feedFilter: FeedFilterOption;
@@ -72,7 +72,7 @@ export const useAppStore = create<AppState>()(
           set({ userId: null, email: null, isAuthenticated: false }),
 
         // ui slice
-        theme: 'system',
+        theme: "system",
         setTheme: (t) => set({ theme: t }),
 
         // profile local slice
@@ -87,7 +87,7 @@ export const useAppStore = create<AppState>()(
         resetToggles: () => set({ toggles: {} }),
 
         // feed slice
-        feedFilter: 'latest',
+        feedFilter: "latest",
         setFeedFilter: (filter) => set({ feedFilter: filter }),
 
         // onboarding (versioned)
@@ -101,7 +101,7 @@ export const useAppStore = create<AppState>()(
         _setHasHydrated: (v) => set({ _hasHydrated: v }),
       }),
       {
-        name: 'xolace-store',
+        name: "xolace-store",
         storage: createJSONStorage(() => mmkvStorage),
         partialize: (s) => ({
           // persist only what is safe/useful at boot

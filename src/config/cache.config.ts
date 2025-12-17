@@ -55,14 +55,19 @@ export const CACHE_CONFIG = {
    * Global query defaults (can be overridden per-query)
    */
   defaultStaleTime: minutesToMs(
-    getEnvNumber("EXPO_PUBLIC_CACHE_STALE_TIME_MINUTES", DEFAULT_STALE_TIME_MINUTES),
+    getEnvNumber(
+      "EXPO_PUBLIC_CACHE_STALE_TIME_MINUTES",
+      DEFAULT_STALE_TIME_MINUTES,
+    ),
   ),
 
   /**
    * How long unused cache stays in memory before GC
    * If we add persistence later, keep gcTime >= persistence.maxAge.
    */
-  gcTime: minutesToMs(getEnvNumber("EXPO_PUBLIC_CACHE_GC_TIME_MINUTES", DEFAULT_GC_TIME_MINUTES)),
+  gcTime: minutesToMs(
+    getEnvNumber("EXPO_PUBLIC_CACHE_GC_TIME_MINUTES", DEFAULT_GC_TIME_MINUTES),
+  ),
 
   /**
    * Resource-specific policies we know about today
@@ -70,7 +75,10 @@ export const CACHE_CONFIG = {
   feed: {
     // fast-moving + “feels live”
     staleTime: secondsToMs(
-      getEnvNumber("EXPO_PUBLIC_FEED_CACHE_STALE_TIME_SECONDS", DEFAULT_FEED_STALE_TIME_SECONDS),
+      getEnvNumber(
+        "EXPO_PUBLIC_FEED_CACHE_STALE_TIME_SECONDS",
+        DEFAULT_FEED_STALE_TIME_SECONDS,
+      ),
     ),
   },
 
@@ -100,7 +108,10 @@ export const CACHE_CONFIG = {
 
   tags: {
     staleTime: minutesToMs(
-      getEnvNumber("EXPO_PUBLIC_TAGS_CACHE_STALE_TIME_MINUTES", DEFAULT_TAGS_STALE_TIME_MINUTES),
+      getEnvNumber(
+        "EXPO_PUBLIC_TAGS_CACHE_STALE_TIME_MINUTES",
+        DEFAULT_TAGS_STALE_TIME_MINUTES,
+      ),
     ),
   },
 
@@ -124,7 +135,10 @@ export const CACHE_CONFIG = {
 
   videos: {
     staleTime: minutesToMs(
-      getEnvNumber("EXPO_PUBLIC_VIDEOS_CACHE_STALE_TIME_MINUTES", DEFAULT_VIDEOS_STALE_TIME_MINUTES),
+      getEnvNumber(
+        "EXPO_PUBLIC_VIDEOS_CACHE_STALE_TIME_MINUTES",
+        DEFAULT_VIDEOS_STALE_TIME_MINUTES,
+      ),
     ),
   },
 

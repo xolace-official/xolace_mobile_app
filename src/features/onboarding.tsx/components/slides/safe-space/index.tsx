@@ -6,7 +6,6 @@ import { SpeakFreelyText } from "./speak-freely-text";
 import { StayAnonymousText } from "./stay-anonymous-text";
 import { SlideContainer } from "../../slide-container";
 
-
 const SLIDE_INDEX = 1;
 
 export const SafeSpace: FC = () => {
@@ -20,4 +19,3 @@ export const SafeSpace: FC = () => {
     </SlideContainer>
   );
 };
-

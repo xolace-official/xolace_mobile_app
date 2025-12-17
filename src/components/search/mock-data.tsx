@@ -35,9 +35,7 @@ export const sections = [
 
 export const renderSectionHeader = ({ section: { title } }: { section: { title: string } }) => (
   <View className="px-4 py-2 mt-2">
-    <Text className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">
-      {title}
-    </Text>
+    <Text className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">{title}</Text>
   </View>
 );
 

@@ -6,7 +6,6 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-
 export const DigitalCampfireText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
@@ -31,9 +30,12 @@ export const DigitalCampfireText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[10%] left-[1%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[10%] left-[1%]"
+      textClassName="text-base"
+    >
       🔥 Digital Campfire
     </SlideTextContainer>
   );
 };
-

@@ -29,14 +29,14 @@ export function TabItem<T extends string>({
       onPress={onPress}
     >
       <View className="w-4 h-4 items-center justify-center">
-        <IconSymbol
-          name={icon}
-          size={14}
-          color={isActive ? "#f5f5f5" : "#a1a1a4"}
-        />
+        <IconSymbol name={icon} size={14} color={isActive ? "#f5f5f5" : "#a1a1a4"} />
       </View>
       <Text
-        className={isActive ? "text-sm font-medium text-foreground" : "text-sm font-medium text-muted-foreground"}
+        className={
+          isActive
+            ? "text-sm font-medium text-foreground"
+            : "text-sm font-medium text-muted-foreground"
+        }
       >
         {label}
       </Text>

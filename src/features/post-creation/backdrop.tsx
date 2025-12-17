@@ -10,7 +10,6 @@ import Animated, {
 import { BlurView } from "expo-blur";
 import { Pressable } from "react-native";
 
-
 // Using Animated.createAnimatedComponent so Reanimated can drive props/styles of non-animated primitives.
 // - AnimatedPressable: lets us toggle pointerEvents on the UI thread based on sheet index (prevents touches when closed)
 // - AnimatedBlurView: enables animating BlurView's intensity prop without JS bridge overhead

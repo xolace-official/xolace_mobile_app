@@ -3,24 +3,22 @@ import { useCallback, useContext, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { TabsContext } from '@/src/providers/tab-provider';
+import { TabsContext } from "@/src/providers/tab-provider";
 import { useHeaderAnimation } from "@/src/hooks/use-header-animation";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { dummyPosts, EnhancedPost } from "@/src/constants/dummy-data";
 import { AnimatedLegendList } from "@legendapp/list/reanimated";
-import { HomePost } from '../extras/home-post';
+import { HomePost } from "../extras/home-post";
 import { InfoCarousel } from "@/src/features/feed/info-carousel";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { Pressable } from "react-native";
-import {
-  useNavigation,
-} from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 //import { WithPullToRefresh } from "../shared/with-pull-to-refresh";
 
 export const Feed = () => {
-    const [headerHeight, setHeaderHeight] = useState(0);
-    // const [refreshing, setRefreshing] = useState(false);
-    const navigation = useNavigation() as any;
+  const [headerHeight, setHeaderHeight] = useState(0);
+  // const [refreshing, setRefreshing] = useState(false);
+  const navigation = useNavigation() as any;
 
   const insets = useSafeAreaInsets();
 
@@ -38,22 +36,22 @@ export const Feed = () => {
     handleXTabsOnScroll,
   });
 
-    // renderItem memoized for performance
+  // renderItem memoized for performance
   const _renderItem = useCallback(({ item }: { item: EnhancedPost }) => {
     return <HomePost />;
   }, []);
 
   const getItemType = useCallback((item: EnhancedPost) => {
-    return 'post';
+    return "post";
   }, []);
 
-    const _renderItemSeparator = () => {
+  const _renderItemSeparator = () => {
     return <View className="h-px bg-gray-500 my-6" />;
   };
-  
+
   return (
-    <View className='bg-background flex-1'>
-         <Animated.View
+    <View className="bg-background flex-1">
+      <Animated.View
         style={rHeaderStyle}
         className="absolute top-0 left-0 right-0 z-50"
         onLayout={({ nativeEvent }) => {
@@ -69,13 +67,14 @@ export const Feed = () => {
           className="bg-background/50 border-b border-primary"
           style={{ paddingTop: insets.top + 8 }}
         >
-          <Pressable onPress={() => navigation.toggleDrawer()} className="flex-row items-end justify-between mb-2 px-5">
+          <Pressable
+            onPress={() => navigation.toggleDrawer()}
+            className="flex-row items-end justify-between mb-2 px-5"
+          >
             <Avatar alt="Nathan" className="w-8 h-8">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>
-                <Text className="text-foreground">
-                  NA
-                </Text>
+                <Text className="text-foreground">NA</Text>
               </AvatarFallback>
             </Avatar>
             <View className="absolute top-0 left-0 right-0 bottom-0 flex-row items-center justify-center pointer-events-none">
@@ -86,21 +85,20 @@ export const Feed = () => {
         </View>
       </Animated.View>
 
-
-       <AnimatedLegendList
+      <AnimatedLegendList
         data={dummyPosts}
         renderItem={_renderItem}
         keyExtractor={(item) => item.id}
         getItemType={getItemType}
         onScroll={scrollHandler}
         ItemSeparatorComponent={_renderItemSeparator}
-        ListHeaderComponent={()=> <InfoCarousel/>}
-        ListHeaderComponentStyle={{paddingBottom: 20}}
+        ListHeaderComponent={() => <InfoCarousel />}
+        ListHeaderComponentStyle={{ paddingBottom: 20 }}
         scrollEventThrottle={1000 / 60}
         ListFooterComponent={<View style={{ height: 80 }} />}
         contentContainerStyle={{ paddingBottom: tabBarHeight + 16, paddingTop: headerHeight + 10 }}
         showsVerticalScrollIndicator={false}
       />
     </View>
-  )
-}
+  );
+};

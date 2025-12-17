@@ -1,6 +1,6 @@
-import { Slot } from 'expo-router';
+import { Slot } from "expo-router";
 
-import { TabsProvider } from '@/src/providers/tab-provider';
+import { TabsProvider } from "@/src/providers/tab-provider";
 
 // x-bottom-tabs-background-animation 🔽
 

@@ -1,6 +1,6 @@
 import { cacheBase64Image, clearSessionCache } from "@/lib/image-cache";
 import * as ImagePicker from "expo-image-picker";
-import { useState , useCallback, createContext} from "react";
+import { useState, useCallback, createContext } from "react";
 import { Alert } from "react-native";
 
 export type PostDraftCommunity = {
@@ -48,62 +48,52 @@ export const PostCreationContext = createContext<PostCreationContextValue>({
   handleShare: () => Promise.resolve(),
 });
 
-
-export function PostCreationProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
+export function PostCreationProvider({ children }: { children: React.ReactNode }) {
   const [prompt, setPrompt] = useState("");
   const [attachment, setAttachment] = useState<string | null>(null);
   const [community, setCommunity] = useState<PostDraftCommunity | null>(null);
-  const [is24hOnly , setIs24hOnly] = useState<boolean>(false)
-  const [mood , setMood] = useState('')
-  const [content , setContent] = useState('')
+  const [is24hOnly, setIs24hOnly] = useState<boolean>(false);
+  const [mood, setMood] = useState("");
+  const [content, setContent] = useState("");
 
+  //   async function handleShare(fileUri?: string) {
+  //     if (!fileUri || !Share) {
+  //       return;
+  //     }
 
+  //     try {
+  //       // Convert file URI to base64 for sharing
+  //       const base64Image = await getCachedImageAsBase64(fileUri);
+  //       const appStoreUrl =
+  //         "https://apps.apple.com/us/app/ai-tattoo-try-on/id6751748193";
 
-//   async function handleShare(fileUri?: string) {
-//     if (!fileUri || !Share) {
-//       return;
-//     }
+  //       const shareResult = await Share.open({
+  //         message: `I just got tattooed! Check out this photo \n🎨 Try it yourself: ${appStoreUrl}`,
+  //         url: base64Image,
+  //       });
 
-//     try {
-//       // Convert file URI to base64 for sharing
-//       const base64Image = await getCachedImageAsBase64(fileUri);
-//       const appStoreUrl =
-//         "https://apps.apple.com/us/app/ai-tattoo-try-on/id6751748193";
+  //       if (shareResult.dismissedAction) {
+  //         return;
+  //       }
+  //     } catch (error) {
+  //       console.error("Error sharing:", error);
+  //     }
+  //   }
 
-//       const shareResult = await Share.open({
-//         message: `I just got tattooed! Check out this photo \n🎨 Try it yourself: ${appStoreUrl}`,
-//         url: base64Image,
-//       });
+  //   async function handleSave(fileUri?: string) {
+  //     if (!fileUri) return;
 
-//       if (shareResult.dismissedAction) {
-//         return;
-//       }
-//     } catch (error) {
-//       console.error("Error sharing:", error);
-//     }
-//   }
+  //     // Convert file URI to base64 for saving
+  //     const base64Image = await getCachedImageAsBase64(fileUri);
+  //     await saveBase64ToAlbum(base64Image, "png");
 
-//   async function handleSave(fileUri?: string) {
-//     if (!fileUri) return;
+  //     toast.success("Image saved to gallery!", {
+  //       dismissible: true,
+  //       duration: 1_000,
+  //     });
+  //   }
 
-//     // Convert file URI to base64 for saving
-//     const base64Image = await getCachedImageAsBase64(fileUri);
-//     await saveBase64ToAlbum(base64Image, "png");
-
-//     toast.success("Image saved to gallery!", {
-//       dismissible: true,
-//       duration: 1_000,
-//     });
-//   }
-
-const handleShare = () => Promise.resolve()
-
-
+  const handleShare = () => Promise.resolve();
 
   function handleReset() {
     if (!attachment) return;
@@ -157,7 +147,7 @@ const handleShare = () => Promise.resolve()
           if (hasAttachment) {
             // replace the attachment
             setAttachment(fileUri);
-          }else{
+          } else {
             // set the attachment
             setAttachment(fileUri);
           }
@@ -174,31 +164,29 @@ const handleShare = () => Promise.resolve()
     }
   }, [attachment]);
 
-
   // Function to remove an image from the active group
-//   const removeImageFromActiveGroup = React.useCallback(
-//     (uri: string) => {
-//       if (activeGenerationIndex === undefined) return;
+  //   const removeImageFromActiveGroup = React.useCallback(
+  //     (uri: string) => {
+  //       if (activeGenerationIndex === undefined) return;
 
-//       setSessionGenerations((prev) => {
-//         const newGenerations = [...prev];
-//         const activeGroup = newGenerations[activeGenerationIndex];
-//         newGenerations[activeGenerationIndex] = activeGroup.filter(
-//           (u) => u !== uri
-//         );
+  //       setSessionGenerations((prev) => {
+  //         const newGenerations = [...prev];
+  //         const activeGroup = newGenerations[activeGenerationIndex];
+  //         newGenerations[activeGenerationIndex] = activeGroup.filter(
+  //           (u) => u !== uri
+  //         );
 
-//         // If the group is now empty, remove it entirely
-//         if (newGenerations[activeGenerationIndex].length === 0) {
-//           newGenerations.splice(activeGenerationIndex, 1);
-//           setActiveGenerationIndex(undefined);
-//         }
+  //         // If the group is now empty, remove it entirely
+  //         if (newGenerations[activeGenerationIndex].length === 0) {
+  //           newGenerations.splice(activeGenerationIndex, 1);
+  //           setActiveGenerationIndex(undefined);
+  //         }
 
-//         return newGenerations;
-//       });
-//     },
-//     [activeGenerationIndex]
-//   );
-
+  //         return newGenerations;
+  //       });
+  //     },
+  //     [activeGenerationIndex]
+  //   );
 
   return (
     <PostCreationContext.Provider

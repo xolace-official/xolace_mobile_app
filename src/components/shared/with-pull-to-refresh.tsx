@@ -41,17 +41,17 @@ import React, { cloneElement, createContext, ReactElement, useContext, useEffect
 import { useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-    DerivedValue,
-    Extrapolation,
-    interpolate,
-    SharedValue,
-    useAnimatedScrollHandler,
-    useAnimatedStyle,
-    useComposedEventHandler,
-    useDerivedValue,
-    useSharedValue,
-    withSpring,
-    withTiming,
+  DerivedValue,
+  Extrapolation,
+  interpolate,
+  SharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useComposedEventHandler,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+  withTiming,
 } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 

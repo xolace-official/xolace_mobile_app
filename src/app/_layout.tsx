@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import { Slot } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { Platform } from 'react-native';
-import NetworkStatusBanner from '../components/shared/NetworkStatusBanner';
+import { Slot } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { Platform } from "react-native";
+import NetworkStatusBanner from "../components/shared/NetworkStatusBanner";
 
-import { useAppStore } from '../store';
+import { useAppStore } from "../store";
 // import from packages
 // import {
 //   useAuthSession,
@@ -14,13 +14,13 @@ import { useAppStore } from '../store';
 // } from '@xolacekit/supabase';
 
 // root provider
-import { RootProvider } from '../providers/root-provider';
-import '../../global.css';
+import { RootProvider } from "../providers/root-provider";
+import "../../global.css";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // void SplashScreen.preventAutoHideAsync();
 
-const isWeb = Platform.OS === 'web';
+const isWeb = Platform.OS === "web";
 if (!isWeb) {
   // no-void to avoid unhandled promise in RN debugger
   SplashScreen.preventAutoHideAsync();

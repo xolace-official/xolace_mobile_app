@@ -82,10 +82,7 @@ const getTimeAgo = (timestamp: string) => {
   return `${months}mo ago`;
 };
 
-const matchesStatus = (
-  item: NotificationItem,
-  status: NotificationStatusFilter
-) => {
+const matchesStatus = (item: NotificationItem, status: NotificationStatusFilter) => {
   if (status === "all") return true;
   if (status === "important") return item.important;
   if (status === "unread") return !item.read;
@@ -93,10 +90,7 @@ const matchesStatus = (
   return true;
 };
 
-const matchesTimeRange = (
-  item: NotificationItem,
-  range: NotificationTimeFilter
-) => {
+const matchesTimeRange = (item: NotificationItem, range: NotificationTimeFilter) => {
   if (range === "all") return true;
 
   const now = new Date();
@@ -105,11 +99,7 @@ const matchesTimeRange = (
   const oneDay = 24 * 60 * 60 * 1000;
 
   if (range === "today") {
-    const startOfDay = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate()
-    ).getTime();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
     return createdAt.getTime() >= startOfDay;
   }
 
@@ -133,19 +123,12 @@ export const Notifications = () => {
   const insets = useSafeAreaInsets();
   const headerHeight = insets.top + 44;
   const bottomTabHeight = useBottomTabBarHeight();
-  const {
-    filterMode,
-    selectedStatus,
-    selectedTimeRange,
-    setSelectedStatus,
-    setSelectedTimeRange,
-  } = useNotificationFilter();
+  const { filterMode, selectedStatus, selectedTimeRange, setSelectedStatus, setSelectedTimeRange } =
+    useNotificationFilter();
 
   const filteredNotifications = useMemo(() => {
     if (filterMode === "status") {
-      return notifications.filter((notification) =>
-        matchesStatus(notification, selectedStatus)
-      );
+      return notifications.filter((notification) => matchesStatus(notification, selectedStatus));
     }
 
     return notifications.filter((notification) =>
@@ -153,12 +136,9 @@ export const Notifications = () => {
     );
   }, [filterMode, selectedStatus, selectedTimeRange]);
 
-  const activeFilterValue =
-    filterMode === "status" ? selectedStatus : selectedTimeRange;
+  const activeFilterValue = filterMode === "status" ? selectedStatus : selectedTimeRange;
 
-  const handleFilterChange = (
-    value: NotificationStatusFilter | NotificationTimeFilter
-  ) => {
+  const handleFilterChange = (value: NotificationStatusFilter | NotificationTimeFilter) => {
     if (filterMode === "status") {
       setSelectedStatus(value as NotificationStatusFilter);
     } else {
@@ -174,10 +154,8 @@ export const Notifications = () => {
         ListHeaderComponent={
           <View className="gap-2 pb-4">
             <View className="flex-between flex-row px-2">
-              <Text className="text-lg font-semibold text-foreground">
-              Filters
-            </Text>
-            <Text className="text-destructive">Delete All</Text>
+              <Text className="text-lg font-semibold text-foreground">Filters</Text>
+              <Text className="text-destructive">Delete All</Text>
             </View>
             <NotificationFilterTabs
               options={getFilterOptions(filterMode)}
@@ -192,13 +170,11 @@ export const Notifications = () => {
         contentContainerStyle={{
           paddingBottom: bottomTabHeight,
           paddingVertical: 16,
-          paddingTop: headerHeight + 20
+          paddingTop: headerHeight + 20,
         }}
         ListEmptyComponent={
           <View className="items-center justify-center py-16">
-            <Text className="text-base font-semibold text-foreground">
-              Nothing here yet
-            </Text>
+            <Text className="text-base font-semibold text-foreground">Nothing here yet</Text>
             <Text className="text-sm text-muted-foreground">
               Adjust your filters or check back later.
             </Text>
@@ -213,20 +189,16 @@ export const Notifications = () => {
 
 const NotificationCard = ({ item }: { item: NotificationItem }) => {
   return (
-    <Pressable className={`flex-row gap-3 rounded-2xl border border-divider px-4 py-2 ${item.read ? "bg-surface/30" : "bg-surface/70"}`}>
+    <Pressable
+      className={`flex-row gap-3 rounded-2xl border border-divider px-4 py-2 ${item.read ? "bg-surface/30" : "bg-surface/70"}`}
+    >
       <View
         className={`h-12 w-12 items-center justify-center rounded-xl ${
           item.important ? "bg-primary/20" : "bg-muted/40"
         }`}
       >
         <IconSymbol
-          name={
-            item.important
-              ? "exclamationmark"
-              : item.read
-              ? "envelope.open"
-              : "envelope.badge"
-          }
+          name={item.important ? "exclamationmark" : item.read ? "envelope.open" : "envelope.badge"}
           color={item.important ? "#ff99c8" : "#e5e5e5"}
           size={22}
         />
@@ -237,31 +209,25 @@ const NotificationCard = ({ item }: { item: NotificationItem }) => {
           <Text className="flex-1 text-base font-semibold text-foreground" numberOfLines={1}>
             {item.title}
           </Text>
-          <Text className="ml-2 text-xs text-muted-foreground">
-            {getTimeAgo(item.timestamp)}
-          </Text>
+          <Text className="ml-2 text-xs text-muted-foreground">{getTimeAgo(item.timestamp)}</Text>
         </View>
-        <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>{item.body}</Text>
+        <Text className="mt-1 text-sm text-muted-foreground" numberOfLines={2}>
+          {item.body}
+        </Text>
 
         <View className="mt-1 flex-row items-center gap-2">
           <View
-            className={`rounded-full px-2 py-1 ${
-              item.important ? "bg-primary/20" : "bg-muted/50"
-            }`}
+            className={`rounded-full px-2 py-1 ${item.important ? "bg-primary/20" : "bg-muted/50"}`}
           >
             <Text
               className={`text-xs font-semibold ${
-                item.important
-                  ? "text-primary-foreground"
-                  : "text-muted-foreground"
+                item.important ? "text-primary-foreground" : "text-muted-foreground"
               }`}
             >
               {item.important ? "Important" : item.read ? "Read" : "Unread"}
             </Text>
           </View>
-          {!item.read && (
-            <View className="h-2 w-2 rounded-full bg-primary" />
-          )}
+          {!item.read && <View className="h-2 w-2 rounded-full bg-primary" />}
         </View>
       </View>
     </Pressable>

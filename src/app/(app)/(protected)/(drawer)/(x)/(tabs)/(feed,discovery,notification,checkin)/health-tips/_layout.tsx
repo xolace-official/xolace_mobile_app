@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router'
+import { Stack } from "expo-router";
 
 const HealthTipsLayout = () => {
   return (
@@ -6,11 +6,11 @@ const HealthTipsLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Health Tips',
+          title: "Health Tips",
         }}
       />
     </Stack>
   );
-}
+};
 
-export default HealthTipsLayout
+export default HealthTipsLayout;

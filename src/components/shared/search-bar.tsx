@@ -7,8 +7,7 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { TextField } from 'heroui-native';
-
+import { TextField } from "heroui-native";
 
 type Props = {
   offsetY: SharedValue<number>;
@@ -58,10 +57,7 @@ export const SearchBar: FC<Props> = ({
     >
       <Animated.View className="justify-center h-full" style={rOpacityStyle}>
         <TextField>
-          <TextField.Input
-            placeholder="Search"
-            className=" text-lg font-semibold"
-          >
+          <TextField.Input placeholder="Search" className=" text-lg font-semibold">
             <TextField.InputStartContent className="pointer-events-none">
               <IconSymbol name="magnifyingglass" size={16} color="gray" />
             </TextField.InputStartContent>
@@ -82,4 +78,3 @@ const styles = StyleSheet.create({
     left: 8,
   },
 });
-

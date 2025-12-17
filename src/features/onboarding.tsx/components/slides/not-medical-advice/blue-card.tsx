@@ -79,13 +79,13 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       style={[rContainerStyle, styles.borderCurve]}
       className="absolute top-[25%] left-[15%] w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
     >
-    <Image
-                   source={require("@/assets/images/onboarding/xolace-caution2.png")}
-                   placeholder={{ blurhash }}
-                   contentFit="contain"
-                   transition={1000}
-                   style={[{ width: lottieSize, height: lottieSize }]}
-                 />
+      <Image
+        source={require("@/assets/images/onboarding/xolace-caution2.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[{ width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

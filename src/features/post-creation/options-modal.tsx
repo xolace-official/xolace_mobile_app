@@ -25,7 +25,7 @@ export const OptionsModal: FC<Props> = ({ isVisible, setIsVisible, pickImageFrom
   const [webEnabled, setWebEnabled] = useState(true);
   const [academicEnabled, setAcademicEnabled] = useState(false);
   const [financeEnabled, setFinanceEnabled] = useState(false);
-//   const [socialEnabled, setSocialEnabled] = useState(false);
+  //   const [socialEnabled, setSocialEnabled] = useState(false);
 
   const insets = useSafeAreaInsets();
 

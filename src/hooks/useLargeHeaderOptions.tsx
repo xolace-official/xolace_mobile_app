@@ -7,7 +7,7 @@ import { useCSSVariable } from "uniwind";
  */
 export function useLargeHeaderOptions(): NativeStackNavigationOptions {
   const isGlassAvailable = isLiquidGlassAvailable();
-  const foreground = useCSSVariable("--color-foreground")
+  const foreground = useCSSVariable("--color-foreground");
 
   return {
     headerTintColor: foreground as string,

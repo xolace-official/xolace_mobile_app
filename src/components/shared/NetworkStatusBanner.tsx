@@ -32,7 +32,11 @@ export function NetworkStatusBanner() {
       const wasOffline = previousOfflineRef.current;
 
       // Transition: Online → Offline (only show if user hasn't dismissed)
-      if (currentlyOffline && wasOffline === false && !userDismissedRef.current) {
+      if (
+        currentlyOffline &&
+        wasOffline === false &&
+        !userDismissedRef.current
+      ) {
         setShowModal(true);
       }
 
@@ -84,16 +88,24 @@ export function NetworkStatusBanner() {
   if (!showModal) return null;
 
   return (
-    <Modal transparent visible={showModal} animationType="none" onRequestClose={handleDismiss}>
+    <Modal
+      transparent
+      visible={showModal}
+      animationType="none"
+      onRequestClose={handleDismiss}
+    >
       <Animated.View
         style={{ opacity: fadeAnim }}
         className="flex-1 items-center justify-center bg-black/40 px-8"
       >
         <View className="w-full max-w-xs items-center rounded-2xl bg-white px-6 py-8">
           <Ionicons name="cloud-offline-outline" size={36} color="#292929" />
-          <Text className="mt-4 text-lg font-semibold text-gray-900">You&apos;re offline</Text>
+          <Text className="mt-4 text-lg font-semibold text-gray-900">
+            You&apos;re offline
+          </Text>
           <Text className="mt-2 text-center text-sm leading-5 text-gray-500">
-            The internet left the chat. Don&apos;t panic! You can still browse around.
+            The internet left the chat. Don&apos;t panic! You can still browse
+            around.
           </Text>
           <TouchableOpacity
             onPress={handleDismiss}

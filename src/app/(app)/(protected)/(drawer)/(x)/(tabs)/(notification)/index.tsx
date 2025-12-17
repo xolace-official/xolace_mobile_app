@@ -10,21 +10,14 @@ import { Stack } from "expo-router";
 import { SFSymbol } from "expo-symbols";
 
 function NotificationContent() {
-  const normalHeaderOptions = useNormalHeaderOptions()
-  const {
-    filterMode,
-    selectedStatus,
-    selectedTimeRange,
-    setSelectedStatus,
-    setSelectedTimeRange,
-  } = useNotificationFilter();
+  const normalHeaderOptions = useNormalHeaderOptions();
+  const { filterMode, selectedStatus, selectedTimeRange, setSelectedStatus, setSelectedTimeRange } =
+    useNotificationFilter();
 
   const statusLabel =
-    statusFilterOptions.find((option) => option.value === selectedStatus)
-      ?.label ?? "Status";
+    statusFilterOptions.find((option) => option.value === selectedStatus)?.label ?? "Status";
   const timeLabel =
-    timeFilterOptions.find((option) => option.value === selectedTimeRange)
-      ?.label ?? "Time";
+    timeFilterOptions.find((option) => option.value === selectedTimeRange)?.label ?? "Time";
 
   return (
     <>
@@ -52,10 +45,7 @@ function NotificationContent() {
                   onPress: () => {
                     setSelectedStatus(option.value);
                   },
-                  state:
-                    filterMode === "status" && selectedStatus === option.value
-                      ? "on"
-                      : "off",
+                  state: filterMode === "status" && selectedStatus === option.value ? "on" : "off",
                 })),
               },
             },
@@ -78,10 +68,7 @@ function NotificationContent() {
                   onPress: () => {
                     setSelectedTimeRange(option.value);
                   },
-                  state:
-                    filterMode === "time" && selectedTimeRange === option.value
-                      ? "on"
-                      : "off",
+                  state: filterMode === "time" && selectedTimeRange === option.value ? "on" : "off",
                 })),
               },
             },

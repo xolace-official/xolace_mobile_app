@@ -104,7 +104,9 @@ const userKey = (userId?: string | null) => `${baseKey}:${userId ?? "anon"}`;
  * Create a persister instance scoped to a user (recommended).
  * If user changes, create a new persister for that user (or clear old cache).
  */
-export function createXolaceQueryPersister(scope: PersisterScope = {}): Persister {
+export function createXolaceQueryPersister(
+  scope: PersisterScope = {},
+): Persister {
   const key = userKey(scope.userId);
 
   const persist = createThrottled(async (client: PersistedClient) => {
@@ -134,7 +136,10 @@ export function createXolaceQueryPersister(scope: PersisterScope = {}): Persiste
         const parsed = JSON.parse(raw) as PersistedClient;
 
         // Validate shape
-        if (typeof parsed?.timestamp !== "number" || Number.isNaN(parsed.timestamp)) {
+        if (
+          typeof parsed?.timestamp !== "number" ||
+          Number.isNaN(parsed.timestamp)
+        ) {
           await storage.removeItem(key);
           return undefined;
         }
@@ -180,7 +185,9 @@ export function createXolaceQueryPersister(scope: PersisterScope = {}): Persiste
  * Clear persisted query cache for a user (or anon).
  * Use on logout (important) or "reset cache" actions.
  */
-export async function clearXolaceQueryCache(userId?: string | null): Promise<void> {
+export async function clearXolaceQueryCache(
+  userId?: string | null,
+): Promise<void> {
   try {
     await storage.removeItem(userKey(userId));
   } catch (error) {
@@ -191,7 +198,9 @@ export async function clearXolaceQueryCache(userId?: string | null): Promise<voi
 /**
  * Optional: cache metadata for debugging
  */
-export async function getXolaceQueryCacheMetadata(userId?: string | null): Promise<{
+export async function getXolaceQueryCacheMetadata(
+  userId?: string | null,
+): Promise<{
   exists: boolean;
   timestamp?: number;
   age?: number;
@@ -203,7 +212,10 @@ export async function getXolaceQueryCacheMetadata(userId?: string | null): Promi
     if (!raw) return { exists: false };
 
     const parsed = JSON.parse(raw) as PersistedClient;
-    if (typeof parsed?.timestamp !== "number" || Number.isNaN(parsed.timestamp)) {
+    if (
+      typeof parsed?.timestamp !== "number" ||
+      Number.isNaN(parsed.timestamp)
+    ) {
       return { exists: true, isExpired: true };
     }
 

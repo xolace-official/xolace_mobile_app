@@ -66,12 +66,12 @@ export const BlueCard: FC<SlideItemProps> = ({ index }) => {
       className="absolute top-[25%] left-0 w-[42%] aspect-[1/1.2] rounded-3xl items-center justify-center gap-10 bg-blue-500 overflow-hidden"
     >
       <Image
-                source={require("@/assets/images/onboarding/onboarding3.png")}
-                placeholder={{ blurhash }}
-                contentFit="contain"
-                transition={1000}
-                style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
-              />
+        source={require("@/assets/images/onboarding/onboarding3.png")}
+        placeholder={{ blurhash }}
+        contentFit="contain"
+        transition={1000}
+        style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+      />
     </Animated.View>
   );
 };

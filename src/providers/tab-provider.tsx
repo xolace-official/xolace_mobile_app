@@ -1,15 +1,12 @@
-import type { FC, PropsWithChildren } from 'react';
-import React, { createContext, useState } from 'react';
+import type { FC, PropsWithChildren } from "react";
+import React, { createContext, useState } from "react";
 
-import { SharedValue } from 'react-native-reanimated';
-import { ReanimatedScrollEvent } from 'react-native-reanimated/lib/typescript/hook/commonTypes';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { scheduleOnRN } from 'react-native-worklets';
+import { SharedValue } from "react-native-reanimated";
+import { ReanimatedScrollEvent } from "react-native-reanimated/lib/typescript/hook/commonTypes";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { scheduleOnRN } from "react-native-worklets";
 
-import {
-  ScrollDirection,
-  useScrollDirection,
-} from '../hooks/use-scroll-direction';
+import { ScrollDirection, useScrollDirection } from "../hooks/use-scroll-direction";
 
 const TAB_BAR_HEIGHT_WITHOUT_INSET = 30;
 
@@ -24,9 +21,7 @@ interface TabsContextValue {
   handleXTabsOnScroll: (e: ReanimatedScrollEvent) => void;
 }
 
-export const TabsContext = createContext<TabsContextValue>(
-  {} as TabsContextValue,
-);
+export const TabsContext = createContext<TabsContextValue>({} as TabsContextValue);
 
 export const TabsProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isBottomBlurVisible, setIsBottomBlurVisible] = useState(true);
@@ -37,17 +32,16 @@ export const TabsProvider: FC<PropsWithChildren> = ({ children }) => {
   const tabBarPaddingBottom = insets.bottom + 16;
   const tabBarHeight = tabBarPaddingBottom + TAB_BAR_HEIGHT_WITHOUT_INSET;
 
-  const { scrollDirection, onScroll: handleScrollDirectionOnScroll } =
-    useScrollDirection();
+  const { scrollDirection, onScroll: handleScrollDirectionOnScroll } = useScrollDirection();
 
   const handleXTabsOnScroll = (e: ReanimatedScrollEvent) => {
-    'worklet';
+    "worklet";
 
     handleScrollDirectionOnScroll(e);
 
-    if (scrollDirection.value === 'to-bottom') {
+    if (scrollDirection.value === "to-bottom") {
       scheduleOnRN(setIsBottomBlurVisible, false);
-    } else if (scrollDirection.value === 'to-top') {
+    } else if (scrollDirection.value === "to-top") {
       scheduleOnRN(setIsBottomBlurVisible, true);
     }
   };

@@ -29,7 +29,11 @@ export const StayAnonymousText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[50%] left-[2%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[50%] left-[2%]"
+      textClassName="text-base"
+    >
       👤 Stay Anonymous
     </SlideTextContainer>
   );

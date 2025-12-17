@@ -32,7 +32,11 @@ export const MatterHereText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[75%] left-[33%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[75%] left-[33%]"
+      textClassName="text-base"
+    >
       💛 You Matter Here
     </SlideTextContainer>
   );

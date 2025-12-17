@@ -14,7 +14,6 @@ import { router } from "expo-router";
 
 // x-floating-action-button-animation 🔽
 
-
 const DURATION = 200;
 
 export const PostButton: FC = () => {
@@ -40,7 +39,7 @@ export const PostButton: FC = () => {
       bounceTheButton();
       isMessagesScreen.current = false;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const rAddButtonStyle = useAnimatedStyle(() => {
@@ -65,16 +64,16 @@ export const PostButton: FC = () => {
 
   return (
     <Animated.View style={rAddButtonStyle}>
-        <Button
-            variant="default"
-            size={'icon'}
-            radius={'full'}
-            fullWidth={false}
-            className="bg-segment"
-            onPress={()=> router.push('/(app)/(protected)/(post-creation)')}
-        >
-            <AntDesign name="plus" size={20} color="#fff" />
-        </Button>
+      <Button
+        variant="default"
+        size={"icon"}
+        radius={"full"}
+        fullWidth={false}
+        className="bg-segment"
+        onPress={() => router.push("/(app)/(protected)/(post-creation)")}
+      >
+        <AntDesign name="plus" size={20} color="#fff" />
+      </Button>
     </Animated.View>
   );
 };

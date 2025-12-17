@@ -1,21 +1,21 @@
 import {
-    Blur,
-    Canvas,
-    Group,
-    interpolateColors,
-    RoundedRect,
-    Skia,
+  Blur,
+  Canvas,
+  Group,
+  interpolateColors,
+  RoundedRect,
+  Skia,
 } from "@shopify/react-native-skia";
 import { useEffect, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import {
-    Easing,
-    interpolate,
-    useDerivedValue,
-    useSharedValue,
-    withRepeat,
-    withTiming,
-    type SharedValue,
+  Easing,
+  interpolate,
+  useDerivedValue,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+  type SharedValue,
 } from "react-native-reanimated";
 
 // longevity-deck-onboarding-animation 🔽
@@ -65,7 +65,7 @@ export const BottomGlow: React.FC<GradientLayerProps> = ({
       -1, // infinite repeats
       true // reverse on each iteration (ping-pong)
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**

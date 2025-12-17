@@ -6,7 +6,6 @@ import { Extrapolation, interpolate, useAnimatedStyle, withSpring } from "react-
 import { BASE_SPRING_CONFIG } from "../../../lib/constants";
 import { SlideItemProps } from "../../../lib/types";
 
-
 export const SpeakFreelyText: FC<SlideItemProps> = ({ index }) => {
   const { width: screenWidth } = useWindowDimensions();
 
@@ -30,7 +29,11 @@ export const SpeakFreelyText: FC<SlideItemProps> = ({ index }) => {
   });
 
   return (
-    <SlideTextContainer style={rContainerStyle} className="absolute top-[18%] left-[62%]" textClassName="text-base">
+    <SlideTextContainer
+      style={rContainerStyle}
+      className="absolute top-[18%] left-[62%]"
+      textClassName="text-base"
+    >
       🗣️ Speak Freely
     </SlideTextContainer>
   );
