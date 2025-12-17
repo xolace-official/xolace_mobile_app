@@ -49,7 +49,7 @@ export function DrawerNavItem({
       accessibilityRole="button"
       accessibilityState={{ selected: isActive }}
       className={cn(
-        'flex-row items-center justify-between rounded-2xl  py-2',
+        'flex-row items-center justify-between rounded-2xl py-2',
         isActive
           ?  `bg-accent`
           : 'bg-transparent',

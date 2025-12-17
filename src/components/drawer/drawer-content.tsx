@@ -14,6 +14,7 @@ import { cn } from '@/src/utils/cn';
 
 import { DrawerAccordionSection } from './drawer-accordion-section';
 import { DrawerNavItem } from './drawer-nav-item';
+import { DrawerFooterAction } from './drawer-footer-action';
 import {
   CAMPFIRE_ITEMS,
   HEALTH_SPACE_ITEMS,
@@ -49,7 +50,6 @@ function isRouteActive(pathname: string, href: string) {
 export function DrawerContent(props: DrawerContentComponentProps) {
   const pathname = usePathname();
   console.log('pathname ', pathname);
-  const themeColorForeground = useThemeColor('foreground');
   const themeColorBackground = useThemeColor('background');
   const isDarkMode = true;
 
@@ -143,20 +143,19 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         </View>
       </DrawerContentScrollView>
 
-      <View className="bg-[#F9FAFB] px-5 pb-10 dark:bg-[#050505]">
-        {/* <DrawerFooterAction
+      <View className="px-5 pb-10 bg-background/96">
+        <DrawerFooterAction
           label={WHATS_NEW_ACTION.label}
           icon={WHATS_NEW_ACTION.icon}
           onPress={() => navigateTo(WHATS_NEW_ACTION.href)}
           isDarkMode={isDarkMode}
-        /> */}
+        />
 
         <View className="mt-6 rounded-2xl border border-transparent px-2">
           <AppText
             className={cn(
-              'text-center text-xs text-gray-500',
-              isDarkMode && 'text-gray-400',
-            )}
+              'text-center text-xs text-muted',
+                )}
           >
             Handcrafted for your daily rituals. Stay curious ✨
           </AppText>

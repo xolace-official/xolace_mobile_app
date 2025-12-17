@@ -10,6 +10,14 @@ const NotificationLayout = () => {
     >
 
       <Stack.Screen
+        name="index"
+        options={{
+          title: 'Notifications',
+          headerShown: true,
+        }}
+      />
+
+      <Stack.Screen
         name="glimpse"
         options={{
           title: 'Glimpses',

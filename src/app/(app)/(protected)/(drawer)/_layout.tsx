@@ -10,7 +10,9 @@ export default function DrawerLayout() {
         headerShown: false,
         swipeEdgeWidth: 0,
         drawerType: 'slide',
-        drawerStyle: { width: 320 },
+        drawerStyle: { width: 300 },
+        drawerHideStatusBarOnOpen: true,
+        drawerStatusBarAnimation: 'slide',
       }}
     />
   );
